@@ -392,6 +392,42 @@ function xphysio_page_schema() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+// 4b. HEADER NAV FARBEN – nach Neve's Inline-CSS ausgeben (Priority 999)
+// ─────────────────────────────────────────────────────────────────────────────
+add_action( 'wp_head', 'xphysio_nav_colors', 999 );
+function xphysio_nav_colors() {
+    ?>
+<style id="xphysio-nav-colors">
+/* Neve Nav: Struktur ist li > div.wrap > a  (nicht li > a!) */
+
+/* Standard: weiss */
+.nav-ul li .wrap a,
+.nav-ul li .wrap a:visited {
+    color: #ffffff !important;
+}
+
+/* Hover: Hellblau – li erhält :hover, a bekommt neue Farbe */
+.nav-ul li:hover .wrap a,
+.nav-ul li .wrap a:hover,
+.nav-ul li .wrap a:focus {
+    color: #dff2ff !important;
+    background: transparent !important;
+}
+
+/* Aktive Seite (Neve setzt .nv-active auf das li) */
+.nav-ul li.nv-active .wrap a,
+.nav-ul li.current-menu-item .wrap a,
+.nav-ul li.current_page_item .wrap a,
+.nav-ul li.current-menu-ancestor .wrap a {
+    color: #dff2ff !important;
+    border-bottom: 2px solid #dff2ff !important;
+    padding-bottom: 2px !important;
+}
+</style>
+    <?php
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // 5. MATOMO – DSGVO/DSG-KONFORM (cookieless, self-hosted)
 // ─────────────────────────────────────────────────────────────────────────────
 add_action( 'wp_footer', 'xphysio_matomo_tracking' );

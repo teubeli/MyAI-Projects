@@ -154,20 +154,24 @@ img { max-width: 100%; height: auto; display: block; }
   max-height: 52px;
 }
 
-/* Nav-Links */
-.header--row .nav-ul > li > a,
-.nv-nav-wrapper .nav-ul li a {
-  color: rgba(255, 255, 255, 0.9) !important;
-  font-weight: 500;
-  font-size: 0.95rem;
-  padding: 6px 14px;
-  border-radius: 4px;
-  transition: color 0.2s, background 0.2s;
+/* ── NAV-FARBEN: Neve CSS-Variablen überschreiben ─────────────────────────── */
+/* Neve setzt diese inline: --hovercolor (Bordeaux), --hovertextcolor (Navy),  */
+/* --activecolor (Navy) → alle auf lesbare Werte ändern.                       */
+
+.builder-item--primary-menu {
+  --hovercolor:     rgba(255, 255, 255, 0.12); /* Hover-Hintergrund: subtiles Weiss */
+  --hovertextcolor: #dff2ff;                   /* Hover-Text: Hellblau              */
+  --activecolor:    #dff2ff;                   /* Aktiv-Indikator: Hellblau          */
 }
-.header--row .nav-ul > li > a:hover,
-.nv-nav-wrapper .nav-ul li a:hover {
-  color: var(--color-hellblau) !important;
-  background: rgba(255, 255, 255, 0.08);
+
+/* Fallback mit direkten Selektoren (für ältere Neve-Versionen) */
+.hfg-header .nav-ul > li > a             { color: #ffffff !important; }
+.hfg-header .nav-ul > li > a:hover      { color: #dff2ff !important; }
+.hfg-header .nav-ul > li.current-menu-item > a,
+.hfg-header .nav-ul > li.current_page_item > a,
+.hfg-header .nav-ul > li.current-menu-ancestor > a {
+  color: #dff2ff !important;
+  border-bottom: 2px solid #dff2ff !important;
 }
 
 /* CTA-Button in Nav */
