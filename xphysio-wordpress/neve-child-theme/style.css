@@ -1398,3 +1398,151 @@ footer.site-footer {
   stroke: var(--color-navy); fill: none;
   stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round;
 }
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   FOOTER
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+/* ── Footer Hauptbereich (navy) ── */
+.hfg-footer-main {
+  background: var(--color-navy) !important;
+  padding: 56px 0 40px;
+}
+.hfg-footer-main .footer-widget-wrapper {
+  color: #c8d8f0;
+}
+
+/* ── Footer Widget-Titel ── */
+.footer-widget-title {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  margin: 0 0 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+/* ── Spalte 1: Logo + Beschreibung ── */
+.footer-logo-img {
+  width: 160px !important;
+  max-width: 160px !important;
+  height: auto !important;
+  filter: brightness(0) invert(1) !important;
+  display: block;
+  margin-bottom: 16px;
+}
+.footer-tagline {
+  font-size: .93rem;
+  color: #c8d8f0;
+  line-height: 1.6;
+  margin: 0 0 16px;
+}
+.footer-hours {
+  font-size: .88rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.5;
+  margin: 0;
+}
+.footer-hours strong {
+  display: block;
+  color: #ffffff;
+  margin-bottom: 2px;
+}
+
+/* ── Spalte 2: Navigation ── */
+.footer-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer-nav-list li {
+  margin-bottom: 8px;
+}
+.footer-nav-list a {
+  color: #c8d8f0 !important;
+  text-decoration: none;
+  font-size: .93rem;
+  transition: color .2s;
+}
+.footer-nav-list a:hover {
+  color: #dff2ff !important;
+  text-decoration: underline;
+}
+
+/* ── Spalte 3: Kontakt ── */
+.footer-contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.footer-contact-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: .93rem;
+  color: #c8d8f0;
+}
+.footer-contact-list svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  stroke: #7aa8d4;
+}
+.footer-contact-list a {
+  color: #c8d8f0 !important;
+  text-decoration: none;
+  transition: color .2s;
+}
+.footer-contact-list a:hover {
+  color: #dff2ff !important;
+  text-decoration: underline;
+}
+
+/* ── Footer Bottom Bar (dunkelblau) ── */
+.hfg-footer-bottom {
+  background: #141b4d !important;
+  padding: 14px 0 !important;
+}
+.hfg-footer-bottom .footer_copyright .widget-content,
+.hfg-footer-bottom .footer_copyright p,
+.hfg-footer-bottom .footer-copyright-content {
+  font-size: .82rem;
+  color: rgba(255,255,255,0.5) !important;
+  margin: 0;
+}
+.hfg-footer-bottom a {
+  color: rgba(255,255,255,0.6) !important;
+  text-decoration: none;
+  transition: color .2s;
+}
+.hfg-footer-bottom a:hover {
+  color: rgba(255,255,255,0.9) !important;
+}
+
+/* ── Neve footer row overrides ── */
+.footer-main--row {
+  background: var(--color-navy) !important;
+}
+.footer-bottom--row {
+  background: #141b4d !important;
+}
+
+/* ── Responsive: Footer stacked on mobile ── */
+@media (max-width: 768px) {
+  .hfg-footer-main {
+    padding: 40px 0 28px;
+  }
+  .footer-logo-col,
+  .footer-nav-col,
+  .footer-contact-col {
+    margin-bottom: 32px;
+  }
+  .footer-logo-img {
+    width: 130px !important;
+  }
+}
