@@ -645,3 +645,41 @@ add_filter( 'feed_links_show_comments_feed', '__return_false' );
 
 // Neve: Sticky Header Navy-Hintergrund beibehalten
 add_filter( 'neve_sticky_header_on_scroll', '__return_true' );
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 8. BLOG – ZURÜCK-LINK & META-INFO (oberhalb + unterhalb des Artikels)
+// ─────────────────────────────────────────────────────────────────────────────
+add_filter( 'the_content', 'xphysio_blog_post_wrap' );
+function xphysio_blog_post_wrap( $content ) {
+    if ( ! is_single() || get_post_type() !== 'post' ) {
+        return $content;
+    }
+
+    $blog_url    = esc_url( get_post_type_archive_link( 'post' ) ?: home_url( '/blog/' ) );
+    $category    = get_the_category();
+    $cat_label   = $category ? esc_html( $category[0]->name ) : '';
+    $cat_url     = $category ? esc_url( get_category_link( $category[0]->term_id ) ) : '';
+    $read_time   = max( 1, (int) ceil( str_word_count( wp_strip_all_tags( $content ) ) / 200 ) );
+    $date        = get_the_date( 'd. F Y' );
+
+    $before = '<div class="xp-blog-back">
+  <a href="' . $blog_url . '" class="xp-back-link">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Zurück zur Blog-Übersicht
+  </a>
+  <div class="xp-post-meta">
+    ' . ( $cat_label ? '<a href="' . $cat_url . '" class="xp-cat-badge">' . $cat_label . '</a>' : '' ) . '
+    <span>' . $date . '</span>
+    <span>' . $read_time . ' Min. Lesezeit</span>
+  </div>
+</div>';
+
+    $after = '<div class="xp-blog-back xp-blog-back--bottom">
+  <a href="' . $blog_url . '" class="xp-back-link">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Zurück zur Blog-Übersicht
+  </a>
+</div>';
+
+    return $before . $content . $after;
+}

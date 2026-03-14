@@ -1577,3 +1577,52 @@ footer.site-footer {
     width: 130px !important;
   }
 }
+
+/* ── 8. BLOG – ZURÜCK-LINK & META ────────────────────────────────────────── */
+.xp-blog-back {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 14px 0;
+  margin-bottom: 28px;
+  border-bottom: 1px solid var(--color-hellblau);
+}
+.xp-blog-back--bottom {
+  border-bottom: none;
+  border-top: 1px solid var(--color-hellblau);
+  margin-bottom: 0;
+  margin-top: 40px;
+  padding-top: 20px;
+}
+.xp-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-navy);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.xp-back-link:hover { color: var(--color-bordeaux); }
+.xp-back-link svg { flex-shrink: 0; }
+.xp-post-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+.xp-cat-badge {
+  background: var(--color-navy);
+  color: #fff;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+}
+.xp-cat-badge:hover { background: var(--color-bordeaux); }
