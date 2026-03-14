@@ -89,9 +89,15 @@ function xphysio_schema_global() {
                 'openingHoursSpecification' => [
                     [
                         '@type'     => 'OpeningHoursSpecification',
-                        'dayOfWeek' => [ 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday' ],
-                        'opens'     => '07:30',
-                        'closes'    => '20:00',
+                        'dayOfWeek' => [ 'Tuesday' ],
+                        'opens'     => '08:30',
+                        'closes'    => '16:30',
+                    ],
+                    [
+                        '@type'     => 'OpeningHoursSpecification',
+                        'dayOfWeek' => [ 'Thursday' ],
+                        'opens'     => '14:30',
+                        'closes'    => '18:30',
                     ],
                 ],
                 'priceRange'         => 'CHF 65–580',
