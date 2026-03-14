@@ -564,6 +564,19 @@ img { max-width: 100%; height: auto; display: block; }
   font-family: var(--font-body);
 }
 
+/* Neve Button-Hover überschreiben – kein navy Hintergrund */
+.faq-question:hover,
+.faq-question:focus,
+.faq-question:active {
+  background: none !important;
+  color: inherit !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+.faq-question:hover .faq-question-text {
+  color: var(--color-bordeaux);
+}
+
 .faq-question-text {
   font-weight: 600;
   color: var(--color-navy);
