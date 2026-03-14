@@ -38,13 +38,13 @@ function xphysio_enqueue_styles() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 2. GOOGLE FONTS (Playfair Display + Source Sans 3)
+// 2. GOOGLE FONTS (Lora + Source Sans 3)
 // ─────────────────────────────────────────────────────────────────────────────
 add_action( 'wp_enqueue_scripts', 'xphysio_enqueue_fonts' );
 function xphysio_enqueue_fonts() {
     wp_enqueue_style(
         'xphysio-google-fonts',
-        'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap',
+        'https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap',
         [],
         null
     );
