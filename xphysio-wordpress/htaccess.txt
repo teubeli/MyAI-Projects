@@ -1,0 +1,194 @@
+# ══════════════════════════════════════════════════════════════════════════════
+# xphysio.ch – Apache .htaccess
+# Infomaniak Hosting (Apache mit mod_rewrite, mod_headers, mod_expires)
+#
+# WICHTIG: Diese Datei vor dem Upload in ".htaccess" umbenennen!
+#          Dateipfad auf Server: /wp/.htaccess (WordPress-Root)
+# ══════════════════════════════════════════════════════════════════════════════
+
+Options -Indexes
+ServerSignature Off
+
+# ──────────────────────────────────────────────────────────────────────────────
+# 1. HTTPS ERZWINGEN (HTTP → HTTPS)
+# ──────────────────────────────────────────────────────────────────────────────
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTPS} off
+    RewriteCond %{HTTP_HOST} !^localhost [NC]
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# ──────────────────────────────────────────────────────────────────────────────
+# 2. x-physio.ch → xphysio.ch (301 Canonical-Redirect)
+#    Gilt für: x-physio.ch UND www.x-physio.ch
+# ──────────────────────────────────────────────────────────────────────────────
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTP_HOST} ^(?:www\.)?x-physio\.ch$ [NC]
+    RewriteRule ^(.*)$ https://xphysio.ch/$1 [L,R=301]
+</IfModule>
+
+# ──────────────────────────────────────────────────────────────────────────────
+# 3. www.xphysio.ch → xphysio.ch (301 Non-www Canonical)
+# ──────────────────────────────────────────────────────────────────────────────
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTP_HOST} ^www\.xphysio\.ch$ [NC]
+    RewriteRule ^(.*)$ https://xphysio.ch/$1 [L,R=301]
+</IfModule>
+
+# ──────────────────────────────────────────────────────────────────────────────
+# 4. WORDPRESS STANDARD-REWRITE-RULES
+# ──────────────────────────────────────────────────────────────────────────────
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    RewriteRule ^index\.php$ - [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /index.php [L]
+</IfModule>
+# END WordPress
+
+# ──────────────────────────────────────────────────────────────────────────────
+# 5. SECURITY HEADERS
+# ──────────────────────────────────────────────────────────────────────────────
+<IfModule mod_headers.c>
+    # Verhindert MIME-Type Sniffing
+    Header always set X-Content-Type-Options "nosniff"
+
+    # Kein Framing ausser Same-Origin (Clickjacking-Schutz)
+    # ACHTUNG: Medidoc iFrame braucht "SAMEORIGIN" oder "ALLOW-FROM"
+    # Falls das Booking-Widget nicht lädt, diese Zeile auskommentieren
+    Header always set X-Frame-Options "SAMEORIGIN"
+
+    # XSS-Filter
+    Header always set X-XSS-Protection "1; mode=block"
+
+    # Referrer-Policy
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Permissions Policy (Kamera/Mikrofon sperren)
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(self)"
+
+    # HSTS (nur aktivieren wenn HTTPS dauerhaft!)
+    # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+</IfModule>
+
+# ──────────────────────────────────────────────────────────────────────────────
+# 6. BROWSER-CACHING (Performance)
+# ──────────────────────────────────────────────────────────────────────────────
+<IfModule mod_expires.c>
+    ExpiresActive On
+
+    # CSS & JS – 1 Jahr (mit Cache-Busting via WP Rocket/W3TC)
+    ExpiresByType text/css                  "access plus 1 year"
+    ExpiresByType text/javascript           "access plus 1 year"
+    ExpiresByType application/javascript    "access plus 1 year"
+
+    # Bilder – 6 Monate
+    ExpiresByType image/png                 "access plus 6 months"
+    ExpiresByType image/jpg                 "access plus 6 months"
+    ExpiresByType image/jpeg                "access plus 6 months"
+    ExpiresByType image/gif                 "access plus 6 months"
+    ExpiresByType image/webp                "access plus 6 months"
+    ExpiresByType image/svg+xml             "access plus 6 months"
+    ExpiresByType image/x-icon              "access plus 1 year"
+    ExpiresByType image/vnd.microsoft.icon  "access plus 1 year"
+
+    # Fonts – 1 Jahr
+    ExpiresByType font/woff                 "access plus 1 year"
+    ExpiresByType font/woff2                "access plus 1 year"
+    ExpiresByType application/font-woff     "access plus 1 year"
+    ExpiresByType application/font-woff2    "access plus 1 year"
+
+    # Dokumente
+    ExpiresByType application/pdf           "access plus 1 month"
+    ExpiresByType text/html                 "access plus 0 seconds"
+</IfModule>
+
+# Cache-Control Header
+<IfModule mod_headers.c>
+    <FilesMatch "\.(css|js|woff|woff2|png|jpg|jpeg|gif|webp|svg|ico)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+    <FilesMatch "\.(html|php)$">
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+    </FilesMatch>
+</IfModule>
+
+# ──────────────────────────────────────────────────────────────────────────────
+# 7. GZIP / BROTLI KOMPRIMIERUNG
+# ──────────────────────────────────────────────────────────────────────────────
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE \
+        text/html \
+        text/plain \
+        text/xml \
+        text/css \
+        text/javascript \
+        application/javascript \
+        application/json \
+        application/xml \
+        application/rss+xml \
+        image/svg+xml
+</IfModule>
+
+# ──────────────────────────────────────────────────────────────────────────────
+# 8. SCHUTZ SENSIBLER DATEIEN
+# ──────────────────────────────────────────────────────────────────────────────
+
+# wp-config.php sperren
+<Files "wp-config.php">
+    Require all denied
+</Files>
+
+# xmlrpc.php sperren (verhindert Brute-Force-Angriffe)
+<Files "xmlrpc.php">
+    Require all denied
+</Files>
+
+# .env sperren
+<Files ".env">
+    Require all denied
+</Files>
+
+# wp-login.php nur von bekannten IPs (optional – auskommentiert)
+# <Files "wp-login.php">
+#     Require ip 1.2.3.4   # Eigene IP hier eintragen
+# </Files>
+
+# Direkten Zugriff auf PHP in Uploads sperren
+<FilesMatch "^.+\.php$">
+    <If "%{REQUEST_URI} =~ m#/wp-content/uploads/#">
+        Require all denied
+    </If>
+</FilesMatch>
+
+# .htaccess selbst schützen
+<Files ".htaccess">
+    Require all denied
+</Files>
+
+# ──────────────────────────────────────────────────────────────────────────────
+# 9. SPAM & BAD BOTS BLOCKIEREN
+# ──────────────────────────────────────────────────────────────────────────────
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    # Leere User-Agents blockieren
+    RewriteCond %{HTTP_USER_AGENT} ^-?$ [OR]
+    RewriteCond %{HTTP_USER_AGENT} ^(libwww-perl|wget|python|nikto|curl|scan|java|winhttp) [NC]
+    RewriteRule .* - [F,L]
+</IfModule>
+
+# ──────────────────────────────────────────────────────────────────────────────
+# 10. PHP-EINSTELLUNGEN (Infomaniak-spezifisch, falls erlaubt)
+# ──────────────────────────────────────────────────────────────────────────────
+<IfModule mod_php.c>
+    php_value upload_max_filesize  128M
+    php_value post_max_size        128M
+    php_value max_execution_time   300
+    php_value max_input_vars       3000
+</IfModule>

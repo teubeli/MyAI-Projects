@@ -1,0 +1,179 @@
+<!--
+  TERMINBUCHUNG – xphysio.ch
+  URL: /terminbuchung/
+  H1: Termin buchen
+  Schema: MedicalBusiness – via functions.php
+  Das Medidoc-Widget wird via Shortcode [xphysio_booking] eingebunden.
+-->
+
+<!-- PAGE HERO -->
+<section class="xp-page-hero">
+  <div class="xp-container">
+    <h1>Termin buchen</h1>
+    <p>Online, per Telefon oder E-Mail – ich freue mich auf Ihre Anfrage.</p>
+  </div>
+</section>
+
+<!-- SCHNELLKONTAKT + BUCHUNGS-WIDGET -->
+<section class="xp-section">
+  <div class="xp-container">
+    <div style="display:grid;grid-template-columns:1fr 2fr;gap:48px;align-items:start;">
+
+      <!-- LINKE SPALTE: Kontakt + Öffnungszeiten -->
+      <div>
+        <h2>Kontakt</h2>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="ci-icon" style="color:#fff;">📞</div>
+            <div class="ci-text">
+              <strong>Telefon</strong><br>
+              <a href="tel:+41775330844">+41 77 533 08 44</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="ci-icon" style="color:#fff;">✉️</div>
+            <div class="ci-text">
+              <strong>E-Mail</strong><br>
+              <a href="mailto:hallo@xphysio.ch">hallo@xphysio.ch</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="ci-icon" style="color:#fff;">📍</div>
+            <div class="ci-text">
+              <strong>Adresse</strong><br>
+              Breitistrasse 25<br>
+              8623 Wetzikon ZH
+            </div>
+          </div>
+        </div>
+
+        <h3 style="margin-top:32px;">Öffnungszeiten</h3>
+        <table class="opening-hours">
+          <tbody>
+            <tr>
+              <td class="oh-day">Montag</td>
+              <td>07:30 – 20:00</td>
+            </tr>
+            <tr>
+              <td class="oh-day">Dienstag</td>
+              <td>07:30 – 20:00</td>
+            </tr>
+            <tr>
+              <td class="oh-day">Mittwoch</td>
+              <td>07:30 – 20:00</td>
+            </tr>
+            <tr>
+              <td class="oh-day">Donnerstag</td>
+              <td>07:30 – 20:00</td>
+            </tr>
+            <tr>
+              <td class="oh-day">Freitag</td>
+              <td>07:30 – 20:00</td>
+            </tr>
+            <tr>
+              <td class="oh-day">Samstag</td>
+              <td class="oh-closed">Geschlossen</td>
+            </tr>
+            <tr>
+              <td class="oh-day">Sonntag</td>
+              <td class="oh-closed">Geschlossen</td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- ÖFFNUNGSZEITEN: Bitte bei Michaela bestätigen und anpassen! -->
+
+        <div class="xp-contact-box" style="margin-top:28px;">
+          <h4 style="margin-top:0;">Anreise &amp; Parkplatz</h4>
+          <p style="font-size:0.9rem;margin:0;">
+            <strong>ÖV:</strong> Bahnhof Wetzikon ~10 Min. zu Fuss<br>
+            <strong>Auto:</strong> Parkplätze direkt vor dem Haus
+          </p>
+        </div>
+      </div>
+
+      <!-- RECHTE SPALTE: Online-Buchungswidget -->
+      <div>
+        <h2>Online Termin buchen</h2>
+        <p>Wählen Sie direkt den gewünschten Termin – 24/7 verfügbar über unser
+           sicheres Online-Buchungssystem (Medidoc, CH-basiert).</p>
+
+        <!-- BOOKING WIDGET: Shortcode einsetzen -->
+        [xphysio_booking]
+
+        <p style="font-size:0.82rem;color:var(--color-text-muted);margin-top:12px;">
+          Die Terminbuchung wird von
+          <a href="https://www.medidoc.ch" target="_blank" rel="noopener">Medidoc AG</a>
+          betrieben (CH-Anbieter, DSGVO-konform).
+          Weitere Informationen finden Sie in unserer
+          <a href="/datenschutzerklaerung/">Datenschutzerklärung</a>.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ANFAHRT (DSGVO-konform – kein direktes Google Maps, nur Link) -->
+<section class="xp-section" style="background:var(--color-hellblau);">
+  <div class="xp-container">
+    <h2>Anfahrt</h2>
+    <div class="map-dsgvo-wrapper">
+      <p>
+        <strong>xphysio – Breitistrasse 25, 8623 Wetzikon ZH</strong><br>
+        Aus Datenschutzgründen wird Google Maps nicht direkt eingebettet.
+      </p>
+      <a href="https://maps.google.com/?q=Breitistrasse+25,+8623+Wetzikon"
+         target="_blank" rel="noopener noreferrer"
+         class="btn-primary">
+        Route auf Google Maps öffnen
+      </a>
+      <p style="margin-top:14px;font-size:0.82rem;color:var(--color-text-muted);">
+        Mit dem Klick verlassen Sie xphysio.ch und Google erhält Daten.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ TERMINBUCHUNG -->
+<section class="xp-faq xp-section">
+  <div class="xp-container">
+    <div class="xp-section-title">
+      <span class="subtitle">FAQ</span>
+      <h2>Fragen zur Terminbuchung</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-question-text">Brauche ich eine Verordnung für meinen ersten Termin?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Für kassenpflichtige Physiotherapie ja – bringen Sie die ärztliche Verordnung
+          zum ersten Termin mit. Für Privatleistungen (Personal Training, Neuroathletik, kPNI)
+          ist kein Rezept erforderlich.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-question-text">Wie sage ich einen Termin ab?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Bitte mindestens 24 Stunden im Voraus per Telefon (+41 77 533 08 44),
+          WhatsApp oder E-Mail absagen. Kurzfristige Absagen oder Nichterscheinen
+          werden gemäss AGB privat berechnet.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-question-text">Was soll ich zum ersten Termin mitbringen?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Ärztliche Verordnung (bei Kassenleistungen), Krankenkassenkarte,
+          bequeme Kleidung und eventuell frühere Befundberichte oder Röntgenbilder.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

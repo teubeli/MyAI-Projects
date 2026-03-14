@@ -1,0 +1,127 @@
+<!--
+  BLOG – xphysio.ch
+  URL: /blog/
+  H1: Blog
+  In WordPress: Standard-Blog-Archivseite – als "Beitragsseite" in Einstellungen → Lesen setzen.
+  Diese Datei zeigt den empfohlenen Seitenaufbau und die ersten Blog-Artikel-Vorschläge.
+  WICHTIG: In WordPress werden Blog-Posts als "Beiträge" angelegt, nicht als Seite!
+-->
+
+<!--
+  EMPFOHLENE ERSTE BLOG-ARTIKEL (in WordPress als Beiträge anlegen):
+
+  1. RÜCKEN
+     Titel: "5 Übungen gegen Rückenschmerzen im Büroalltag"
+     Kategorie: Rücken
+     Keywords: Rückenschmerzen Wetzikon, Übungen Rücken, Physiotherapie Tipps
+     Inhalt: Konkrete Übungen (mit Bildern/GIFs), sofort anwendbar am Schreibtisch.
+     FAQ einbauen: "Was hilft sofort gegen Rückenschmerzen?"
+
+  2. NEUROATHLETIK
+     Titel: "Warum das Gehirn der Schlüssel zu weniger Schmerz ist"
+     Kategorie: Neuroathletik
+     Keywords: Neuroathletik Wetzikon, Schmerztherapie Zürcher Oberland
+     Inhalt: Was ist Neuroathletik? Wie funktioniert es? Ein Fallbeispiel.
+
+  3. ERNÄHRUNG
+     Titel: "Proteine und Muskeln: Wie viel brauchen Sie wirklich?"
+     Kategorie: Ernährung
+     Keywords: Proteine Muskeln, Ernährungsberatung Wetzikon, RP Nutrition
+
+  4. GELENKE
+     Titel: "Knieschmerzen: Ursachen, Behandlung und was Sie selbst tun können"
+     Kategorie: Gelenke
+     Keywords: Knieschmerzen Physiotherapie, Knie Behandlung Wetzikon
+
+  5. PRAXIS-NEWS
+     Titel: "xphysio: Neu – Online-Terminbuchung rund um die Uhr"
+     Kategorie: Praxis-News
+
+  6. TRAINING
+     Titel: "Krafttraining ab 50: Warum es wichtiger ist als je zuvor"
+     Kategorie: Training
+     Keywords: Krafttraining Wetzikon, MTT Physiotherapie
+-->
+
+<!-- BLOG ARCHIVE HEADER (wird von WordPress automatisch generiert) -->
+<section class="xp-page-hero">
+  <div class="xp-container">
+    <h1>Blog</h1>
+    <p>Tipps, Wissen und Einblicke rund um Physiotherapie, Bewegung und Ernährung
+       aus Wetzikon, Zürcher Oberland.</p>
+  </div>
+</section>
+
+<!-- KATEGORIE-FILTER (statisches HTML; in WordPress via Custom Field oder Plugin umsetzen) -->
+<section style="background:var(--color-white);padding:28px 0;">
+  <div class="xp-container">
+    <div class="blog-filter-bar">
+      <button class="blog-filter-btn active">Alle</button>
+      <button class="blog-filter-btn">Rücken</button>
+      <button class="blog-filter-btn">Gelenke</button>
+      <button class="blog-filter-btn">Training</button>
+      <button class="blog-filter-btn">Ernährung</button>
+      <button class="blog-filter-btn">Neuroathletik</button>
+      <button class="blog-filter-btn">Praxis-News</button>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG GRID (in WordPress: The Loop ersetzen diese statischen Cards) -->
+<section class="xp-section" style="background:var(--color-hellblau);">
+  <div class="xp-container">
+    <div class="xp-blog-grid">
+
+      <article class="blog-card">
+        <div class="blog-card-image">
+          <img src="/wp-content/uploads/blog-rueckenschmerzen-buero.jpg"
+               alt="Rückenschmerzen im Büro" width="400" height="200" loading="lazy">
+        </div>
+        <div class="blog-card-content">
+          <div class="blog-card-category">Rücken</div>
+          <h3>5 Übungen gegen Rückenschmerzen im Büroalltag</h3>
+          <p>Einfache Bewegungen, die Sie direkt am Schreibtisch ausführen können – und die wirklich helfen.</p>
+          <a href="#" class="read-more">Lesen →</a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-card-image">
+          <img src="/wp-content/uploads/blog-neuroathletik.jpg"
+               alt="Neuroathletik Erklärung" width="400" height="200" loading="lazy">
+        </div>
+        <div class="blog-card-content">
+          <div class="blog-card-category">Neuroathletik</div>
+          <h3>Warum das Gehirn der Schlüssel zu weniger Schmerz ist</h3>
+          <p>Wie Neuroathletik funktioniert und warum das Nervensystem oft der Therapieschlüssel ist.</p>
+          <a href="#" class="read-more">Lesen →</a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-card-image">
+          <img src="/wp-content/uploads/blog-ernaehrung-proteine.jpg"
+               alt="Protein Ernährung" width="400" height="200" loading="lazy">
+        </div>
+        <div class="blog-card-content">
+          <div class="blog-card-category">Ernährung</div>
+          <h3>Proteine und Muskeln: Wie viel brauchen Sie wirklich?</h3>
+          <p>Die Wissenschaft hinter optimaler Proteinzufuhr – klar erklärt, ohne Mythen.</p>
+          <a href="#" class="read-more">Lesen →</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="xp-cta-banner">
+  <div class="xp-container">
+    <h2>Fragen? Ich bin für Sie da.</h2>
+    <div class="cta-actions">
+      <a href="/terminbuchung/" class="btn-primary">Termin buchen</a>
+      <a href="tel:+41775330844" class="phone-link">📞 +41 77 533 08 44</a>
+    </div>
+  </div>
+</section>
