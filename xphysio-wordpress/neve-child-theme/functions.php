@@ -398,7 +398,90 @@ function xphysio_page_schema() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 4b. HEADER NAV FARBEN – nach Neve's Inline-CSS ausgeben (Priority 999)
+// 4b. SEO META TAGS (Description, Open Graph, Twitter Card)
+// ─────────────────────────────────────────────────────────────────────────────
+add_action( 'wp_head', 'xphysio_seo_meta', 2 );
+function xphysio_seo_meta() {
+
+    // Meta-Descriptions & OG-Daten pro Seite
+    $seo = [
+        ''                    => [ // Startseite
+            'desc'  => 'Physiotherapie, Neuroathletik & Ernährungs-Coaching in Wetzikon ZH. Kassenpflichtig, evidenzbasiert, individuell. Online Termin buchen.',
+            'title' => 'Physiotherapie Wetzikon – xphysio | Michaela Tobler',
+        ],
+        'angebot'             => [
+            'desc'  => 'Physiotherapie ab CHF 65 (Kasse), Personal Training & Neuroathletik ab CHF 165. Transparente Preise – Kassenleistungen & Privatleistungen in Wetzikon ZH.',
+            'title' => 'Leistungen & Preise | xphysio Physiotherapie Wetzikon',
+        ],
+        'behandlungsmethoden' => [
+            'desc'  => 'Maitland-Konzept, Mulligan MWM, Neuroathletik, kPNI & MTT in Wetzikon ZH. Evidenzbasierte Methoden für nachhaltige Schmerzfreiheit.',
+            'title' => 'Behandlungsmethoden | Maitland, Neuroathletik, kPNI – xphysio Wetzikon',
+        ],
+        'blog'                => [
+            'desc'  => 'Fachbeiträge zu Physiotherapie, Neuroathletik, kPNI & Ernährung von Michaela Tobler – Physiotherapeutin BSc in Wetzikon ZH.',
+            'title' => 'Blog | Physiotherapie & Gesundheit – xphysio Wetzikon',
+        ],
+        'ueber-mich'          => [
+            'desc'  => 'Michaela Tobler – Physiotherapeutin BSc mit 20+ Jahren Erfahrung in Wetzikon ZH. Spezialisiert auf Maitland, Mulligan, Neuroathletik & kPNI.',
+            'title' => 'Über Michaela Tobler | Physiotherapeutin BSc – xphysio Wetzikon',
+        ],
+        'terminbuchung'           => [
+            'desc'  => 'Physiotherapie-Termin online buchen – Di 08:30–16:30, Do 14:30–18:30. Online-Buchung 24/7 über Medidoc. Breitistrasse 25, 8623 Wetzikon ZH.',
+            'title' => 'Termin buchen | xphysio Wetzikon – Online 24/7 verfügbar',
+        ],
+        'datenschutzerklaerung'   => [
+            'desc'    => 'Datenschutzerklärung von xphysio – Physiotherapie Wetzikon ZH.',
+            'title'   => 'Datenschutzerklärung | xphysio Wetzikon',
+            'robots'  => 'noindex,follow',
+        ],
+        'agb'                     => [
+            'desc'    => 'AGB & Impressum von xphysio – Physiotherapie Wetzikon ZH.',
+            'title'   => 'AGB & Impressum | xphysio Wetzikon',
+            'robots'  => 'noindex,follow',
+        ],
+    ];
+
+    // Aktuelle Seite ermitteln
+    if ( is_front_page() ) {
+        $slug = '';
+    } elseif ( is_home() ) {
+        // Blog-Archiv (Posts-Page) – get_queried_object() gibt die Seite zurück
+        $blog_page = get_option( 'page_for_posts' );
+        $slug = $blog_page ? get_post( $blog_page )->post_name : 'blog';
+    } else {
+        $slug = get_post() ? get_post()->post_name : '';
+    }
+    $data = $seo[ $slug ] ?? null;
+    if ( ! $data ) return;
+
+    $desc      = esc_attr( $data['desc'] );
+    $og_title  = esc_attr( $data['title'] );
+    $robots    = isset( $data['robots'] ) ? esc_attr( $data['robots'] ) : 'index,follow';
+    $og_image  = esc_url( home_url( '/wp-content/uploads/2026/03/Logo-und-Schrift-blau-auf-transparent-1-1024x282-1.png' ) );
+    $og_url    = esc_url( get_permalink() );
+    $site_name = 'xphysio – Physiotherapie Wetzikon';
+
+    echo "\n<!-- xphysio SEO Meta -->\n";
+    echo "<meta name=\"robots\" content=\"{$robots}\">\n";
+    echo "<meta name=\"description\" content=\"{$desc}\">\n";
+    if ( $robots === 'index,follow' ) {
+        echo "<meta property=\"og:title\" content=\"{$og_title}\">\n";
+        echo "<meta property=\"og:description\" content=\"{$desc}\">\n";
+        echo "<meta property=\"og:url\" content=\"{$og_url}\">\n";
+        echo "<meta property=\"og:image\" content=\"{$og_image}\">\n";
+        echo "<meta property=\"og:type\" content=\"website\">\n";
+        echo "<meta property=\"og:site_name\" content=\"{$site_name}\">\n";
+        echo "<meta property=\"og:locale\" content=\"de_CH\">\n";
+        echo "<meta name=\"twitter:card\" content=\"summary_large_image\">\n";
+        echo "<meta name=\"twitter:title\" content=\"{$og_title}\">\n";
+        echo "<meta name=\"twitter:description\" content=\"{$desc}\">\n";
+        echo "<meta name=\"twitter:image\" content=\"{$og_image}\">\n";
+    }
+    echo "<!-- /xphysio SEO Meta -->\n\n";
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 4c. HEADER NAV FARBEN – nach Neve's Inline-CSS ausgeben (Priority 999)
 // ─────────────────────────────────────────────────────────────────────────────
 add_action( 'wp_head', 'xphysio_nav_colors', 999 );
 function xphysio_nav_colors() {
