@@ -147,11 +147,15 @@ img { max-width: 100%; height: auto; display: block; }
   background: var(--color-navy) !important;
 }
 
-/* Logo weiss */
+/* Logo weiss + Grösse */
 .site-logo img,
-.custom-logo {
-  filter: brightness(0) invert(1);
-  max-height: 52px;
+.custom-logo,
+.builder-item--logo .site-logo img,
+.hfg-slot img.custom-logo {
+  filter: brightness(0) invert(1) !important;
+  width: 320px !important;
+  max-width: 320px !important;
+  height: auto !important;
 }
 
 /* ── NAV-FARBEN: Neve CSS-Variablen überschreiben ─────────────────────────── */
