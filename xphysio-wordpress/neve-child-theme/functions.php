@@ -441,17 +441,24 @@ function xphysio_seo_meta() {
         ],
     ];
 
-    // Aktuelle Seite ermitteln
-    if ( is_front_page() ) {
-        $slug = '';
-    } elseif ( is_home() ) {
-        // Blog-Archiv (Posts-Page) – get_queried_object() gibt die Seite zurück
-        $blog_page = get_option( 'page_for_posts' );
-        $slug = $blog_page ? get_post( $blog_page )->post_name : 'blog';
+    // Einzelne Blog-Posts: eigene Meta aus post_meta lesen
+    if ( is_single() && get_post_type() === 'post' ) {
+        $post      = get_post();
+        $seo_title = get_post_meta( $post->ID, '_xphysio_seo_title', true ) ?: get_the_title( $post );
+        $seo_desc  = get_post_meta( $post->ID, '_xphysio_seo_desc',  true ) ?: $post->post_excerpt;
+        $data = [ 'title' => $seo_title, 'desc' => $seo_desc ];
     } else {
-        $slug = get_post() ? get_post()->post_name : '';
+        // Seiten-Slug ermitteln
+        if ( is_front_page() ) {
+            $slug = '';
+        } elseif ( is_home() ) {
+            $blog_page = get_option( 'page_for_posts' );
+            $slug = $blog_page ? get_post( $blog_page )->post_name : 'blog';
+        } else {
+            $slug = get_post() ? get_post()->post_name : '';
+        }
+        $data = $seo[ $slug ] ?? null;
     }
-    $data = $seo[ $slug ] ?? null;
     if ( ! $data ) return;
 
     $desc      = esc_attr( $data['desc'] );
