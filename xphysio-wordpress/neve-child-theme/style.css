@@ -360,25 +360,40 @@ img { max-width: 100%; height: auto; display: block; }
   box-shadow: var(--shadow-lift);
 }
 
+/* ── Universal Icon Ring (gilt für alle Icon-Kreise) ── */
+.card-icon,
+.pillar-icon,
+.method-icon-ring,
 .service-card .card-icon {
-  width: 56px;
-  height: 56px;
-  background: var(--color-navy);
+  background: #eef6ff;
+  border: 3px solid var(--color-navy);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 18px;
   flex-shrink: 0;
-  color: #fff;
+  box-shadow: 0 2px 8px rgba(30,39,97,0.12);
+}
+.card-icon svg,
+.pillar-icon svg,
+.method-icon-ring svg,
+.service-card .card-icon svg {
+  stroke: var(--color-navy);
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Service Cards */
+.service-card .card-icon {
+  width: 68px;
+  height: 68px;
+  margin-bottom: 18px;
 }
 .service-card .card-icon svg {
-  width: 28px;
-  height: 28px;
-  stroke: #ffffff;
-  fill: none;
-  stroke-width: 1.5;
-  stroke-linecap: round;
+  width: 34px;
+  height: 34px;
+  stroke-width: 1.75;
   stroke-linejoin: round;
 }
 
@@ -1328,4 +1343,58 @@ footer.site-footer {
   color: rgba(255,255,255,0.45);
   margin-top: 4px;
   font-style: italic;
+}
+
+/* ── Philosophie-Säulen (Über mich) ── */
+.pillar-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 20px;
+}
+.pillar-icon svg { width: 36px; height: 36px; stroke-width: 1.75; }
+
+/* ── Methoden-Icons (Behandlungsmethoden – gross) ── */
+.method-icon-ring {
+  width: 88px;
+  height: 88px;
+  margin: 0 auto 24px;
+}
+.method-icon-ring svg { width: 44px; height: 44px; stroke-width: 1.5; }
+
+/* ── Service-Group Header Icons (Angebot) ── */
+.service-group-header .icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  background: #eef6ff;
+  border: 3px solid var(--color-navy);
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(30,39,97,0.12);
+  flex-shrink: 0;
+}
+.service-group-header .icon svg {
+  width: 26px; height: 26px;
+  stroke: var(--color-navy); fill: none;
+  stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round;
+}
+
+/* ── Kontakt-Icons (Terminbuchung) ── */
+.ci-icon {
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px;
+  background: #eef6ff !important;
+  border: 2px solid var(--color-navy) !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 2px 6px rgba(30,39,97,0.10);
+}
+.ci-icon svg {
+  width: 22px; height: 22px;
+  stroke: var(--color-navy); fill: none;
+  stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round;
 }
