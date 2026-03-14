@@ -588,6 +588,7 @@ img { max-width: 100%; height: auto; display: block; }
   width: 28px;
   height: 28px;
   background: var(--color-hellblau);
+  border: 1.5px solid var(--color-navy);
   border-radius: 50%;
   display: flex;
   align-items: center;
