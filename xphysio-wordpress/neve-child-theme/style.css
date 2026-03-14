@@ -1408,6 +1408,22 @@ footer.site-footer {
   background: var(--color-navy) !important;
   padding: 56px 0 40px;
 }
+
+/* Neve setzt --color: var(--nv-text-color) (dunkel) – hier überschreiben */
+.footer-main,
+.footer-top {
+  --color: #c8d8f0 !important;
+}
+.footer-main *,
+.footer-top * {
+  color: inherit;
+}
+
+/* Padding zwischen den 3 Spalten */
+.hfg-slot.left  > .builder-item { padding-right: 24px; }
+.hfg-slot.c-left > .builder-item { padding: 0 16px; }
+.hfg-slot.center > .builder-item { padding-left: 24px; }
+
 .hfg-footer-main .footer-widget-wrapper {
   color: #c8d8f0;
 }
@@ -1427,12 +1443,13 @@ footer.site-footer {
 
 /* ── Spalte 1: Logo + Beschreibung ── */
 .footer-logo-img {
-  width: 160px !important;
-  max-width: 160px !important;
+  width: 180px !important;
+  max-width: 180px !important;
   height: auto !important;
   filter: brightness(0) invert(1) !important;
   display: block;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+  opacity: 0.95;
 }
 .footer-tagline {
   font-size: .93rem;
