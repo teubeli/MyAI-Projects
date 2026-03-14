@@ -1211,3 +1211,112 @@ footer.site-footer {
   .hfg-header, .site-footer { display: none; }
   .xp-hero h1, .xp-hero p { color: black !important; }
 }
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   26. KONTAKTFORMULAR (Contact Form 7)
+   ══════════════════════════════════════════════════════════════════════════════ */
+.wpcf7-form {
+  max-width: 640px;
+}
+.wpcf7-form p {
+  margin-bottom: 16px;
+}
+.wpcf7-form input[type="text"],
+.wpcf7-form input[type="email"],
+.wpcf7-form input[type="tel"],
+.wpcf7-form select,
+.wpcf7-form textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #d0dce8;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--color-text);
+  background: #fff;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+.wpcf7-form input:focus,
+.wpcf7-form select:focus,
+.wpcf7-form textarea:focus {
+  outline: none;
+  border-color: var(--color-navy);
+}
+.wpcf7-form textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+.wpcf7-form select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%231e2761' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+.wpcf7-submit {
+  background: var(--color-bordeaux) !important;
+  color: #fff !important;
+  border: none !important;
+  padding: 14px 36px !important;
+  border-radius: 8px !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: background 0.2s !important;
+}
+.wpcf7-submit:hover {
+  background: #5a1835 !important;
+}
+.wpcf7-response-output {
+  margin-top: 16px !important;
+  padding: 12px 16px !important;
+  border-radius: 8px !important;
+  border: none !important;
+  font-size: 0.95rem !important;
+}
+.wpcf7-mail-sent-ok {
+  background: #e8f5e9 !important;
+  color: #2e7d32 !important;
+}
+.wpcf7-mail-sent-ng,
+.wpcf7-validation-errors {
+  background: #fce4ec !important;
+  color: #c62828 !important;
+}
+.wpcf7-not-valid-tip {
+  color: #c62828;
+  font-size: 0.85rem;
+  margin-top: 4px;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   27. TELEFON – DEZENT
+   Telefon wird zurückhaltend angezeigt: kein prominenter Button, eher Fusszeile
+   ══════════════════════════════════════════════════════════════════════════════ */
+.phone-link {
+  /* Dezent: kein Button-Look, nur Text mit Icon */
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255,255,255,0.65) !important;
+  font-size: 0.9rem !important;
+  font-weight: 400 !important;
+  text-decoration: none;
+  padding: 0 !important;
+  background: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  transition: color 0.2s;
+}
+.phone-link:hover {
+  color: rgba(255,255,255,0.9) !important;
+  text-decoration: underline;
+}
+.phone-hint {
+  display: block;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.45);
+  margin-top: 4px;
+  font-style: italic;
+}
