@@ -509,6 +509,12 @@ add_action( 'wp_head', 'xphysio_nav_colors', 999 );
 function xphysio_nav_colors() {
     ?>
 <style id="xphysio-nav-colors">
+/* ── Neve CSS-Variable absichern – Customizer-Reset-sicher ── */
+.builder-item--primary-menu {
+    --activecolor: #dff2ff !important;
+    --hovertextcolor: #dff2ff !important;
+}
+
 /* ── Desktop-Nav: weisse Links im Navy-Header ── */
 /* Nur wenn NICHT in der Mobile-Sidebar */
 .hfg-header:not(.mobile-sidebar-open) .nav-ul li .wrap a,
