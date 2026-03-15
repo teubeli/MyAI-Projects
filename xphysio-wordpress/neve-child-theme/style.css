@@ -1267,6 +1267,23 @@ footer.site-footer {
    24. RESPONSIVE
    ══════════════════════════════════════════════════════════════════════════════ */
 
+/* ── Responsive Grid-Klassen (ersetzen Inline-Styles) ── */
+.xp-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.xp-profile-grid,
+.xp-contact-grid,
+.xp-method-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 48px;
+  align-items: start;
+}
+.xp-method-grid { gap: 40px; align-items: center; }
+
 /* Tablet (max 1024px) */
 @media (max-width: 1024px) {
   .xp-footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
@@ -1280,6 +1297,30 @@ footer.site-footer {
 
   .xp-trust-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
   .xp-two-col { grid-template-columns: 1fr; gap: 32px; }
+
+  /* Hero: Bild unter Text */
+  .xp-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .xp-hero-grid .hero-image {
+    order: 2;
+    text-align: center;
+  }
+  .xp-hero-grid .hero-image img {
+    max-width: 100%;
+    max-height: 340px;
+    object-fit: cover;
+    border-radius: var(--radius);
+  }
+
+  /* Profil / Kontakt / Methoden: gestapelt */
+  .xp-profile-grid,
+  .xp-contact-grid,
+  .xp-method-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
   .xp-about-preview .portrait-img { order: -1; }
   .xp-about-preview .portrait-img img { height: 320px; }
   .xp-services-grid { grid-template-columns: 1fr; }
