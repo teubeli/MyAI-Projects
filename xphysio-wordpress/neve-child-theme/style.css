@@ -1748,6 +1748,9 @@ footer.site-footer {
   background: #141b4d !important;
   padding: 14px 0 !important;
 }
+.footer-bottom-inner .row {
+  grid-template-columns: 1fr !important;
+}
 .hfg-footer-bottom .footer_copyright .widget-content,
 .hfg-footer-bottom .footer_copyright p,
 .hfg-footer-bottom .footer-copyright-content {
