@@ -219,8 +219,36 @@ img { max-width: 100%; height: auto; display: block; }
   background: #5a1835;
 }
 
-/* Mobile Hamburger */
+/* Mobile Hamburger – Header (weiss) */
 .navbar-toggle .icon-bar { background: var(--color-white); }
+
+/* Mobile Hamburger – Schliessen-X in der Sidebar (navy) */
+.close-sidebar-panel .navbar-toggle .icon-bar,
+.close-sidebar-panel .hamburger .icon-bar {
+  background: var(--color-navy) !important;
+}
+
+/* Mobile Sidebar – Schliessen-Button (×) sichtbar machen */
+.nv-sidebar-menu-outer-wrapper .close-sidebar-panel,
+.nv-sidebar-menu-outer-wrapper button.close-sidebar-panel,
+.nv-close-sidebar-panel,
+button.nv-close-sidebar-panel {
+  color: var(--color-navy) !important;
+  background: var(--color-hellblau) !important;
+  border: 2px solid var(--color-navy) !important;
+  border-radius: var(--radius) !important;
+  opacity: 1 !important;
+  width: 44px !important;
+  height: 44px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.nv-sidebar-menu-outer-wrapper .close-sidebar-panel svg,
+.nv-close-sidebar-panel svg {
+  stroke: var(--color-navy) !important;
+  fill: none !important;
+}
 
 /* Mobile Nav Sidebar – dunkle Links auf hellem Hintergrund */
 .nv-sidebar-menu-outer-wrapper .nav-ul li a,
