@@ -222,9 +222,22 @@ img { max-width: 100%; height: auto; display: block; }
 /* Mobile Hamburger */
 .navbar-toggle .icon-bar { background: var(--color-white); }
 
-/* Mobile Nav */
-.nv-nav-wrapper .nav-ul-mobile li a {
+/* Mobile Nav Sidebar – dunkle Links auf hellem Hintergrund */
+.nv-sidebar-menu-outer-wrapper .nav-ul li a,
+.nv-sidebar-menu-outer-wrapper .nav-ul li .wrap a,
+.nv-sidebar-menu-outer-wrapper .nav-ul li .wrap a:visited,
+.nv-nav-wrapper .nav-ul-mobile li a,
+.nv-nav-wrapper .nav-ul-mobile li .wrap a {
   color: var(--color-navy) !important;
+}
+.nv-sidebar-menu-outer-wrapper .nav-ul li a:hover,
+.nv-sidebar-menu-outer-wrapper .nav-ul li .wrap a:hover {
+  color: var(--color-bordeaux) !important;
+}
+.nv-sidebar-menu-outer-wrapper .nav-ul li.current-menu-item a,
+.nv-sidebar-menu-outer-wrapper .nav-ul li.nv-active a {
+  color: var(--color-bordeaux) !important;
+  font-weight: 600;
 }
 
 /* ══════════════════════════════════════════════════════════════════════════════

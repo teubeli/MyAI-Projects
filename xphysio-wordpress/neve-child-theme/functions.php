@@ -509,30 +509,48 @@ add_action( 'wp_head', 'xphysio_nav_colors', 999 );
 function xphysio_nav_colors() {
     ?>
 <style id="xphysio-nav-colors">
-/* Neve Nav: Struktur ist li > div.wrap > a  (nicht li > a!) */
-
-/* Standard: weiss */
-.nav-ul li .wrap a,
-.nav-ul li .wrap a:visited {
+/* ── Desktop-Nav: weisse Links im Navy-Header ── */
+/* Nur wenn NICHT in der Mobile-Sidebar */
+.hfg-header:not(.mobile-sidebar-open) .nav-ul li .wrap a,
+.hfg-header:not(.mobile-sidebar-open) .nav-ul li .wrap a:visited {
     color: #ffffff !important;
 }
 
-/* Hover: Hellblau – li erhält :hover, a bekommt neue Farbe */
-.nav-ul li:hover .wrap a,
-.nav-ul li .wrap a:hover,
-.nav-ul li .wrap a:focus {
+/* Hover & Fokus (Desktop) */
+.hfg-header .nav-ul li:hover .wrap a,
+.hfg-header .nav-ul li .wrap a:hover,
+.hfg-header .nav-ul li .wrap a:focus {
     color: #dff2ff !important;
     background: transparent !important;
 }
 
-/* Aktive Seite (Neve setzt .nv-active auf das li) */
-.nav-ul li.nv-active .wrap a,
-.nav-ul li.current-menu-item .wrap a,
-.nav-ul li.current_page_item .wrap a,
-.nav-ul li.current-menu-ancestor .wrap a {
+/* Aktive Seite (Desktop) */
+.hfg-header .nav-ul li.nv-active .wrap a,
+.hfg-header .nav-ul li.current-menu-item .wrap a,
+.hfg-header .nav-ul li.current_page_item .wrap a,
+.hfg-header .nav-ul li.current-menu-ancestor .wrap a {
     color: #dff2ff !important;
     border-bottom: 2px solid #dff2ff !important;
     padding-bottom: 2px !important;
+}
+
+/* ── Mobile Sidebar: dunkle Links auf hellem Hintergrund ── */
+.nv-sidebar-menu-outer-wrapper .nav-ul li a,
+.nv-sidebar-menu-outer-wrapper .nav-ul li .wrap a,
+.nv-sidebar-menu-outer-wrapper .nav-ul li .wrap a:visited,
+.nv-nav-wrapper .nav-ul-mobile li a,
+.nv-nav-wrapper .nav-ul-mobile li .wrap a {
+    color: #1e2761 !important;
+}
+.nv-sidebar-menu-outer-wrapper .nav-ul li a:hover,
+.nv-sidebar-menu-outer-wrapper .nav-ul li .wrap a:hover,
+.nv-nav-wrapper .nav-ul-mobile li a:hover {
+    color: #7a2048 !important;
+}
+.nv-sidebar-menu-outer-wrapper .nav-ul li.current-menu-item a,
+.nv-sidebar-menu-outer-wrapper .nav-ul li.nv-active a {
+    color: #7a2048 !important;
+    font-weight: 600;
 }
 </style>
     <?php
