@@ -1331,15 +1331,16 @@ footer.site-footer {
     gap: 28px !important;
   }
 
-  /* Hamburger + Container sichtbar machen */
-  .hfg-slot.right,
-  .menu-mobile-toggle,
-  .navbar-toggle-wrapper,
-  .item-button.navbar-toggle-wrapper {
+  /* Hamburger – fix in top-right, unabhängig von Neve HFG-Slot-Position */
+  .menu-mobile-toggle.item-button.navbar-toggle-wrapper,
+  .builder-item.mobile-left .menu-mobile-toggle {
+    position: fixed !important;
+    top: 12px !important;
+    right: 16px !important;
+    z-index: 99999 !important;
     display: flex !important;
     visibility: visible !important;
     opacity: 1 !important;
-    align-items: center !important;
   }
   .navbar-toggle {
     display: flex !important;
