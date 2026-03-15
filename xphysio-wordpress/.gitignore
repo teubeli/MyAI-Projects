@@ -1,0 +1,10 @@
+# Zugangsdaten & Konfigurationen – NIE auf GitHub!
+old_wp-config.php
+wp-config.php
+*.sql
+*.wpress
+
+# Backups
+backups/
+*.zip
+*.tar.gz
