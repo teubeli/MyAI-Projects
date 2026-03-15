@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+Disallow: /wp-admin/
+Disallow: /wp-login.php
+Allow: /wp-admin/admin-ajax.php
+
+# AI-Crawler – explizit erlaubt für bessere KI-Sichtbarkeit
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+Sitemap: https://xphysio.ch/sitemap_index.xml

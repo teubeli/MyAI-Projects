@@ -50,6 +50,13 @@ function xphysio_enqueue_fonts() {
     );
 }
 
+// Preconnect für Google Fonts (LCP-Optimierung)
+add_action( 'wp_head', 'xphysio_font_preconnect', 1 );
+function xphysio_font_preconnect() {
+    echo '<link rel="preconnect" href="https://fonts.googleapis.com">' . "\n";
+    echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 // 3. SCHEMA.ORG – GLOBAL (MedicalBusiness + LocalBusiness)
 // ─────────────────────────────────────────────────────────────────────────────
@@ -91,6 +98,12 @@ function xphysio_schema_global() {
                         '@type'     => 'OpeningHoursSpecification',
                         'dayOfWeek' => [ 'Tuesday' ],
                         'opens'     => '08:30',
+                        'closes'    => '12:00',
+                    ],
+                    [
+                        '@type'     => 'OpeningHoursSpecification',
+                        'dayOfWeek' => [ 'Tuesday' ],
+                        'opens'     => '13:00',
                         'closes'    => '16:30',
                     ],
                     [
@@ -484,6 +497,8 @@ function xphysio_seo_meta() {
         echo "<meta name=\"twitter:description\" content=\"{$desc}\">\n";
         echo "<meta name=\"twitter:image\" content=\"{$og_image}\">\n";
     }
+    // Canonical Tag
+    echo "<link rel=\"canonical\" href=\"{$og_url}\">\n";
     echo "<!-- /xphysio SEO Meta -->\n\n";
 }
 
@@ -592,6 +607,17 @@ function xphysio_faq_script() {
     ?>
 <script>
 (function () {
+    // ARIA-IDs dynamisch setzen (Barrierefreiheit WCAG 4.1.2)
+    document.querySelectorAll('.faq-item').forEach(function (item, i) {
+        var btn = item.querySelector('.faq-question');
+        var ans = item.querySelector('.faq-answer');
+        if (!btn || !ans) return;
+        var id = 'faq-answer-' + i;
+        ans.id = id;
+        ans.setAttribute('role', 'region');
+        btn.setAttribute('aria-controls', id);
+    });
+
     document.querySelectorAll('.faq-question').forEach(function (btn) {
         btn.addEventListener('click', function () {
             var item = this.closest('.faq-item');
@@ -599,9 +625,13 @@ function xphysio_faq_script() {
             // Alle schliessen
             document.querySelectorAll('.faq-item.open').forEach(function (el) {
                 el.classList.remove('open');
+                el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
             });
             // Dieses öffnen (falls vorher geschlossen)
-            if (!isOpen) item.classList.add('open');
+            if (!isOpen) {
+                item.classList.add('open');
+                btn.setAttribute('aria-expanded', 'true');
+            }
         });
     });
 })();
@@ -633,6 +663,19 @@ register_nav_menus( [
     'primary'   => __( 'Hauptnavigation', 'neve-child' ),
     'footer'    => __( 'Footer-Navigation', 'neve-child' ),
 ] );
+
+// robots.txt anpassen (AI-Bots + Sitemap)
+add_filter( 'robots_txt', 'xphysio_robots_txt', 10, 2 );
+function xphysio_robots_txt( $output, $public ) {
+    $output .= "\n# AI-Crawler – explizit erlaubt\n";
+    $output .= "User-agent: GPTBot\nAllow: /\n\n";
+    $output .= "User-agent: ClaudeBot\nAllow: /\n\n";
+    $output .= "User-agent: PerplexityBot\nAllow: /\n\n";
+    $output .= "User-agent: Google-Extended\nAllow: /\n\n";
+    $output .= "User-agent: Applebot-Extended\nAllow: /\n\n";
+    $output .= "User-agent: cohere-ai\nAllow: /\n";
+    return $output;
+}
 
 // Sicherheit: XML-RPC deaktivieren
 add_filter( 'xmlrpc_enabled', '__return_false' );
