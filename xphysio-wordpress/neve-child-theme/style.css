@@ -207,6 +207,13 @@ img { max-width: 100%; height: auto; display: block; }
   color: #dff2ff !important;
   border-bottom: 2px solid #dff2ff !important;
 }
+/* Nave überschreibt aktiven Menüpunkt mit --nv-primary-accent (navy) → erzwingen */
+.hfg-header .builder-item--primary-menu .nav-ul li.current-menu-item > a,
+.hfg-header .builder-item--primary-menu .nav-ul li.current_page_item > a,
+.hfg-header .nv-nav-wrapper .nav-ul li.current-menu-item > .wrap > a,
+.hfg-header .nv-nav-wrapper .nav-ul li.current_page_item > .wrap > a {
+  color: #dff2ff !important;
+}
 
 /* CTA-Button in Nav */
 .nv-nav-wrapper .nav-ul li.menu-item-cta > a {
@@ -694,8 +701,10 @@ button.nv-close-sidebar-panel {
   padding: clamp(48px, 7vw, 80px) 0;
   text-align: center;
 }
-.xp-cta-banner h2 { color: var(--color-white); margin-bottom: 12px; }
+.xp-cta-banner h2,
+.xp-cta-banner h3 { color: var(--color-white); margin-bottom: 12px; }
 .xp-cta-banner p  { color: rgba(255,255,255,0.8); font-size: 1.05rem; margin-bottom: 32px; }
+.xp-cta-banner .btn-primary { color: var(--color-white) !important; }
 
 .cta-actions {
   display: flex;
@@ -1400,6 +1409,45 @@ footer.site-footer {
   .xp-blog-grid { grid-template-columns: 1fr; }
   .methods-tags { gap: 8px; }
   .method-tag { font-size: 0.82rem; padding: 8px 16px; }
+
+  /* Angebot: Service-Group-Header – Badge in neue Zeile */
+  .service-group-header {
+    flex-wrap: wrap;
+    padding: 16px 18px;
+    gap: 10px;
+  }
+  .service-group-header h2 {
+    flex: 1;
+    font-size: 1.1rem;
+  }
+  .service-group-header .card-badge {
+    margin-left: 0 !important;
+    width: 100%;
+  }
+  .service-group-body {
+    padding: 18px;
+  }
+
+  /* Angebot: Preistabelle – gestapeltes Karten-Layout (kein horizontales Scrollen) */
+  .xp-price-table thead { display: none; }
+  .xp-price-table,
+  .xp-price-table tbody,
+  .xp-price-table tr,
+  .xp-price-table td { display: block; width: 100%; }
+  .xp-price-table tr {
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    padding: 14px 16px;
+    background: var(--color-white);
+    box-shadow: var(--shadow-card);
+  }
+  .xp-price-table tr:nth-child(even) td { background: transparent; }
+  .xp-price-table tr:hover td { background: transparent; }
+  .xp-price-table td { padding: 2px 0; border: none; font-size: 0.92rem; }
+  .xp-price-table td:first-child { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+  .xp-price-table .kasse-badge { margin: 6px 0 0 0; display: inline-block; }
+  .xp-price-table .price-cell { font-size: 1.1rem; }
 }
 
 /* ══════════════════════════════════════════════════════════════════════════════

@@ -535,22 +535,20 @@ function xphysio_nav_colors() {
 }
 
 /* ── Mobile Sidebar: dunkle Links auf hellem Hintergrund ── */
-.nv-sidebar-menu-outer-wrapper .nav-ul li a,
-.nv-sidebar-menu-outer-wrapper .nav-ul li .wrap a,
-.nv-sidebar-menu-outer-wrapper .nav-ul li .wrap a:visited,
-.nv-nav-wrapper .nav-ul-mobile li a,
-.nv-nav-wrapper .nav-ul-mobile li .wrap a {
+.header-menu-sidebar-bg .nav-ul li .wrap a,
+.header-menu-sidebar-bg .nav-ul li .wrap a:visited {
     color: #1e2761 !important;
 }
-.nv-sidebar-menu-outer-wrapper .nav-ul li a:hover,
-.nv-sidebar-menu-outer-wrapper .nav-ul li .wrap a:hover,
-.nv-nav-wrapper .nav-ul-mobile li a:hover {
+.header-menu-sidebar-bg .nav-ul li .wrap a:hover {
     color: #7a2048 !important;
 }
-.nv-sidebar-menu-outer-wrapper .nav-ul li.current-menu-item a,
-.nv-sidebar-menu-outer-wrapper .nav-ul li.nv-active a {
+/* Aktive Seite in Mobile Sidebar: Bordeaux (nicht Hellblau – weisser Hintergrund!) */
+.header-menu-sidebar-bg .nav-ul li.current-menu-item .wrap a,
+.header-menu-sidebar-bg .nav-ul li.current_page_item .wrap a,
+.header-menu-sidebar-bg .nav-ul li.nv-active .wrap a {
     color: #7a2048 !important;
     font-weight: 600;
+    border-bottom: none !important;
 }
 </style>
     <?php
