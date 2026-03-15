@@ -71,7 +71,7 @@ function xphysio_schema_global() {
                 ],
                 'image'    => 'https://xphysio.ch/wp-content/uploads/praxis-xphysio.jpg',
                 'telephone'    => '+41775330844',
-                'email'        => 'hallo@xphysio.ch',
+                'email'        => 'xphysio@hin.physio',
                 'address'      => [
                     '@type'           => 'PostalAddress',
                     'streetAddress'   => 'Breitistrasse 25',
@@ -248,7 +248,7 @@ function xphysio_page_schema() {
                 [
                     '@type'          => 'Question',
                     'name'           => 'Kann ich online einen Termin buchen?',
-                    'acceptedAnswer' => [ '@type' => 'Answer', 'text' => 'Ja! Unter xphysio.ch/terminbuchung können Sie direkt über Medidoc einen Termin wählen. Alternativ per Telefon: +41 77 533 08 44 oder E-Mail: hallo@xphysio.ch.' ],
+                    'acceptedAnswer' => [ '@type' => 'Answer', 'text' => 'Ja! Unter xphysio.ch/terminbuchung können Sie direkt über Medidoc einen Termin wählen. Alternativ per Telefon: +41 77 533 08 44 oder E-Mail: xphysio@hin.physio.' ],
                 ],
             ],
         ];
@@ -382,7 +382,7 @@ function xphysio_page_schema() {
             'name'      => 'xphysio – Terminbuchung Wetzikon',
             'url'       => 'https://xphysio.ch/terminbuchung/',
             'telephone' => '+41775330844',
-            'email'     => 'hallo@xphysio.ch',
+            'email'     => 'xphysio@hin.physio',
             'address'   => [
                 '@type'           => 'PostalAddress',
                 'streetAddress'   => 'Breitistrasse 25',
