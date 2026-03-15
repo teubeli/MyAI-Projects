@@ -1323,12 +1323,18 @@ footer.site-footer {
   .xp-profile-grid,
   .xp-contact-grid,
   .xp-method-grid,
-  .xp-page-hero + .xp-section .xp-container > div[style*="grid"],
   [style*="grid-template-columns:1fr 2fr"],
   [style*="grid-template-columns: 1fr 2fr"] {
     display: grid !important;
     grid-template-columns: 1fr !important;
     gap: 28px !important;
+  }
+
+  /* Terminbuchung: iframe/Buchung-Spalte zuerst auf Mobile */
+  .xp-contact-grid > div:nth-child(2),
+  [style*="grid-template-columns:1fr 2fr"] > div:nth-child(2),
+  [style*="grid-template-columns: 1fr 2fr"] > div:nth-child(2) {
+    order: -1;
   }
 
   /* Hamburger – fix in top-right, unabhängig von Neve HFG-Slot-Position */
