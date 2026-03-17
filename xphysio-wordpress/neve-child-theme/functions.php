@@ -526,10 +526,10 @@ function xphysio_nav_colors() {
     color: #ffffff !important;
 }
 
-/* Hover & Fokus (Desktop) */
-.hfg-header .nav-ul li:hover .wrap a,
-.hfg-header .nav-ul li .wrap a:hover,
-.hfg-header .nav-ul li .wrap a:focus {
+/* Hover & Fokus (Desktop) – nicht für CTA-Button */
+.hfg-header .nav-ul li:not(.menu-cta):hover .wrap a,
+.hfg-header .nav-ul li:not(.menu-cta) .wrap a:hover,
+.hfg-header .nav-ul li:not(.menu-cta) .wrap a:focus {
     color: #dff2ff !important;
     background: transparent !important;
 }
