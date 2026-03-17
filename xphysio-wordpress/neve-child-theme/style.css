@@ -1927,6 +1927,7 @@ footer.site-footer {
 /* ══════════════════════════════════════════════════════════════════════════════
    NEVE CONTAINER OVERRIDE – xp-sections volle Breite auf regulären Seiten
    ══════════════════════════════════════════════════════════════════════════════ */
+/* xp-sections volle Breite auf allen regulären Seiten */
 .single-page-container {
   max-width: 100% !important;
   padding-left: 0 !important;
@@ -1943,6 +1944,14 @@ footer.site-footer {
 .single-page-container .nv-content-wrap {
   padding-left: 0 !important;
   padding-right: 0 !important;
+}
+/* Ausnahme: Standard-WP-Seiten ohne xp-container (z.B. Cookie-Richtlinie) */
+body.page-id-76 .single-page-container .nv-content-wrap {
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+  max-width: 1170px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ── CTA-Button vertikal zentriert (Neve nav-ul ist flex, align-items:stretch) ── */

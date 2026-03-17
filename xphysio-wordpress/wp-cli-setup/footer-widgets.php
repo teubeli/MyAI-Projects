@@ -139,7 +139,7 @@ set_theme_mod( 'hfg_footer_layout_top_background',    [ 'type' => 'color', 'colo
 set_theme_mod( 'hfg_footer_layout_bottom_background', [ 'type' => 'color', 'colorValue' => '#141b4d' ] );
 set_theme_mod( 'hfg_footer_layout_bottom_text_color', 'rgba(255,255,255,0.5)' );
 
-$copyright = '&copy; ' . date('Y') . ' xphysio – Physiotherapie Wetzikon &nbsp;&middot;&nbsp; <a href="/datenschutzerklaerung/">Datenschutz</a> &nbsp;&middot;&nbsp; <a href="/agb/">AGB &amp; Impressum</a>';
+$copyright = '&copy; ' . date('Y') . ' xphysio – Physiotherapie Wetzikon &nbsp;&middot;&nbsp; <a href="/datenschutzerklaerung/">Datenschutz</a> &nbsp;&middot;&nbsp; <a href="/agb/">AGB &amp; Impressum</a> &nbsp;&middot;&nbsp; <a href="/cookie-richtlinie-eu/">Cookies</a>';
 set_theme_mod( 'footer_copyright_content', $copyright );
 echo "✓ Footer-Farben & Copyright gesetzt\n";
 

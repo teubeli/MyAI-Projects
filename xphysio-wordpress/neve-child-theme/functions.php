@@ -791,3 +791,20 @@ function xphysio_blog_post_wrap( $content ) {
 
     return $before . $content . $after;
 }
+
+// ============================================================
+// 11. SMTP – Ausgehende Mails via hallo@xphysio.ch (Infomaniak)
+//     Passwort als Konstante in wp-config.php: SMTP_PASSWORD
+// ============================================================
+add_action( 'phpmailer_init', function( $phpmailer ) {
+    $phpmailer->isSMTP();
+    $phpmailer->Host       = 'mail.infomaniak.com';
+    $phpmailer->SMTPAuth   = true;
+    $phpmailer->Port       = 465;
+    $phpmailer->SMTPSecure = 'ssl';
+    $phpmailer->Username   = 'hallo@xphysio.ch';
+    $phpmailer->Password   = defined( 'SMTP_PASSWORD' ) ? SMTP_PASSWORD : '';
+    $phpmailer->From       = 'hallo@xphysio.ch';
+    $phpmailer->FromName   = 'xphysio Wetzikon';
+    $phpmailer->addReplyTo( 'xphysio@hin.physio', 'xphysio Wetzikon' );
+} );
