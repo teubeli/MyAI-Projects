@@ -50,11 +50,15 @@ function xphysio_enqueue_fonts() {
     );
 }
 
-// Preconnect für Google Fonts (LCP-Optimierung)
+// Preconnect + LCP-Preload (Priority 1 = ganz oben im <head>)
 add_action( 'wp_head', 'xphysio_font_preconnect', 1 );
 function xphysio_font_preconnect() {
     echo '<link rel="preconnect" href="https://fonts.googleapis.com">' . "\n";
     echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
+    // LCP-Hero-Bild vorladen (Startseite: Michaela-Foto = grösstes Element above the fold)
+    if ( is_front_page() ) {
+        echo '<link rel="preload" as="image" href="https://xphysio.ch/wp-content/uploads/2026/03/michaela-tobler-physiotherapeutin-bsc-xphysio-wetzikon.webp" type="image/webp" fetchpriority="high">' . "\n";
+    }
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
