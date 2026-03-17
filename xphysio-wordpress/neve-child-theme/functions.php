@@ -204,6 +204,9 @@ function xphysio_schema_global() {
                 ],
                 'sameAs' => [
                     'https://www.instagram.com/xphysio.ch',
+                    'https://physioswiss.ch/praxen/136014/xphysio-physiotherapie-in-wetzikon/',
+                    // local.ch → URL folgt
+                    // search.ch → URL folgt
                 ],
             ],
             // ── 3b. Website ───────────────────────────────────────────────
