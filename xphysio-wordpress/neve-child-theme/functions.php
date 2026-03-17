@@ -8,7 +8,7 @@
  *   1. Parent-Theme-Styles einbinden
  *   2. Google Fonts
  *   3. Schema.org JSON-LD (global + seitenspezifisch)
- *   4. Google Analytics 4 (IP-anonymisiert)
+ *   4. Google Tag Manager (GTM-PTL8GNJS)
  *   5. Booking-Widget Shortcode [xphysio_booking]
  *   6. FAQ-Akkordeon (Vanilla JS)
  *   7. Neve-Feinschliff
@@ -555,24 +555,30 @@ function xphysio_nav_colors() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 5. GOOGLE ANALYTICS 4 – IP-anonymisiert
+// 5. GOOGLE TAG MANAGER – GTM-PTL8GNJS
 // ─────────────────────────────────────────────────────────────────────────────
-// TODO: Measurement ID (G-XXXXXXXXXX) eintragen, dann add_action einkommentieren
-// add_action( 'wp_head', 'xphysio_ga4_tracking' );
-function xphysio_ga4_tracking() {
-    $measurement_id = 'G-XXXXXXXXXX'; // TODO: ersetzen
+// Snippet 1: <head> – so weit oben wie möglich
+add_action( 'wp_head', 'xphysio_gtm_head', 1 );
+function xphysio_gtm_head() {
     ?>
-<!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo esc_attr( $measurement_id ); ?>"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', '<?php echo esc_attr( $measurement_id ); ?>', {
-    'anonymize_ip': true
-});
-</script>
-<!-- End Google Analytics 4 -->
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PTL8GNJS');</script>
+<!-- End Google Tag Manager -->
+    <?php
+}
+
+// Snippet 2: direkt nach <body> (noscript-Fallback)
+add_action( 'wp_body_open', 'xphysio_gtm_body', 1 );
+function xphysio_gtm_body() {
+    ?>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PTL8GNJS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
     <?php
 }
 
