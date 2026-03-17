@@ -705,9 +705,9 @@ function xphysio_faq_script() {
 // ─────────────────────────────────────────────────────────────────────────────
 add_filter( 'document_title_parts', 'xphysio_document_title' );
 function xphysio_document_title( $parts ) {
-    $parts['site'] = 'x-physio in Wetzikon';
+    $parts['site'] = 'xphysio Physiotherapie in Wetzikon';
     if ( is_front_page() ) {
-        return [ 'title' => 'x-physio in Wetzikon' ];
+        return [ 'title' => 'xphysio Physiotherapie in Wetzikon' ];
     }
     return $parts;
 }
