@@ -5,7 +5,7 @@
 #
 # Flags:
 #   --dry-run      Zeigt was gemacht würde, ändert nichts
-#   --theme-only   Nur Theme-Dateien (functions.php, style.css)
+#   --theme-only   Nur Theme-Dateien (functions.php, style.css, 404.php)
 #   --db-only      Nur DB-Inhalte (Seiten, Optionen, Menus)
 # ============================================================
 
@@ -54,8 +54,9 @@ if ! $DB_ONLY; then
   rsync $RSYNC_FLAGS \
     "${LOCAL_THEME}/functions.php" \
     "${LOCAL_THEME}/style.css" \
+    "${LOCAL_THEME}/404.php" \
     "${SSH_HOST}:${REMOTE_THEME}/"
-  echo "  ✓ functions.php + style.css"
+  echo "  ✓ functions.php + style.css + 404.php"
 fi
 
 # ── 2. Seiten-Content ─────────────────────────────────────────

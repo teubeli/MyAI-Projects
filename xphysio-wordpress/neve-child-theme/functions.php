@@ -402,6 +402,52 @@ function xphysio_page_schema() {
             . '</script>' . "\n";
     }
 
+    // ── BLOG-POST: Article ───────────────────────────────────────────────────
+    if ( is_single() && get_post_type() === 'post' ) {
+        $article = [
+            '@context'         => 'https://schema.org',
+            '@type'            => 'Article',
+            '@id'              => get_permalink() . '#article',
+            'headline'         => get_the_title(),
+            'url'              => get_permalink(),
+            'datePublished'    => get_the_date( 'c' ),
+            'dateModified'     => get_the_modified_date( 'c' ),
+            'author'           => [
+                '@type' => 'Person',
+                '@id'   => 'https://xphysio.ch/ueber-mich/#person',
+                'name'  => 'Michaela Tobler',
+            ],
+            'publisher'        => [
+                '@id' => 'https://xphysio.ch/#business',
+            ],
+            'mainEntityOfPage' => [
+                '@type' => 'WebPage',
+                '@id'   => get_permalink(),
+            ],
+        ];
+
+        if ( has_post_thumbnail() ) {
+            $img = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' );
+            if ( $img ) {
+                $article['image'] = [
+                    '@type'  => 'ImageObject',
+                    'url'    => $img[0],
+                    'width'  => $img[1],
+                    'height' => $img[2],
+                ];
+            }
+        }
+
+        $excerpt = get_the_excerpt();
+        if ( $excerpt ) {
+            $article['description'] = wp_strip_all_tags( $excerpt );
+        }
+
+        echo "\n" . '<script type="application/ld+json">'
+            . wp_json_encode( $article, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT )
+            . '</script>' . "\n";
+    }
+
     // ── KONTAKT: MedicalBusiness ──────────────────────────────────────────────
     if ( is_page( 'kontakt' ) ) {
         $booking = [
@@ -680,6 +726,15 @@ function xphysio_logo_webp_attrs( $attr, $attachment ) {
 
 /// wp-hooks / wp-i18n / wp-polyfill defer deaktiviert:
 // wp-i18n liest wp.hooks synchron → CF7 bricht sonst mit "wp is not defined"
+
+// Accessibility: aria-current="page" auf aktivem Menüpunkt (WCAG 4.1.2)
+add_filter( 'nav_menu_link_attributes', 'xphysio_aria_current', 10, 3 );
+function xphysio_aria_current( $atts, $item, $args ) {
+    if ( in_array( 'current-menu-item', (array) $item->classes ) ) {
+        $atts['aria-current'] = 'page';
+    }
+    return $atts;
+}
 
 // robots.txt anpassen (AI-Bots + Sitemap)
 add_filter( 'robots_txt', 'xphysio_robots_txt', 10, 2 );
