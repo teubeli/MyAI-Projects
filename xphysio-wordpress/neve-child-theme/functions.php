@@ -700,6 +700,20 @@ function xphysio_faq_script() {
 // 8. NEVE-FEINSCHLIFF & ALLGEMEIN
 // ─────────────────────────────────────────────────────────────────────────────
 
+// ─────────────────────────────────────────────────────────────────────────────
+// 9. DOCUMENT TITLE – Browser-Tab
+// ─────────────────────────────────────────────────────────────────────────────
+add_filter( 'document_title_parts', 'xphysio_document_title' );
+function xphysio_document_title( $parts ) {
+    $parts['site'] = 'x-physio in Wetzikon';
+    if ( is_front_page() ) {
+        return [ 'title' => 'x-physio in Wetzikon' ];
+    }
+    return $parts;
+}
+
+add_filter( 'document_title_separator', function() { return '|'; } );
+
 // Excerpt kürzer
 add_filter( 'excerpt_length', function () { return 22; }, 999 );
 add_filter( 'excerpt_more',   function () { return ' …'; } );
