@@ -681,6 +681,31 @@ add_filter( 'excerpt_more',   function () { return ' …'; } );
 // Neve Breadcrumbs aktivieren
 add_theme_support( 'neve-breadcrumbs' );
 
+// RankMath BreadcrumbList-Fix: Startseite entfernen + name-Feld auf ListItem-Ebene sicherstellen
+// Fehler: Google meldet "Unbenanntes Element" wenn name nur in item{} steckt, nicht auf ListItem-Ebene
+add_filter( 'rank_math/json_ld', 'xphysio_fix_rankmath_breadcrumb', 99 );
+function xphysio_fix_rankmath_breadcrumb( $data ) {
+    foreach ( $data as $key => $item ) {
+        if ( ! isset( $item['@type'] ) || $item['@type'] !== 'BreadcrumbList' ) continue;
+
+        // Startseite: einzelnes "Home"-Item hat keinen SEO-Wert → entfernen
+        if ( is_front_page() ) {
+            unset( $data[ $key ] );
+            continue;
+        }
+
+        // Alle anderen Seiten: name auf ListItem-Ebene sicherstellen
+        if ( ! empty( $item['itemListElement'] ) ) {
+            foreach ( $item['itemListElement'] as $i => $list_item ) {
+                if ( empty( $list_item['name'] ) && ! empty( $list_item['item']['name'] ) ) {
+                    $data[ $key ]['itemListElement'][ $i ]['name'] = $list_item['item']['name'];
+                }
+            }
+        }
+    }
+    return $data;
+}
+
 // Title-Tag Support
 add_theme_support( 'title-tag' );
 
