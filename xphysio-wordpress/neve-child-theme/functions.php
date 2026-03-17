@@ -54,7 +54,9 @@ function xphysio_dequeue_neve_fonts() {
 
 add_action( 'wp_head', 'xphysio_fonts_async', 3 );
 function xphysio_fonts_async() {
-    $url = 'https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap';
+    // display=optional: kein Font-Swap nach erstem Paint → verhindert CLS/FOUT
+    // Fonts werden ab 2. Seitenaufruf (gecacht) sofort gezeigt.
+    $url = 'https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=optional';
     echo '<link rel="preload" href="' . esc_url( $url ) . '" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">' . "\n";
     echo '<noscript><link rel="stylesheet" href="' . esc_url( $url ) . '"></noscript>' . "\n";
 }
@@ -509,7 +511,8 @@ function xphysio_nav_colors() {
 // ─────────────────────────────────────────────────────────────────────────────
 // 5. MATOMO – DSGVO/DSG-KONFORM (cookieless, self-hosted)
 // ─────────────────────────────────────────────────────────────────────────────
-add_action( 'wp_footer', 'xphysio_matomo_tracking' );
+// TODO: Matomo-Instanz aufsetzen, dann diese Funktion wieder aktivieren
+// add_action( 'wp_footer', 'xphysio_matomo_tracking' );
 function xphysio_matomo_tracking() {
     // TODO nach Matomo-Installation: URL und Site-ID anpassen
     // Matomo URL Beispiel: https://matomo.xphysio.ch/
@@ -670,8 +673,13 @@ function xphysio_logo_webp_attrs( $attr, $attachment ) {
             $attr['srcset']
         );
     }
+    // sizes: Logo-Breite ist nie 100vw – korrigiere auf realistische Header-Breite
+    $attr['sizes'] = '(max-width: 480px) 150px, (max-width: 1024px) 240px, 300px';
     return $attr;
 }
+
+/// wp-hooks / wp-i18n / wp-polyfill defer deaktiviert:
+// wp-i18n liest wp.hooks synchron → CF7 bricht sonst mit "wp is not defined"
 
 // robots.txt anpassen (AI-Bots + Sitemap)
 add_filter( 'robots_txt', 'xphysio_robots_txt', 10, 2 );
