@@ -185,7 +185,7 @@ function xphysio_schema_global() {
                     '@type'    => 'Person',
                     '@id'      => 'https://xphysio.ch/ueber-mich/#person',
                     'name'     => 'Michaela Tobler',
-                    'jobTitle' => 'Physiotherapeutin BSc, Neuroathletin, kPNI Therapeutin',
+                    'jobTitle' => 'Physiotherapeutin, Neuroathletik Coach, kPNI Therapeutin',
                 ],
                 'sameAs' => [
                     'https://www.instagram.com/xphysio.ch',
@@ -279,7 +279,7 @@ function xphysio_page_schema() {
             'name'          => 'Michaela Tobler',
             'givenName'     => 'Michaela',
             'familyName'    => 'Tobler',
-            'jobTitle'      => 'Physiotherapeutin BSc',
+            'jobTitle'      => 'Physiotherapeutin',
             'description'   => 'Michaela Tobler ist Physiotherapeutin in Wetzikon ZH mit über 20 Jahren Erfahrung. Spezialisierung in Maitland, Mulligan, Neuroathletik, kPNI und RP-Nutrition.',
             'worksFor'      => [
                 '@type' => 'MedicalBusiness',
@@ -292,7 +292,7 @@ function xphysio_page_schema() {
                 'addressCountry'  => 'CH',
             ],
             'hasCredential' => [
-                [ '@type' => 'EducationalOccupationalCredential', 'name' => 'BSc Physiotherapie' ],
+                [ '@type' => 'EducationalOccupationalCredential', 'name' => 'Physiotherapeutin' ],
                 [ '@type' => 'EducationalOccupationalCredential', 'name' => 'Maitland-Konzept (IMTA Level 1+2)' ],
                 [ '@type' => 'EducationalOccupationalCredential', 'name' => 'Mulligan-Konzept (MWM)' ],
                 [ '@type' => 'EducationalOccupationalCredential', 'name' => 'Neuroathletik-Trainerin (Z-Health)' ],
@@ -431,12 +431,12 @@ function xphysio_seo_meta() {
             'title' => 'Behandlungsmethoden | Maitland, Neuroathletik, kPNI – xphysio Wetzikon',
         ],
         'blog'                => [
-            'desc'  => 'Fachbeiträge zu Physiotherapie, Neuroathletik, kPNI & Ernährung von Michaela Tobler – Physiotherapeutin BSc in Wetzikon ZH.',
+            'desc'  => 'Fachbeiträge zu Physiotherapie, Neuroathletik, kPNI & Ernährung von Michaela Tobler – Physiotherapeutin in Wetzikon ZH.',
             'title' => 'Blog | Physiotherapie & Gesundheit – xphysio Wetzikon',
         ],
         'ueber-mich'          => [
-            'desc'  => 'Michaela Tobler – Physiotherapeutin BSc mit 20+ Jahren Erfahrung in Wetzikon ZH. Spezialisiert auf Maitland, Mulligan, Neuroathletik & kPNI.',
-            'title' => 'Über Michaela Tobler | Physiotherapeutin BSc – xphysio Wetzikon',
+            'desc'  => 'Michaela Tobler – Physiotherapeutin mit 20+ Jahren Erfahrung in Wetzikon ZH. Spezialisiert auf Maitland, Mulligan, Neuroathletik & kPNI.',
+            'title' => 'Über Michaela Tobler | Physiotherapeutin – xphysio Wetzikon',
         ],
         'terminbuchung'           => [
             'desc'  => 'Kontakt & Terminanfrage – xphysio Wetzikon. Öffnungszeiten Di/Do, Kontaktformular, Anfahrt. Breitistrasse 25, 8623 Wetzikon ZH.',
