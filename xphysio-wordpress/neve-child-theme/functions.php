@@ -545,17 +545,17 @@ function xphysio_nav_colors() {
 }
 
 /* ── Mobile Sidebar: dunkle Links auf hellem Hintergrund ── */
-.header-menu-sidebar-bg .nav-ul li .wrap a,
-.header-menu-sidebar-bg .nav-ul li .wrap a:visited {
+.header-menu-sidebar-bg .nav-ul li:not(.menu-cta) .wrap a,
+.header-menu-sidebar-bg .nav-ul li:not(.menu-cta) .wrap a:visited {
     color: #1e2761 !important;
 }
-.header-menu-sidebar-bg .nav-ul li .wrap a:hover {
+.header-menu-sidebar-bg .nav-ul li:not(.menu-cta) .wrap a:hover {
     color: #7a2048 !important;
 }
 /* Aktive Seite in Mobile Sidebar: Bordeaux (nicht Hellblau – weisser Hintergrund!) */
-.header-menu-sidebar-bg .nav-ul li.current-menu-item .wrap a,
-.header-menu-sidebar-bg .nav-ul li.current_page_item .wrap a,
-.header-menu-sidebar-bg .nav-ul li.nv-active .wrap a {
+.header-menu-sidebar-bg .nav-ul li.current-menu-item:not(.menu-cta) .wrap a,
+.header-menu-sidebar-bg .nav-ul li.current_page_item:not(.menu-cta) .wrap a,
+.header-menu-sidebar-bg .nav-ul li.nv-active:not(.menu-cta) .wrap a {
     color: #7a2048 !important;
     font-weight: 600;
     border-bottom: none !important;
