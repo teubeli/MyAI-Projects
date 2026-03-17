@@ -97,7 +97,7 @@ function xphysio_schema_global() {
                     [
                         '@type'     => 'OpeningHoursSpecification',
                         'dayOfWeek' => [ 'Tuesday' ],
-                        'opens'     => '08:30',
+                        'opens'     => '08:00',
                         'closes'    => '12:00',
                     ],
                     [
@@ -109,8 +109,8 @@ function xphysio_schema_global() {
                     [
                         '@type'     => 'OpeningHoursSpecification',
                         'dayOfWeek' => [ 'Thursday' ],
-                        'opens'     => '14:30',
-                        'closes'    => '18:30',
+                        'opens'     => '14:00',
+                        'closes'    => '17:00',
                     ],
                 ],
                 'priceRange'         => 'CHF 65–580',
@@ -231,7 +231,7 @@ function xphysio_page_schema() {
                 [
                     '@type'          => 'Question',
                     'name'           => 'Brauche ich eine ärztliche Verordnung für Physiotherapie in Wetzikon?',
-                    'acceptedAnswer' => [ '@type' => 'Answer', 'text' => 'Für kassenpflichtige Physiotherapie benötigen Sie eine ärztliche Verordnung (Arztrezept). Privatleistungen wie Personal Training, Neuroathletik oder Ernährungs-Coaching können ohne Verordnung direkt gebucht werden.' ],
+                    'acceptedAnswer' => [ '@type' => 'Answer', 'text' => 'Für kassenpflichtige Physiotherapie benötigen Sie eine ärztliche Verordnung. Privatleistungen wie Personal Training, Neuroathletik oder Ernährungs-Coaching können ohne Verordnung direkt gebucht werden.' ],
                 ],
                 [
                     '@type'          => 'Question',
@@ -241,7 +241,7 @@ function xphysio_page_schema() {
                 [
                     '@type'          => 'Question',
                     'name'           => 'Welche Krankenkasse übernimmt Physiotherapie-Kosten?',
-                    'acceptedAnswer' => [ '@type' => 'Answer', 'text' => 'Die Grundversicherung (OKP) übernimmt Physiotherapie bei ärztlicher Verordnung. Viele Zusatzversicherungen decken auch Präventionsleistungen. Sprechen Sie bitte mit Ihrer Krankenkasse.' ],
+                    'acceptedAnswer' => [ '@type' => 'Answer', 'text' => 'Die Grundversicherung (KVG) und Unfallversicherung (UVG) übernehmen Physiotherapie bei ärztlicher Verordnung. Viele Zusatzversicherungen decken auch Präventionsleistungen. Sprechen Sie bitte mit Ihrer Krankenkasse.' ],
                 ],
                 [
                     '@type'          => 'Question',
@@ -439,8 +439,12 @@ function xphysio_seo_meta() {
             'title' => 'Über Michaela Tobler | Physiotherapeutin BSc – xphysio Wetzikon',
         ],
         'terminbuchung'           => [
-            'desc'  => 'Physiotherapie-Termin online buchen – Di 08:30–16:30, Do 14:30–18:30. Online-Buchung 24/7 über Medidoc. Breitistrasse 25, 8623 Wetzikon ZH.',
-            'title' => 'Termin buchen | xphysio Wetzikon – Online 24/7 verfügbar',
+            'desc'  => 'Kontakt & Terminanfrage – xphysio Wetzikon. Öffnungszeiten Di/Do, Kontaktformular, Anfahrt. Breitistrasse 25, 8623 Wetzikon ZH.',
+            'title' => 'Kontakt & Termin buchen | xphysio Wetzikon',
+        ],
+        'online-buchen'           => [
+            'desc'  => 'Physiotherapie-Termin online buchen – 24/7 verfügbar über das sichere Medidoc-Buchungssystem. xphysio Wetzikon, Di & Do.',
+            'title' => 'Termin online buchen | xphysio Wetzikon – 24/7',
         ],
         'datenschutzerklaerung'   => [
             'desc'    => 'Datenschutzerklärung von xphysio – Physiotherapie Wetzikon ZH.',
@@ -555,6 +559,37 @@ function xphysio_nav_colors() {
     color: #7a2048 !important;
     font-weight: 600;
     border-bottom: none !important;
+}
+
+/* ── CTA-Button «Termin buchen» im Header (Desktop) ── */
+.hfg-header .nav-ul li.menu-cta .wrap a,
+.hfg-header .nav-ul li.menu-cta .wrap a:visited {
+    background: #7a2048 !important;
+    color: #ffffff !important;
+    padding: 8px 20px !important;
+    border-radius: 6px !important;
+    font-weight: 600 !important;
+    border-bottom: none !important;
+    transition: background 0.2s ease !important;
+}
+.hfg-header .nav-ul li.menu-cta .wrap a:hover,
+.hfg-header .nav-ul li.menu-cta .wrap a:focus {
+    background: #5e1836 !important;
+    color: #ffffff !important;
+}
+
+/* ── CTA-Button in Mobile Sidebar ── */
+.header-menu-sidebar-bg .nav-ul li.menu-cta .wrap a,
+.header-menu-sidebar-bg .nav-ul li.menu-cta .wrap a:visited {
+    background: #7a2048 !important;
+    color: #ffffff !important;
+    border-radius: 6px !important;
+    padding: 8px 20px !important;
+    display: inline-block !important;
+}
+.header-menu-sidebar-bg .nav-ul li.menu-cta .wrap a:hover {
+    background: #5e1836 !important;
+    color: #ffffff !important;
 }
 </style>
     <?php
