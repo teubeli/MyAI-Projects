@@ -38,16 +38,25 @@ function xphysio_enqueue_styles() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 2. GOOGLE FONTS (Lora + Source Sans 3)
+// 2. GOOGLE FONTS – einmalige async-URL (Neve-Fonts deregistriert)
 // ─────────────────────────────────────────────────────────────────────────────
-add_action( 'wp_enqueue_scripts', 'xphysio_enqueue_fonts' );
-function xphysio_enqueue_fonts() {
-    wp_enqueue_style(
-        'xphysio-google-fonts',
-        'https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap',
-        [],
-        null
-    );
+// Neve würde Lora + Source Sans 3 mit eingeschränkten Weights laden.
+// Wir deregistrieren Neve's Fonts und laden eine konsolidierte async-URL
+// mit allen benötigten Weights (inkl. Italic). Kein Render-Blocking.
+// Neve enqueued fonts kurz vor der Ausgabe abfangen
+add_action( 'wp_print_styles', 'xphysio_dequeue_neve_fonts', 999 );
+function xphysio_dequeue_neve_fonts() {
+    wp_dequeue_style( 'neve-google-font-lora' );
+    wp_deregister_style( 'neve-google-font-lora' );
+    wp_dequeue_style( 'neve-google-font-source-sans-3' );
+    wp_deregister_style( 'neve-google-font-source-sans-3' );
+}
+
+add_action( 'wp_head', 'xphysio_fonts_async', 3 );
+function xphysio_fonts_async() {
+    $url = 'https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap';
+    echo '<link rel="preload" href="' . esc_url( $url ) . '" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">' . "\n";
+    echo '<noscript><link rel="stylesheet" href="' . esc_url( $url ) . '"></noscript>' . "\n";
 }
 
 // Preconnect + LCP-Preload (Priority 1 = ganz oben im <head>)
