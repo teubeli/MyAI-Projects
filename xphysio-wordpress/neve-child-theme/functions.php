@@ -561,9 +561,9 @@ function xphysio_nav_colors() {
     border-bottom: none !important;
 }
 
-/* ── CTA-Button «Termin buchen» im Header (Desktop) ── */
-.hfg-header .nav-ul li.menu-cta .wrap a,
-.hfg-header .nav-ul li.menu-cta .wrap a:visited {
+/* ── CTA-Button «Termin buchen» im Header (Desktop & Mobile) ── */
+.nav-ul li.menu-cta .wrap a,
+.nav-ul li.menu-cta .wrap a:visited {
     background: #7a2048 !important;
     color: #ffffff !important;
     padding: 8px 20px !important;
@@ -571,23 +571,10 @@ function xphysio_nav_colors() {
     font-weight: 600 !important;
     border-bottom: none !important;
     transition: background 0.2s ease !important;
-}
-.hfg-header .nav-ul li.menu-cta .wrap a:hover,
-.hfg-header .nav-ul li.menu-cta .wrap a:focus {
-    background: #5e1836 !important;
-    color: #ffffff !important;
-}
-
-/* ── CTA-Button in Mobile Sidebar ── */
-.header-menu-sidebar-bg .nav-ul li.menu-cta .wrap a,
-.header-menu-sidebar-bg .nav-ul li.menu-cta .wrap a:visited {
-    background: #7a2048 !important;
-    color: #ffffff !important;
-    border-radius: 6px !important;
-    padding: 8px 20px !important;
     display: inline-block !important;
 }
-.header-menu-sidebar-bg .nav-ul li.menu-cta .wrap a:hover {
+.nav-ul li.menu-cta .wrap a:hover,
+.nav-ul li.menu-cta .wrap a:focus {
     background: #5e1836 !important;
     color: #ffffff !important;
 }
