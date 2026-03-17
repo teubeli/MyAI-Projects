@@ -1958,3 +1958,14 @@ body.page-id-76 .single-page-container .nv-content-wrap {
 .nav-ul {
   align-items: center !important;
 }
+
+/* ── Mobile: Bilder zentrieren (Über mich, Startseite) ─────────────────────── */
+@media (max-width: 768px) {
+  .xp-profile-grid img,
+  .xp-hero-grid img,
+  .portrait-img img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
