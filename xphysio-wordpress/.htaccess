@@ -17,12 +17,13 @@ AddOutputFilterByType DEFLATE "application/atom+xml" "application/javascript" "a
 </IfModule>
 
 # ── WebP Auto-Serve (JPG/PNG → WebP wenn Browser + Datei vorhanden) ──────────
+# %1 = Pfad ohne Erweiterung (aus REQUEST_FILENAME-Capture), wird auf .webp geprüft
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteCond %{HTTP_ACCEPT} image/webp
-  RewriteCond %{REQUEST_FILENAME} \.(jpe?g|png)$
-  RewriteCond %{REQUEST_FILENAME}\.webp -f
-  RewriteRule ^ %{REQUEST_FILENAME}.webp [T=image/webp,L]
+  RewriteCond %{REQUEST_FILENAME} ^(.*)\.(jpe?g|png)$
+  RewriteCond %1.webp -f
+  RewriteRule ^(.*)\.(jpe?g|png)$ .webp [T=image/webp,L]
 </IfModule>
 # END xphysio Cache & WebP
 

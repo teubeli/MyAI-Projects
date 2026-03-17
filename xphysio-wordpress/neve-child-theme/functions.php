@@ -646,6 +646,33 @@ register_nav_menus( [
     'footer'    => __( 'Footer-Navigation', 'neve-child' ),
 ] );
 
+// Performance: Header-Logo src + srcset auf WebP umschreiben
+add_filter( 'wp_get_attachment_image_attributes', 'xphysio_logo_webp_attrs', 10, 2 );
+function xphysio_logo_webp_attrs( $attr, $attachment ) {
+    $logo_id = (int) get_theme_mod( 'custom_logo' );
+    if ( ! $logo_id || $attachment->ID !== $logo_id ) return $attr;
+
+    // src → .webp (Existenz-Check)
+    if ( ! empty( $attr['src'] ) ) {
+        $webp = preg_replace( '/\.(png|jpe?g)$/i', '.webp', $attr['src'] );
+        $path = str_replace( home_url( '/' ), ABSPATH, $webp );
+        if ( file_exists( $path ) ) $attr['src'] = $webp;
+    }
+    // srcset → alle PNG/JPG-Einträge durch WebP ersetzen
+    if ( ! empty( $attr['srcset'] ) ) {
+        $attr['srcset'] = preg_replace_callback(
+            '/(\S+)\.(png|jpe?g)(\s)/i',
+            function ( $m ) {
+                $webp = $m[1] . '.webp' . $m[3];
+                $path = str_replace( home_url( '/' ), ABSPATH, $m[1] . '.webp' );
+                return file_exists( $path ) ? $webp : $m[0];
+            },
+            $attr['srcset']
+        );
+    }
+    return $attr;
+}
+
 // robots.txt anpassen (AI-Bots + Sitemap)
 add_filter( 'robots_txt', 'xphysio_robots_txt', 10, 2 );
 function xphysio_robots_txt( $output, $public ) {

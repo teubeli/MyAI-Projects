@@ -12,12 +12,13 @@
  *   center  → footer-three-widgets (Kontakt)
  */
 
-$logo_url = home_url( '/wp-content/uploads/2026/03/Logo-und-Schrift-blau-auf-transparent-1-1024x282-1.png' );
+$logo_url_webp = home_url( '/wp-content/uploads/2026/03/Logo-und-Schrift-blau-auf-transparent-1-1024x282-1.webp' );
+$logo_url_png  = home_url( '/wp-content/uploads/2026/03/Logo-und-Schrift-blau-auf-transparent-1-1024x282-1.png' );
 $base_url = home_url();
 
 // ── Spalte 1: Logo + Öffnungszeiten ──────────────────────────────────────────
 $col1 = '<div class="footer-logo-col">
-<a href="' . $base_url . '/"><img src="' . $logo_url . '" alt="xphysio Physiotherapie Wetzikon" class="footer-logo-img"></a>
+<a href="' . $base_url . '/"><picture><source srcset="' . $logo_url_webp . '" type="image/webp"><img src="' . $logo_url_png . '" alt="xphysio Physiotherapie Wetzikon" class="footer-logo-img" loading="lazy" width="300" height="83"></picture></a>
 <p class="footer-tagline">Physiotherapie in Wetzikon ZH –<br>ganzheitlich, evidenzbasiert, individuell.</p>
 <h4 class="footer-widget-title" style="margin-top:20px;">Öffnungszeiten</h4>
 <p class="footer-hours">
