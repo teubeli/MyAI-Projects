@@ -1055,7 +1055,7 @@ footer.site-footer {
   clip-path: ellipse(55% 100% at 50% 100%);
 }
 .xp-page-hero h1 { color: var(--color-white); }
-.xp-page-hero p { color: rgba(255,255,255,0.8); font-size: 1.1rem; }
+.xp-page-hero p { color: #ffffff; font-size: 1.1rem; }
 
 /* Philosophie Säulen */
 .philosophy-pillars {
