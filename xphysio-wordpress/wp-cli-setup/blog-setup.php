@@ -278,6 +278,14 @@ $posts[] = [
 <p>Bei xphysio kombinieren wir Neuroathletik mit dem Maitland-Konzept, Mulligan MWM und MTT. Das Nervensystem und das Bewegungssystem arbeiten zusammen – eine Behandlung, die beide Ebenen einbezieht, ist nachhaltiger als eine rein mechanische Therapie.</p>
 <!-- /wp:paragraph -->
 
+<!-- wp:heading -->
+<h2>Neuroathletik bei xphysio in Wetzikon ZH</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Als eine der wenigen Physiotherapeutinnen in der Region Zürcher Oberland, die Neuroathletik gezielt in die Behandlung integriert, bietet Michaela Tobler einen modernen, evidenzbasierten Ansatz. Ob bei chronischen Rückenschmerzen, Schwindel, nach Sportverletzungen oder zur Leistungssteigerung – neuroathletisches Training ergänzt die klassische Physiotherapie auf eine Art, die Ergebnisse sichtbar und messbar macht. Neuroathletik in Wetzikon ist kein Trend, sondern gezielte Wissenschaft.</p>
+<!-- /wp:paragraph -->
+
 <!-- wp:separator {"className":"is-style-wide"} -->
 <hr class="wp-block-separator is-style-wide"/>
 <!-- /wp:separator -->
