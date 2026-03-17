@@ -8,7 +8,7 @@
  *   1. Parent-Theme-Styles einbinden
  *   2. Google Fonts
  *   3. Schema.org JSON-LD (global + seitenspezifisch)
- *   4. Matomo Tracking (cookieless, DSGVO/DSG CH-konform)
+ *   4. Google Analytics 4 (IP-anonymisiert)
  *   5. Booking-Widget Shortcode [xphysio_booking]
  *   6. FAQ-Akkordeon (Vanilla JS)
  *   7. Neve-Feinschliff
@@ -555,33 +555,24 @@ function xphysio_nav_colors() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 5. MATOMO – DSGVO/DSG-KONFORM (cookieless, self-hosted)
+// 5. GOOGLE ANALYTICS 4 – IP-anonymisiert
 // ─────────────────────────────────────────────────────────────────────────────
-// TODO: Matomo-Instanz aufsetzen, dann diese Funktion wieder aktivieren
-// add_action( 'wp_footer', 'xphysio_matomo_tracking' );
-function xphysio_matomo_tracking() {
-    // TODO nach Matomo-Installation: URL und Site-ID anpassen
-    // Matomo URL Beispiel: https://matomo.xphysio.ch/
-    // Keine Cookies → kein Cookie-Banner nötig (CH DSG)
+// TODO: Measurement ID (G-XXXXXXXXXX) eintragen, dann add_action einkommentieren
+// add_action( 'wp_head', 'xphysio_ga4_tracking' );
+function xphysio_ga4_tracking() {
+    $measurement_id = 'G-XXXXXXXXXX'; // TODO: ersetzen
     ?>
-<!-- Matomo (cookieless – DSG CH-konform) -->
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo esc_attr( $measurement_id ); ?>"></script>
 <script>
-var _paq = window._paq = window._paq || [];
-_paq.push(['disableCookies']);       // kein Cookie = kein Banner nötig
-_paq.push(['setDoNotTrack', true]);  // DNT respektieren
-_paq.push(['trackPageView']);
-_paq.push(['enableLinkTracking']);
-(function () {
-    var u = "https://matomo.xphysio.ch/"; /* TODO: Matomo-URL anpassen */
-    _paq.push(['setTrackerUrl', u + 'matomo.php']);
-    _paq.push(['setSiteId', '1']); /* TODO: Site-ID anpassen */
-    var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
-    g.async = true;
-    g.src = u + 'matomo.js';
-    s.parentNode.insertBefore(g, s);
-})();
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '<?php echo esc_attr( $measurement_id ); ?>', {
+    'anonymize_ip': true
+});
 </script>
-<!-- End Matomo -->
+<!-- End Google Analytics 4 -->
     <?php
 }
 
