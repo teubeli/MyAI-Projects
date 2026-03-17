@@ -33,9 +33,10 @@ $col2 = '<div class="footer-nav-col">
 <li><a href="' . $base_url . '/">Startseite</a></li>
 <li><a href="' . $base_url . '/angebot/">Leistungen &amp; Preise</a></li>
 <li><a href="' . $base_url . '/behandlungsmethoden/">Behandlungsmethoden</a></li>
-<li><a href="' . $base_url . '/ueber-mich/">Über mich</a></li>
-<li><a href="' . $base_url . '/online-buchen/">Termin buchen</a></li>
 <li><a href="' . $base_url . '/blog/">Blog</a></li>
+<li><a href="' . $base_url . '/ueber-mich/">Über mich</a></li>
+<li><a href="' . $base_url . '/kontakt/">Kontakt</a></li>
+<li><a href="' . $base_url . '/online-buchen/">Termin buchen</a></li>
 </ul>
 </div>';
 
