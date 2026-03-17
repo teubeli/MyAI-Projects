@@ -261,7 +261,7 @@ function xphysio_page_schema() {
                 [
                     '@type'          => 'Question',
                     'name'           => 'Kann ich online einen Termin buchen?',
-                    'acceptedAnswer' => [ '@type' => 'Answer', 'text' => 'Ja! Unter xphysio.ch/terminbuchung können Sie direkt über Medidoc einen Termin wählen. Alternativ per Telefon: +41 77 533 08 44 oder E-Mail: xphysio@hin.physio.' ],
+                    'acceptedAnswer' => [ '@type' => 'Answer', 'text' => 'Ja! Unter xphysio.ch/online-buchen können Sie direkt über Medidoc einen Termin wählen. Alternativ per E-Mail: xphysio@hin.physio oder Telefon: +41 77 533 08 44.' ],
                 ],
             ],
         ];
@@ -387,13 +387,13 @@ function xphysio_page_schema() {
             . '</script>' . "\n";
     }
 
-    // ── TERMINBUCHUNG: MedicalBusiness ───────────────────────────────────────
-    if ( is_page( 'terminbuchung' ) ) {
+    // ── KONTAKT: MedicalBusiness ──────────────────────────────────────────────
+    if ( is_page( 'kontakt' ) ) {
         $booking = [
             '@context'  => 'https://schema.org',
             '@type'     => 'MedicalBusiness',
-            'name'      => 'xphysio – Terminbuchung Wetzikon',
-            'url'       => 'https://xphysio.ch/terminbuchung/',
+            'name'      => 'xphysio – Kontakt & Terminanfrage Wetzikon',
+            'url'       => 'https://xphysio.ch/kontakt/',
             'telephone' => '+41775330844',
             'email'     => 'xphysio@hin.physio',
             'address'   => [
@@ -438,9 +438,9 @@ function xphysio_seo_meta() {
             'desc'  => 'Michaela Tobler – Physiotherapeutin mit 20+ Jahren Erfahrung in Wetzikon ZH. Spezialisiert auf Maitland, Mulligan, Neuroathletik & kPNI.',
             'title' => 'Über Michaela Tobler | Physiotherapeutin – xphysio Wetzikon',
         ],
-        'terminbuchung'           => [
+        'kontakt'                 => [
             'desc'  => 'Kontakt & Terminanfrage – xphysio Wetzikon. Öffnungszeiten Di/Do, Kontaktformular, Anfahrt. Breitistrasse 25, 8623 Wetzikon ZH.',
-            'title' => 'Kontakt & Termin buchen | xphysio Wetzikon',
+            'title' => 'Kontakt | xphysio Wetzikon',
         ],
         'online-buchen'           => [
             'desc'  => 'Physiotherapie-Termin online buchen – 24/7 verfügbar über das sichere Medidoc-Buchungssystem. xphysio Wetzikon, Di & Do.',

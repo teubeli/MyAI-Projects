@@ -180,7 +180,7 @@ $posts[] = [
 <!-- /wp:html -->
 
 <!-- wp:paragraph {"className":"article-cta"} -->
-<p class="article-cta">Haben Sie Rückenschmerzen? <a href="/terminbuchung/">Buchen Sie jetzt Ihren Termin</a> bei xphysio in Wetzikon ZH – wir analysieren Ihre Situation und erstellen einen individuellen Behandlungsplan.</p>
+<p class="article-cta">Haben Sie Rückenschmerzen? <a href="/online-buchen/">Buchen Sie jetzt Ihren Termin</a> bei xphysio in Wetzikon ZH – wir analysieren Ihre Situation und erstellen einen individuellen Behandlungsplan.</p>
 <!-- /wp:paragraph -->
 HTML
     ,
@@ -333,7 +333,7 @@ $posts[] = [
 <!-- /wp:html -->
 
 <!-- wp:paragraph {"className":"article-cta"} -->
-<p class="article-cta">Neugierig auf Neuroathletik? <a href="/terminbuchung/">Buchen Sie eine Erstbeurteilung</a> bei xphysio in Wetzikon – Michaela Tobler ist zertifizierte Neuroathletik-Trainerin mit über 20 Jahren Erfahrung.</p>
+<p class="article-cta">Neugierig auf Neuroathletik? <a href="/online-buchen/">Buchen Sie eine Erstbeurteilung</a> bei xphysio in Wetzikon – Michaela Tobler ist zertifizierte Neuroathletik-Trainerin mit über 20 Jahren Erfahrung.</p>
 <!-- /wp:paragraph -->
 HTML
     ,
@@ -357,7 +357,7 @@ $posts[] = [
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Damit die Grundversicherung (KVG) Physiotherapie bezahlt, benötigen Sie eine <strong>ärztliche Verordnung</strong> (auch „Auftrag" oder „Rezept" genannt). Diese stellt Ihr Hausarzt, Orthopäde, Neurologe oder ein anderer Facharzt aus.</p>
+<p>Damit die Grundversicherung (KVG) Physiotherapie bezahlt, benötigen Sie eine <strong>ärztliche Verordnung</strong>. Diese stellt Ihr Hausarzt, Orthopäde, Neurologe oder ein anderer Facharzt aus.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
@@ -494,7 +494,7 @@ $posts[] = [
 <!-- /wp:html -->
 
 <!-- wp:paragraph {"className":"article-cta"} -->
-<p class="article-cta">Haben Sie eine ärztliche Verordnung? <a href="/terminbuchung/">Buchen Sie jetzt Ihren Termin online</a> bei xphysio in Wetzikon – Di 08:30–16:30 Uhr, Do 14:30–18:30 Uhr.</p>
+<p class="article-cta">Haben Sie eine ärztliche Verordnung? <a href="/online-buchen/">Buchen Sie jetzt Ihren Termin online</a> bei xphysio in Wetzikon – Di 08:00–16:30 Uhr, Do 14:00–17:00 Uhr.</p>
 <!-- /wp:paragraph -->
 HTML
     ,
