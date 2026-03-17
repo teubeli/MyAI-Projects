@@ -6,16 +6,36 @@
   </div>
 </section>
 
-<section class="xp-section" style="padding-top:16px;">
-  <div class="xp-container" style="max-width:900px;">
+<section class="xp-section" style="padding-top:24px;padding-bottom:48px;">
+  <div class="xp-container" style="max-width:1100px;">
     <iframe
+      id="medidoc-booking"
       src="https://onlinecalendar.medidoc.ch/BookAppointment?cgid=iRbKTRhcMUCaJqT_hUccRg&ssid=mQn5AH47dEij__eiQCnICQ"
       width="100%"
-      height="1700"
+      height="900"
       allow="fullscreen"
+      scrolling="auto"
       title="Online-Terminbuchung xphysio Wetzikon – powered by Medidoc"
-      style="border:none;display:block;max-width:100%;">
+      style="border:none;display:block;max-width:100%;transition:height 0.3s ease;">
     </iframe>
+    <script>
+    (function() {
+      var iframe = document.getElementById('medidoc-booking');
+      window.addEventListener('message', function(e) {
+        if (!iframe || !e.data) return;
+        var data = e.data;
+        // Medidoc postMessage resize
+        if (typeof data === 'object' && data.height) {
+          iframe.style.height = (parseInt(data.height) + 40) + 'px';
+        }
+        // iFrame resizer format
+        if (typeof data === 'string' && data.indexOf('iFrameResize') === 0) {
+          var parts = data.split(':');
+          if (parts[1]) iframe.style.height = (parseInt(parts[1]) + 40) + 'px';
+        }
+      });
+    })();
+    </script>
     <p style="font-size:0.82rem;color:var(--color-text-muted);margin-top:12px;text-align:center;">Die Terminbuchung wird von <a href="https://www.medidoc.ch" target="_blank" rel="noopener">Medidoc AG</a> betrieben (CH-Anbieter, DSGVO-konform). Weitere Informationen in unserer <a href="/datenschutzerklaerung/">Datenschutzerklärung</a>.</p>
   </div>
 </section>
