@@ -203,7 +203,6 @@ function xphysio_schema_global() {
                     'jobTitle' => 'Physiotherapeutin, Neuroathletik Coach, kPNI Therapeutin',
                 ],
                 'sameAs' => [
-                    'https://www.instagram.com/xphysio.ch',
                     'https://physioswiss.ch/praxen/136014/xphysio-physiotherapie-in-wetzikon/',
                     // local.ch → URL folgt
                     // search.ch → URL folgt
