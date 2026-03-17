@@ -562,9 +562,11 @@ function xphysio_nav_colors() {
 }
 
 /* ── CTA-Button «Termin buchen» im Header (Desktop & Mobile) ── */
-.nav-ul li.menu-cta {
+.nav-ul li.menu-cta,
+.nav-ul li.menu-cta .wrap {
     display: flex !important;
     align-items: center !important;
+    align-self: center !important;
 }
 .nav-ul li.menu-cta .wrap a,
 .nav-ul li.menu-cta .wrap a:visited {
