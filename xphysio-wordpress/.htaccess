@@ -23,7 +23,7 @@ AddOutputFilterByType DEFLATE "application/atom+xml" "application/javascript" "a
   RewriteCond %{HTTP_ACCEPT} image/webp
   RewriteCond %{REQUEST_FILENAME} ^(.*)\.(jpe?g|png)$
   RewriteCond %1.webp -f
-  RewriteRule ^(.*)\.(jpe?g|png)$ .webp [T=image/webp,L]
+  RewriteRule ^(.*)\.(jpe?g|png)$ $1.webp [T=image/webp,L]
 </IfModule>
 # END xphysio Cache & WebP
 
