@@ -9,9 +9,10 @@
  *   2. Google Fonts
  *   3. Schema.org JSON-LD (global + seitenspezifisch)
  *   4. Google Tag Manager (GTM-PTL8GNJS)
- *   5. Booking-Widget Shortcode [xphysio_booking]
- *   6. FAQ-Akkordeon (Vanilla JS)
- *   7. Neve-Feinschliff
+ *   5. Contact Form 7 – nur auf Kontaktseite
+ *   6. Booking-Widget Shortcode [xphysio_booking]
+ *   7. FAQ-Akkordeon (Vanilla JS)
+ *   8. Neve-Feinschliff
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
@@ -557,7 +558,22 @@ function xphysio_nav_colors() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 5. GOOGLE TAG MANAGER – GTM-PTL8GNJS
+// 5. CONTACT FORM 7 – nur auf Kontaktseite laden
+// ─────────────────────────────────────────────────────────────────────────────
+// CF7 lädt sonst auf allen Seiten: wp-hooks + wp-i18n + swv + cf7 = render-blocking Chain
+add_action( 'wp_enqueue_scripts', 'xphysio_dequeue_cf7_selectively', 99 );
+function xphysio_dequeue_cf7_selectively() {
+    if ( is_page( 'kontakt' ) ) return; // CF7-Formular nur hier
+    wp_dequeue_script( 'swv' );
+    wp_deregister_script( 'swv' );
+    wp_dequeue_script( 'contact-form-7' );
+    wp_deregister_script( 'contact-form-7' );
+    wp_dequeue_style( 'contact-form-7' );
+    wp_deregister_style( 'contact-form-7' );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 6. GOOGLE TAG MANAGER – GTM-PTL8GNJS
 // ─────────────────────────────────────────────────────────────────────────────
 // Snippet 1: <head> – so weit oben wie möglich
 add_action( 'wp_head', 'xphysio_gtm_head', 1 );
@@ -585,7 +601,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 6. BOOKING-WIDGET SHORTCODE  →  [xphysio_booking]
+// 7. BOOKING-WIDGET SHORTCODE  →  [xphysio_booking]
 // ─────────────────────────────────────────────────────────────────────────────
 add_shortcode( 'xphysio_booking', 'xphysio_booking_shortcode' );
 function xphysio_booking_shortcode( $atts ) {
