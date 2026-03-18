@@ -216,7 +216,7 @@ function xphysio_schema_global() {
                 'sameAs' => [
                     'https://physioswiss.ch/praxen/136014/xphysio-physiotherapie-in-wetzikon/',
                     'https://search.ch/tel/wetzikon/breitistrasse-25/x-physio-m-tobler',
-                    // local.ch → URL folgt
+                    'https://www.local.ch/de/d/wetzikon-zh/8623/x-physio-m-tobler-ixMbo_5RDFoklAyqgUanGg',
                 ],
             ],
             // ── 3b. Website ───────────────────────────────────────────────
