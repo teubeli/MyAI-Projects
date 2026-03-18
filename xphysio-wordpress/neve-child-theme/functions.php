@@ -52,22 +52,6 @@ function xphysio_dequeue_neve_fonts() {
     wp_dequeue_style( 'neve-google-font-source-sans-3' );
     wp_deregister_style( 'neve-google-font-source-sans-3' );
 
-    // Complianz cookieblocker.min.css async laden – entfernt es aus der kritischen CSS-Chain.
-    // Kein Flash-Risiko: xphysio.ch blockt keine sichtbaren Inhalte auf der Startseite.
-    // (Google Fonts sind self-hosted, kein iFrame-Content on homepage)
-    global $wp_styles;
-    $handle = 'cmplz-general';
-    if ( wp_style_is( $handle, 'enqueued' ) && isset( $wp_styles->registered[ $handle ] ) ) {
-        $src = $wp_styles->registered[ $handle ]->src;
-        $ver = $wp_styles->registered[ $handle ]->ver;
-        $src_v = add_query_arg( 'ver', $ver, $src );
-        wp_dequeue_style( $handle );
-        wp_deregister_style( $handle );
-        add_action( 'wp_head', function() use ( $src_v ) {
-            echo '<link rel="preload" href="' . esc_url( $src_v ) . '" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">' . "\n";
-            echo '<noscript><link rel="stylesheet" href="' . esc_url( $src_v ) . '"></noscript>' . "\n";
-        }, 100 );
-    }
 }
 
 add_action( 'wp_head', 'xphysio_fonts_async', 3 );
@@ -592,16 +576,31 @@ function xphysio_dequeue_cf7_selectively() {
 // ─────────────────────────────────────────────────────────────────────────────
 // 6. GOOGLE TAG MANAGER – GTM-PTL8GNJS
 // ─────────────────────────────────────────────────────────────────────────────
-// Snippet 1: <head> – so weit oben wie möglich
+// Snippet 1: <head> – lazy load nach erster Interaktion ODER 2 Sekunden
+// Grund: GTM lädt 121KB JS, davon 60KB unused bei initialem Seitenaufruf.
+// Lazy loading entfernt GTM aus dem kritischen Render-Pfad (FCP/LCP/TBT).
+// Pageview-Event wird korrekt erfasst, da gtm.js spätestens nach 2s lädt.
 add_action( 'wp_head', 'xphysio_gtm_head', 1 );
 function xphysio_gtm_head() {
     ?>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-PTL8GNJS');</script>
+<!-- Google Tag Manager – lazy load -->
+<script>
+(function(){
+  var gtmLoaded=false;
+  function loadGTM(){
+    if(gtmLoaded)return; gtmLoaded=true;
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PTL8GNJS');
+  }
+  ['scroll','click','keydown','touchstart','mouseover'].forEach(function(e){
+    window.addEventListener(e,loadGTM,{once:true,passive:true});
+  });
+  setTimeout(loadGTM,2000);
+})();
+</script>
 <!-- End Google Tag Manager -->
     <?php
 }
