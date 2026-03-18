@@ -215,8 +215,8 @@ function xphysio_schema_global() {
                 ],
                 'sameAs' => [
                     'https://physioswiss.ch/praxen/136014/xphysio-physiotherapie-in-wetzikon/',
+                    'https://search.ch/tel/wetzikon/breitistrasse-25/x-physio-m-tobler',
                     // local.ch → URL folgt
-                    // search.ch → URL folgt
                 ],
             ],
             // ── 3b. Website ───────────────────────────────────────────────
@@ -784,8 +784,10 @@ function xphysio_logo_webp_attrs( $attr, $attachment ) {
             $attr['srcset']
         );
     }
-    // sizes: Logo-Breite ist nie 100vw – korrigiere auf realistische Header-Breite
-    $attr['sizes'] = '(max-width: 480px) 150px, (max-width: 1024px) 240px, 300px';
+    // sizes: Logo wird immer ~300px breit angezeigt (Neve max-width: 300px).
+    // Frühere Werte (150px mobile) waren falsch → Browser lud 300x83 statt 768x212.
+    // Mit 300px wählt Browser bei 1.5x DPR → 768w, bei 2x DPR → 768w, bei 3x → 1024w.
+    $attr['sizes'] = '300px';
     return $attr;
 }
 
