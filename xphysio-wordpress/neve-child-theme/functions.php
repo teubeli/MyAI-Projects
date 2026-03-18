@@ -51,6 +51,23 @@ function xphysio_dequeue_neve_fonts() {
     wp_deregister_style( 'neve-google-font-lora' );
     wp_dequeue_style( 'neve-google-font-source-sans-3' );
     wp_deregister_style( 'neve-google-font-source-sans-3' );
+
+    // Complianz cookieblocker.min.css async laden – entfernt es aus der kritischen CSS-Chain.
+    // Kein Flash-Risiko: xphysio.ch blockt keine sichtbaren Inhalte auf der Startseite.
+    // (Google Fonts sind self-hosted, kein iFrame-Content on homepage)
+    global $wp_styles;
+    $handle = 'cmplz-general';
+    if ( wp_style_is( $handle, 'enqueued' ) && isset( $wp_styles->registered[ $handle ] ) ) {
+        $src = $wp_styles->registered[ $handle ]->src;
+        $ver = $wp_styles->registered[ $handle ]->ver;
+        $src_v = add_query_arg( 'ver', $ver, $src );
+        wp_dequeue_style( $handle );
+        wp_deregister_style( $handle );
+        add_action( 'wp_head', function() use ( $src_v ) {
+            echo '<link rel="preload" href="' . esc_url( $src_v ) . '" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">' . "\n";
+            echo '<noscript><link rel="stylesheet" href="' . esc_url( $src_v ) . '"></noscript>' . "\n";
+        }, 100 );
+    }
 }
 
 add_action( 'wp_head', 'xphysio_fonts_async', 3 );
