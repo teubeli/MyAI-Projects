@@ -63,11 +63,20 @@ function xphysio_fonts_async() {
     echo '<noscript><link rel="stylesheet" href="' . esc_url( $url ) . '"></noscript>' . "\n";
 }
 
-// Preconnect + LCP-Preload (Priority 1 = ganz oben im <head>)
+// Preconnect + Preloads (Priority 1 = ganz oben im <head>)
 add_action( 'wp_head', 'xphysio_font_preconnect', 1 );
 function xphysio_font_preconnect() {
     echo '<link rel="preconnect" href="https://fonts.googleapis.com">' . "\n";
     echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
+
+    // Kritische CSS-Dateien vorladen – Browser startet Download bevor er die
+    // <link rel="stylesheet"> Tags weiter unten im <head> verarbeitet.
+    // Spart ~1 RTT (~150ms bei Slow 4G) aus der kritischen Render-Chain.
+    $neve_uri  = get_template_directory_uri();
+    $child_uri = get_stylesheet_directory_uri();
+    echo '<link rel="preload" href="' . esc_url( $neve_uri  . '/style-main-new.min.css' ) . '" as="style">' . "\n";
+    echo '<link rel="preload" href="' . esc_url( $child_uri . '/style.css' )             . '" as="style">' . "\n";
+
     // LCP-Hero-Bild vorladen (Startseite: Michaela-Foto = grösstes Element above the fold)
     if ( is_front_page() ) {
         echo '<link rel="preload" as="image" href="https://xphysio.ch/wp-content/uploads/2026/03/michaela-tobler-physiotherapeutin-bsc-xphysio-wetzikon.webp" type="image/webp" fetchpriority="high">' . "\n";
