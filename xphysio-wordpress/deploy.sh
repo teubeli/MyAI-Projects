@@ -3,9 +3,12 @@
 # xphysio.ch – Deployment Script
 # Verwendung: bash deploy.sh [--dry-run] [--theme-only] [--db-only]
 #
+# Prinzip: Was auf Local läuft, kommt auf Prod.
+# neve-child-theme/ ist via Symlink direkt mit Local WP verknüpft.
+#
 # Flags:
 #   --dry-run      Zeigt was gemacht würde, ändert nichts
-#   --theme-only   Nur Theme-Dateien (functions.php, style.css, 404.php)
+#   --theme-only   Nur Theme + Uploads (keine DB-Änderungen)
 #   --db-only      Nur DB-Inhalte (Seiten, Optionen, Menus)
 # ============================================================
 
@@ -20,8 +23,8 @@ REMOTE_WP_CLI="${REMOTE_HOME}/wp-cli.phar"
 WP="php ${REMOTE_WP_CLI} --path=${REMOTE_WP} --allow-root"
 
 LOCAL_THEME="$(dirname "$0")/neve-child-theme"
+LOCAL_UPLOADS="/Users/swentobler/Local Sites/xphysio/app/public/wp-content/uploads"
 LOCAL_PAGES="$(dirname "$0")/pages"
-LOCAL_ASSETS="$(dirname "$0")/assets"
 LOCAL_WP_CLI="$(dirname "$0")/wp-cli-setup"
 
 DRY_RUN=false
@@ -36,9 +39,9 @@ for arg in "$@"; do
   esac
 done
 
-RSYNC_FLAGS="-avz --checksum"
+RSYNC_BASE="-avz --checksum --exclude=.DS_Store --exclude='*.log' --exclude=Thumbs.db"
 if $DRY_RUN; then
-  RSYNC_FLAGS="$RSYNC_FLAGS --dry-run"
+  RSYNC_BASE="$RSYNC_BASE --dry-run"
   echo "🔍 DRY-RUN Modus – keine Änderungen werden gespeichert"
 fi
 
@@ -48,21 +51,30 @@ echo "║   xphysio.ch Deployment → Production     ║"
 echo "╚══════════════════════════════════════════╝"
 echo ""
 
-# ── 1. Theme-Dateien ──────────────────────────────────────────
+# ── 1. Theme-Dateien (komplettes Verzeichnis) ─────────────────
+# --delete: Dateien die lokal gelöscht wurden, auch auf Prod entfernen
 if ! $DB_ONLY; then
-  echo "▶ [1/3] Theme-Dateien synchronisieren..."
-  rsync $RSYNC_FLAGS \
-    "${LOCAL_THEME}/functions.php" \
-    "${LOCAL_THEME}/style.css" \
-    "${LOCAL_THEME}/404.php" \
+  echo "▶ [1/4] Theme synchronisieren (komplett)..."
+  rsync $RSYNC_BASE --delete \
+    "${LOCAL_THEME}/" \
     "${SSH_HOST}:${REMOTE_THEME}/"
-  echo "  ✓ functions.php + style.css + 404.php"
+  echo "  ✓ neve-child-theme/ (alle Dateien, inkl. neue)"
 fi
 
-# ── 2. Seiten-Content ─────────────────────────────────────────
+# ── 2. Uploads (neu/geändert, kein Delete – Prod kann eigene haben) ──
+if ! $DB_ONLY; then
+  echo ""
+  echo "▶ [2/4] Uploads synchronisieren (neu/geändert)..."
+  rsync $RSYNC_BASE \
+    "${LOCAL_UPLOADS}/" \
+    "${SSH_HOST}:${REMOTE_WP}/wp-content/uploads/"
+  echo "  ✓ wp-content/uploads/ (neue und geänderte Dateien)"
+fi
+
+# ── 3. Seiten-Content ─────────────────────────────────────────
 if ! $THEME_ONLY; then
   echo ""
-  echo "▶ [2/3] Seiten-Content aktualisieren..."
+  echo "▶ [3/4] Seiten-Content aktualisieren..."
 
   # Mapping: "slug:lokale-datei" (kompatibel mit bash 3.2)
   PAGE_MAPPINGS=(
@@ -83,8 +95,6 @@ if ! $THEME_ONLY; then
       echo "  ⚠ Datei nicht gefunden: $local_file – übersprungen"
       continue
     fi
-
-    content=$(cat "$local_file")
 
     # Post-ID via WP-CLI ermitteln
     post_id=$(ssh "$SSH_HOST" "${WP} post list --post_type=page --post_status=any --name=${slug} --field=ID 2>/dev/null" 2>/dev/null | tr -d '[:space:]')
@@ -115,10 +125,10 @@ if ! $THEME_ONLY; then
   done
 fi
 
-# ── 3. WordPress-Optionen & Theme-Mods ────────────────────────
+# ── 4. WordPress-Optionen & Theme-Mods ────────────────────────
 if ! $THEME_ONLY; then
   echo ""
-  echo "▶ [3/3] WP-CLI Setup-Scripts ausführen..."
+  echo "▶ [4/4] WP-CLI Setup-Scripts ausführen..."
 
   for script in "${LOCAL_WP_CLI}"/*.php; do
     script_name=$(basename "$script")
