@@ -22,8 +22,8 @@ $col1 = '<div class="footer-logo-col">
 <p class="footer-tagline">Physiotherapie in Wetzikon ZH –<br>ganzheitlich, evidenzbasiert, individuell.</p>
 <h4 class="footer-widget-title" style="margin-top:20px;">Öffnungszeiten</h4>
 <p class="footer-hours">
-Di &nbsp;08:30–12:00 / 13:00–16:30<br>
-Do &nbsp;14:30–18:30
+Di &nbsp;08:00–12:00 / 13:00–16:30<br>
+Do &nbsp;14:00–17:00
 </p>
 </div>';
 

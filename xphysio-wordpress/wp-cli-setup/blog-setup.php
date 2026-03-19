@@ -502,7 +502,7 @@ $posts[] = [
 <!-- /wp:html -->
 
 <!-- wp:paragraph {"className":"article-cta"} -->
-<p class="article-cta">Haben Sie eine ärztliche Verordnung? <a href="/online-buchen/">Buchen Sie jetzt Ihren Termin online</a> bei xphysio in Wetzikon – Di 08:00–16:30 Uhr, Do 14:00–17:00 Uhr.</p>
+<p class="article-cta">Haben Sie eine ärztliche Verordnung? <a href="/online-buchen/">Buchen Sie jetzt Ihren Termin online</a> bei xphysio in Wetzikon – Di 08:00–12:00 / 13:00–16:30 Uhr, Do 14:00–17:00 Uhr.</p>
 <!-- /wp:paragraph -->
 HTML
     ,
