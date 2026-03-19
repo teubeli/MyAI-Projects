@@ -25,6 +25,7 @@ $col1 = '<div class="footer-logo-col">
 Di &nbsp;08:00–12:00 / 13:00–16:30<br>
 Do &nbsp;14:00–17:00
 </p>
+<a href="https://www.physioswiss.ch" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:16px;"><picture><source srcset="' . home_url('/wp-content/uploads/2026/03/physioswiss-mitglied.webp') . '" type="image/webp"><img src="' . home_url('/wp-content/uploads/2026/03/physioswiss-mitglied.png') . '" alt="physioswiss Mitglied" width="120" height="74" loading="lazy" style="opacity:0.85;"></picture></a>
 </div>';
 
 // ── Spalte 2: Navigation ──────────────────────────────────────────────────────
