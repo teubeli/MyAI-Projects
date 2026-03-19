@@ -98,8 +98,10 @@ function xphysio_font_preconnect() {
     // Kritische CSS-Dateien vorladen – Browser startet Download bevor er die
     // <link rel="stylesheet"> Tags weiter unten im <head> verarbeitet.
     // Spart ~1 RTT (~150ms bei Slow 4G) aus der kritischen Render-Chain.
+    // Alle drei CSS-Dateien preloaden (inkl. neve/style.css als erstes in der Chain).
     $neve_uri  = get_template_directory_uri();
     $child_uri = get_stylesheet_directory_uri();
+    echo '<link rel="preload" href="' . esc_url( $neve_uri  . '/style.css' )             . '" as="style">' . "\n";
     echo '<link rel="preload" href="' . esc_url( $neve_uri  . '/style-main-new.min.css' ) . '" as="style">' . "\n";
     echo '<link rel="preload" href="' . esc_url( $child_uri . '/style.css' )             . '" as="style">' . "\n";
 
