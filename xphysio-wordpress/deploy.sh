@@ -97,7 +97,19 @@ if ! $THEME_ONLY; then
     if $DRY_RUN; then
       echo "  ~ (dry-run) Würde Seite '${slug}' (ID ${post_id}) aktualisieren"
     else
-      ssh "$SSH_HOST" "${WP} post update ${post_id} --post_content=$(printf '%q' "$content") 2>/dev/null" 2>/dev/null || true
+      # Direkt via $wpdb->update() um kses-Filter zu umgehen (SVG-Tags würden sonst gestripped)
+      scp -q "$local_file" "${SSH_HOST}:/tmp/deploy_page_${post_id}.html"
+      ssh "$SSH_HOST" "php -r \"
+        define('ABSPATH','${REMOTE_WP}/');
+        \\\$_SERVER['HTTP_HOST']='xphysio.ch';
+        \\\$_SERVER['REQUEST_URI']='/';
+        require_once ABSPATH.'wp-load.php';
+        global \\\$wpdb;
+        \\\$content=file_get_contents('/tmp/deploy_page_${post_id}.html');
+        \\\$wpdb->update(\\\$wpdb->posts,['post_content'=>\\\$content],['ID'=>${post_id}]);
+        clean_post_cache(${post_id});
+        unlink('/tmp/deploy_page_${post_id}.html');
+      \"" 2>/dev/null
       echo "  ✓ ${slug} (ID ${post_id})"
     fi
   done
