@@ -72,13 +72,6 @@ function xphysio_defer_neve_scripts( $tag, $handle, $src ) {
     return $tag;
 }
 
-// Complianz cookie CSS async (cookie banner requires JS anyway; async CSS prevents render-blocking)
-add_filter( 'style_loader_tag', 'xphysio_async_cmplz_css', 10, 4 );
-function xphysio_async_cmplz_css( $html, $handle, $href, $media ) {
-    if ( 'cmplz-general' !== $handle ) return $html;
-    return '<link rel="preload" id="cmplz-general-css" href="' . esc_url( $href ) . '" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">' . "\n"
-         . '<noscript>' . $html . '</noscript>' . "\n";
-}
 
 add_action( 'wp_head', 'xphysio_fonts_async', 3 );
 function xphysio_fonts_async() {
@@ -98,10 +91,11 @@ function xphysio_font_preconnect() {
     // Kritische CSS-Dateien vorladen – Browser startet Download bevor er die
     // <link rel="stylesheet"> Tags weiter unten im <head> verarbeitet.
     // Spart ~1 RTT (~150ms bei Slow 4G) aus der kritischen Render-Chain.
-    // Alle drei CSS-Dateien preloaden (inkl. neve/style.css als erstes in der Chain).
+    // Kritische CSS-Dateien vorladen – Browser startet Download bevor er die
+    // <link rel="stylesheet"> Tags weiter unten im <head> verarbeitet.
+    // Spart ~1 RTT (~150ms bei Slow 4G) aus der kritischen Render-Chain.
     $neve_uri  = get_template_directory_uri();
     $child_uri = get_stylesheet_directory_uri();
-    echo '<link rel="preload" href="' . esc_url( $neve_uri  . '/style.css' )             . '" as="style">' . "\n";
     echo '<link rel="preload" href="' . esc_url( $neve_uri  . '/style-main-new.min.css' ) . '" as="style">' . "\n";
     echo '<link rel="preload" href="' . esc_url( $child_uri . '/style.css' )             . '" as="style">' . "\n";
 
