@@ -52,6 +52,32 @@ function xphysio_dequeue_neve_fonts() {
     wp_dequeue_style( 'neve-google-font-source-sans-3' );
     wp_deregister_style( 'neve-google-font-source-sans-3' );
 
+    // Catch any other Google Fonts handle registered by Neve or plugins
+    global $wp_styles;
+    foreach ( $wp_styles->registered as $handle => $style ) {
+        if ( ! empty( $style->src ) && strpos( $style->src, 'fonts.googleapis.com' ) !== false ) {
+            wp_dequeue_style( $handle );
+            wp_deregister_style( $handle );
+        }
+    }
+}
+
+// Defer Neve's render-blocking frontend scripts (no defer attribute by default)
+add_filter( 'script_loader_tag', 'xphysio_defer_neve_scripts', 10, 3 );
+function xphysio_defer_neve_scripts( $tag, $handle, $src ) {
+    $defer = [ 'neve-script', 'neve-frontend', 'neve-scroll-to-top' ];
+    if ( in_array( $handle, $defer, true ) && strpos( $tag, 'defer' ) === false ) {
+        $tag = str_replace( '<script ', '<script defer ', $tag );
+    }
+    return $tag;
+}
+
+// Complianz cookie CSS async (cookie banner requires JS anyway; async CSS prevents render-blocking)
+add_filter( 'style_loader_tag', 'xphysio_async_cmplz_css', 10, 4 );
+function xphysio_async_cmplz_css( $html, $handle, $href, $media ) {
+    if ( 'cmplz-general' !== $handle ) return $html;
+    return '<link rel="preload" id="cmplz-general-css" href="' . esc_url( $href ) . '" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">' . "\n"
+         . '<noscript>' . $html . '</noscript>' . "\n";
 }
 
 add_action( 'wp_head', 'xphysio_fonts_async', 3 );
