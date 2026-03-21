@@ -45,9 +45,10 @@ function xphysio_enqueue_styles() {
 add_filter( 'style_loader_tag', 'xphysio_defer_noncritical_css', 10, 2 );
 function xphysio_defer_noncritical_css( $tag, $handle ) {
     $defer_handles = [
-        // ⚠️ neve-style (39KB) und neve-parent-style NICHT deferren:
-        // neve-style beinhaltet zu viele Above-fold Styles (Logo, Header, Container etc.)
-        // Deferral verursacht CLS ≥1 auch mit kritischem Inline-CSS. Preload stattdessen.
+        // neve-parent-style (style.css) = nur WP Theme-Header-Kommentar, kein CSS → sicher deferren
+        'neve-parent-style',     // 1.2 KiB, kein CSS, spart 570ms render-blocking
+        // ⚠️ neve-style (39KB) NICHT deferren: verursacht CLS ≥1 (Logo, Header, Container)
+        // neve-style bleibt render-blocking, aber preloaded → startet früh
         'neve-child-style',      // 34KB – critical part ist inline via xphysio_critical_css_inline
         'rank-math',             // RankMath Frontend CSS – nicht above-the-fold
         'cmplz-cookieblocker',   // Complianz cookieblocker.min.css
