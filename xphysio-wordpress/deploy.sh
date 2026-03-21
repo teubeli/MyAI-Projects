@@ -142,6 +142,13 @@ if ! $THEME_ONLY; then
   done
 fi
 
+# ── Cache leeren (immer, ausser dry-run) ──────────────────────
+if ! $DRY_RUN; then
+  echo ""
+  echo "▶ Cache leeren..."
+  ssh "$SSH_HOST" "${WP} cache flush 2>/dev/null && rm -rf ${REMOTE_WP}/wp-content/cache/supercache 2>/dev/null; echo '  ✓ WP Cache + Super Cache geleert'" 2>/dev/null || echo "  ⚠ Cache flush fehlgeschlagen (nicht kritisch)"
+fi
+
 echo ""
 echo "✅ Deployment abgeschlossen!"
 echo ""
