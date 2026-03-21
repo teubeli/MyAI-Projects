@@ -22,7 +22,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 // ─────────────────────────────────────────────────────────────────────────────
 add_action( 'wp_enqueue_scripts', 'xphysio_enqueue_styles' );
 function xphysio_enqueue_styles() {
-    // Neve Parent CSS (render-blocking, nötig für Layout-Basis)
+    // neve-parent-style (style.css) enthält nur den Theme-Header-Kommentar (1555 Bytes, kein CSS).
+    // Wird deferred – kein render-blocking, kein visueller Effekt.
     wp_enqueue_style(
         'neve-parent-style',
         get_template_directory_uri() . '/style.css',
@@ -44,7 +45,9 @@ function xphysio_enqueue_styles() {
 add_filter( 'style_loader_tag', 'xphysio_defer_noncritical_css', 10, 2 );
 function xphysio_defer_noncritical_css( $tag, $handle ) {
     $defer_handles = [
-        'neve-child-style',      // 34KB – critical part ist inline
+        'neve-style',            // 39KB – Neve Main CSS, critical part inline via xphysio_neve_critical_css
+        'neve-parent-style',     // 1.5KB – nur Theme-Header-Kommentar, kein echter CSS-Inhalt
+        'neve-child-style',      // 34KB – critical part ist inline via xphysio_critical_css_inline
         'rank-math',             // RankMath Frontend CSS – nicht above-the-fold
         'cmplz-cookieblocker',   // Complianz cookieblocker.min.css
         'cmplz-general',         // Complianz general CSS
@@ -53,6 +56,41 @@ function xphysio_defer_noncritical_css( $tag, $handle ) {
     if ( ! in_array( $handle, $defer_handles, true ) ) return $tag;
     $tag = str_replace( "media='all'", "media='print' onload=\"this.media='all'\"", $tag );
     return $tag;
+}
+
+// Neve kritische Struktur-CSS inline (verhindert CLS wenn neve-style async lädt)
+// Enthält nur Layout-Regeln (flex, position) für Header/Wrapper – kein Design.
+// Design (Farben, Fonts) kommt aus neve-style async + xphysio_nav_colors inline.
+// → Nachhaltig: diese Regeln sind Neve-Core und ändern sich selten.
+add_action( 'wp_head', 'xphysio_neve_critical_css', 1 );
+function xphysio_neve_critical_css() {
+    echo '<style id="neve-critical-structure">';
+    echo '.wrapper{display:flex;min-height:100vh;flex-direction:column;position:relative;transition:all .3s cubic-bezier(.79,.14,.15,.86)}';
+    echo 'body>.wrapper{overflow:hidden}';
+    echo '.neve-main{flex:1 auto}';
+    echo '.site-header{position:relative}';
+    echo '.hfg_header.site-header{box-shadow:0 -1px 3px rgba(0,0,0,.1)}';
+    echo '.site-header .header--row-inner{align-items:center;display:flex}';
+    echo '.hfg-grid{display:flex}';
+    echo '.hfg-slot{display:flex;align-items:center}';
+    echo '.hfg-slot.right{justify-content:flex-end}';
+    echo '.hfg-slot.center{justify-content:center}';
+    echo '.hfg-is-group{display:flex;align-items:center}';
+    echo '.builder-item{margin:4px 0;position:relative;min-height:1px;padding-right:15px;padding-left:15px}';
+    echo '.builder-item.hfg-end{margin-left:auto}';
+    echo '.builder-item.hfg-start{margin-right:auto}';
+    echo '.builder-item .item--inner{padding:var(--padding,0);margin:var(--margin,0);position:relative}';
+    echo '.nav-ul{display:flex;flex-wrap:wrap}';
+    echo '.nav-ul li{display:block;position:relative}';
+    echo '.nav-ul li>.wrap{display:flex;align-items:center}';
+    echo '.nav-ul li a{position:relative;width:100%;display:flex;align-items:center}';
+    echo '.navbar-toggle{display:flex;align-items:center;box-shadow:none;padding:10px 15px}';
+    echo '.navbar-toggle-wrapper{align-items:center}';
+    echo '#header-grid.global-styled:not(.neve-transparent-header){background:var(--bgcolor);background-image:var(--bgimage,var(--bgcolor,none))}';
+    echo '.hfg-ov{top:0;bottom:0;right:0;left:0;position:fixed;z-index:999899;visibility:hidden;opacity:0}';
+    echo '.hfg-pe{pointer-events:none}';
+    echo '@media(min-width:960px){.builder-item{margin:8px 0}}';
+    echo '</style>' . "\n";
 }
 
 // Critical CSS (Above-the-fold) inline in <head>
@@ -144,13 +182,9 @@ function xphysio_font_preconnect() {
     echo '<link rel="preconnect" href="https://fonts.googleapis.com">' . "\n";
     echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
 
-    // Neve Main CSS vorladen – Browser startet Download bevor er den <link>-Tag
-    // weiter unten im <head> verarbeitet. Spart ~1 RTT aus der Render-Chain.
-    // Child CSS wird NICHT mehr preloaded (wird via media="print" async geladen,
-    // da critical CSS inline ist – Preload würde nur Browser-Warnung erzeugen).
-    $neve_uri  = get_template_directory_uri();
-    $suffix    = ( defined('NEVE_DEBUG') && NEVE_DEBUG ) ? '' : '.min';
-    echo '<link rel="preload" href="' . esc_url( $neve_uri . '/style-main-new' . $suffix . '.css' ) . '" as="style">' . "\n";
+    // Neve Main CSS wird jetzt async geladen (media="print") – kein Preload nötig.
+    // Preload würde Browser-Warnung "preloaded but not used as render-blocking" auslösen.
+    // Critical neve-structure ist inline (xphysio_neve_critical_css), kein CLS.
 
     // LCP-Hero-Bild vorladen (Startseite: Michaela-Foto = grösstes Element above the fold)
     if ( is_front_page() ) {
