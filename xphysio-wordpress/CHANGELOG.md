@@ -162,12 +162,29 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 
 ---
 
-## Offene Punkte / Bekannte Issues
+### Phase 11 – Google Sichtbarkeit & PageSpeed ≥90
+> Commits: `4ed84fe` – `0709438`
 
-_(Hier manuell ergänzen nach Sessions)_
+- **Patienten-Email** erstellt: HTML Newsletter-Template (`marketing/email-patienten-v1.html`) + `.eml` Vorlage für Mac Mail
+  - Themen: Neue Website, neue Email-Adresse (xphysio@hin.physio), Google Review Bitte
+  - Branding: Navy/Bordeaux/Hellblau, Lora/Source Sans 3, Logo + QR-Code eingebettet
+  - Google Review Link: https://g.page/r/CfRIK3077g84EAE/review
+- **PageSpeed-Architektur final gelöst** (nachhaltig in CLAUDE.md dokumentiert):
+  - `neve-style` (39KB) + `neve-parent-style` via `media="print"` deferred → kein render-blocking mehr
+  - Neve Header-Struktur-CSS (~1KB) inline: `.wrapper`, `.neve-main`, `.hfg-*`, `.nav-ul`, `.site-logo` → CLS=0
+  - PHP opcache auf Prod war Blocker (touch-workaround verwendet)
+  - Finale Metriken nach Fix: CLS=0, kein render-blocking, LCP erwartet ~2.9s stabil
+- **Claude Code Settings**: `bypassPermissions` für dieses Projekt (ausser `bash deploy.sh`)
+- **CLAUDE.md** aktualisiert mit vollständiger CSS-Strategie-Dokumentation
+
+---
+
+## Offene Punkte / Bekannte Issues
 
 - [ ] Blog-Entwurf "Physiotherapie & chronische Krankheiten (BFH-Studie 2024)" noch nicht publiziert
 - [ ] GA4 Measurement ID noch einzutragen
+- [ ] Ärzte-Anschreiben (Michaela ready für neue Patienten, keine Warteliste) – noch nicht erstellt
+- [ ] PageSpeed ≥90 bestätigen nach Logo-CLS-Fix (letzter Deploy: 2026-03-21)
 
 ---
 
@@ -176,4 +193,5 @@ _(Hier manuell ergänzen nach Sessions)_
 | Datum | Thema | Notizen |
 |-------|-------|---------|
 | 2026-03-21 | Projekt-Einlesen | CHANGELOG erstellt aus Git-History |
+| 2026-03-21 | Email + PageSpeed | Patienten-Email erstellt, neve-style deferred, Logo-CLS-Fix |
 
