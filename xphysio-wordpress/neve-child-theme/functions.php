@@ -39,12 +39,18 @@ function xphysio_enqueue_styles() {
     );
 }
 
-// Child Theme CSS via media="print" async laden → kein Render-Blocking
-add_filter( 'style_loader_tag', 'xphysio_child_css_async', 10, 2 );
-function xphysio_child_css_async( $tag, $handle ) {
-    if ( 'neve-child-style' !== $handle ) return $tag;
-    // media="print" → Browser lädt CSS ohne Render zu blockieren
-    // onload wechselt auf media="all" → CSS wird angewendet
+// Nicht-kritische CSS via media="print" async laden → kein Render-Blocking
+// Betrifft: Child Theme CSS, RankMath CSS, Complianz CSS
+add_filter( 'style_loader_tag', 'xphysio_defer_noncritical_css', 10, 2 );
+function xphysio_defer_noncritical_css( $tag, $handle ) {
+    $defer_handles = [
+        'neve-child-style',      // 34KB – critical part ist inline
+        'rank-math',             // RankMath Frontend CSS – nicht above-the-fold
+        'cmplz-cookieblocker',   // Complianz cookieblocker.min.css
+        'cmplz-general',         // Complianz general CSS
+        'cmplz-banner',          // Complianz banner CSS
+    ];
+    if ( ! in_array( $handle, $defer_handles, true ) ) return $tag;
     $tag = str_replace( "media='all'", "media='print' onload=\"this.media='all'\"", $tag );
     return $tag;
 }
