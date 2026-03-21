@@ -55,21 +55,42 @@ function xphysio_defer_noncritical_css( $tag, $handle ) {
     return $tag;
 }
 
-// Critical CSS (Above-the-fold, ~6.8KB) inline in <head>
-// Enthält: CSS-Variablen, Body, Hero-Sektion, Trust-Bar, Buttons
-// → LCP-Regression-Schutz: Hero-Grid-Layout ist sofort verfügbar
+// Critical CSS (Above-the-fold) inline in <head>
+// Strategie: Alles bis .xp-services{ + alle @media-Blöcke die Hero/Trust betreffen.
+// Verhindert CLS auf Mobile (Hero-Grid, Trust-Grid, section-pad wechseln nicht mehr
+// nachträglich) und schützt vor LCP-Regression.
+// Nachhaltig: Selektoren-Liste pflegen wenn neue Above-fold Elemente dazukommen.
 add_action( 'wp_head', 'xphysio_critical_css_inline', 2 );
 function xphysio_critical_css_inline() {
     $css_file = get_stylesheet_directory() . '/style.css';
     if ( ! file_exists( $css_file ) ) return;
+
     $css = file_get_contents( $css_file );
-    // CSS-Header-Kommentar entfernen
     $css = preg_replace( '/^\/\*.*?\*\//s', '', $css );
     $css = trim( $css );
-    // Nur den Above-the-fold Teil (bis .xp-services{) inline ausgeben
+
+    // Teil 1: Alles bis .xp-services{ (Hero, Trust-Bar, Buttons, Variablen)
     $cutoff = strpos( $css, '.xp-services{' );
     if ( $cutoff === false ) return;
     $critical = substr( $css, 0, $cutoff );
+
+    // Teil 2: @media-Blöcke aus dem Rest extrahieren, die Above-fold Selektoren enthalten.
+    // Diese müssen inline sein, damit Mobile-Layout (Hero-Grid, section-pad) sofort stimmt.
+    // → Neue Above-fold Klassen hier ergänzen falls nötig.
+    $above_fold = [ 'xp-hero', 'hero-grid', 'hero-badge', 'hero-cta', 'xp-trust', 'trust-item', 'trust-number', 'trust-label', 'section-pad', 'hero-image' ];
+
+    $noncritical = substr( $css, $cutoff );
+    preg_match_all( '/@media[^{]+\{(?:[^{}]|\{[^{}]*\})*\}/s', $noncritical, $matches );
+    foreach ( $matches[0] as $block ) {
+        if ( strpos( $block, 'print' ) !== false ) continue; // @media print überspringen
+        foreach ( $above_fold as $selector ) {
+            if ( strpos( $block, $selector ) !== false ) {
+                $critical .= $block;
+                break;
+            }
+        }
+    }
+
     echo '<style id="xphysio-critical-css">' . $critical . '</style>' . "\n";
 }
 
