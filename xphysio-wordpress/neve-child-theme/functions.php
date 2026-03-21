@@ -45,8 +45,9 @@ function xphysio_enqueue_styles() {
 add_filter( 'style_loader_tag', 'xphysio_defer_noncritical_css', 10, 2 );
 function xphysio_defer_noncritical_css( $tag, $handle ) {
     $defer_handles = [
-        'neve-style',            // 39KB – Neve Main CSS, critical part inline via xphysio_neve_critical_css
-        'neve-parent-style',     // 1.5KB – nur Theme-Header-Kommentar, kein echter CSS-Inhalt
+        // ⚠️ neve-style (39KB) und neve-parent-style NICHT deferren:
+        // neve-style beinhaltet zu viele Above-fold Styles (Logo, Header, Container etc.)
+        // Deferral verursacht CLS ≥1 auch mit kritischem Inline-CSS. Preload stattdessen.
         'neve-child-style',      // 34KB – critical part ist inline via xphysio_critical_css_inline
         'rank-math',             // RankMath Frontend CSS – nicht above-the-fold
         'cmplz-cookieblocker',   // Complianz cookieblocker.min.css
@@ -186,9 +187,11 @@ function xphysio_font_preconnect() {
     echo '<link rel="preconnect" href="https://fonts.googleapis.com">' . "\n";
     echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
 
-    // Neve Main CSS wird jetzt async geladen (media="print") – kein Preload nötig.
-    // Preload würde Browser-Warnung "preloaded but not used as render-blocking" auslösen.
-    // Critical neve-structure ist inline (xphysio_neve_critical_css), kein CLS.
+    // Neve Main CSS preloaden – render-blocking, aber Browser startet Download früh.
+    // neve-style kann NICHT deferred werden (CLS ≥1, zu viele Above-fold Styles).
+    $neve_uri = get_template_directory_uri();
+    $suffix   = ( defined('NEVE_DEBUG') && NEVE_DEBUG ) ? '' : '.min';
+    echo '<link rel="preload" href="' . esc_url( $neve_uri . '/style-main-new' . $suffix . '.css' ) . '" as="style">' . "\n";
 
     // LCP-Hero-Bild vorladen (Startseite: Michaela-Foto = grösstes Element above the fold)
     if ( is_front_page() ) {

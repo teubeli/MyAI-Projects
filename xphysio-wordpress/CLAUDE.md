@@ -33,11 +33,12 @@ Neue Dateien im Theme-Ordner werden automatisch auf Local sichtbar und per deplo
 ## Performance-Architektur (Stand 2026-03-21, Score Mobile: 88→ Ziel ≥90)
 
 ### CSS-Strategie (functions.php)
-- **Neve Header-Struktur inline** (`xphysio_neve_critical_css`, priority 1): ~1KB Layout-CSS für `.wrapper`, `.neve-main`, `.hfg-*`, `.nav-ul` → verhindert CLS wenn neve-style async lädt
 - **Critical CSS inline** (`xphysio_critical_css_inline`, priority 2): Alles bis `.xp-services{` + Mobile-@media-Blöcke die Hero/Trust betreffen → kein render-blocking, kein CLS
-- **Alle CSS async** (`xphysio_defer_noncritical_css`): `neve-style`, `neve-parent-style`, `neve-child-style`, `rank-math`, `cmplz-general` via `media="print" onload="this.media='all'"` → **kein render-blocking mehr**
+- **Child CSS async** (`xphysio_defer_noncritical_css`): `neve-child-style`, `rank-math`, `cmplz-general` via `media="print" onload="this.media='all'"`
+- **Neve Main CSS**: render-blocking (nötig!), aber preloaded → `<link rel="preload" as="style">`
 - **Complianz banner-1-optin.css**: via JS geladen, kein WP-Handle → nicht kontrollierbar
 - ⚠️ Complianz CSS NICHT auf andere Weise async laden (verursacht LCP-Regression)
+- ⚠️ neve-style NICHT deferren: verursacht CLS ≥1 (Logo, Header, Container – zu viele Above-fold Abhängigkeiten). Getestet 2026-03-21, revertiert.
 
 ### Neue CSS-Klassen hinzufügen?
 Wenn neue **Above-fold Elemente** (sichtbar ohne Scrollen) hinzukommen:
