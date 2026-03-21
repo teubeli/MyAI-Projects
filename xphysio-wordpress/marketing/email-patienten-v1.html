@@ -253,7 +253,26 @@
       text-decoration: none;
     }
 
+    /* ── QR Code Box ── */
+    .qr-box {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 20px;
+      padding: 14px 18px;
+      background: #f8fbff;
+      border: 1.5px solid #e0e8f0;
+      border-radius: 8px;
+    }
+    .qr-label {
+      font-size: 0.88rem;
+      color: #555577;
+      margin: 0;
+      line-height: 1.4;
+    }
+
     @media (max-width: 640px) {
+      .qr-box { display: none; } /* Auf Mobile nicht nötig – Link-Button reicht */
       .email-wrapper { margin: 0; border-radius: 0; }
       .email-hero, .email-body, .email-signature, .email-footer { padding-left: 24px; padding-right: 24px; }
       .email-header { padding-left: 24px; padding-right: 24px; }
@@ -349,6 +368,17 @@
         hinterlässt – auch ein kurzer Satz zählt:
       </p>
       <a href="https://g.page/r/CfRIK3077g84EAE/review" class="btn-primary">Jetzt kurz bewerten ★</a>
+
+      <div class="qr-box">
+        <p class="qr-label">Am Desktop? Einfach mit dem Handy scannen:</p>
+        <a href="https://g.page/r/CfRIK3077g84EAE/review">
+          <img src="data:image/png;base64,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"
+               alt="QR-Code Google Bewertung xphysio"
+               width="120" height="120"
+               style="display:block; border-radius:8px;">
+        </a>
+      </div>
+
       <p style="margin-top:16px; font-size:0.92rem; color:#555577;">
         Herzlichen Dank – das bedeutet mir mehr, als ich in Worte fassen kann. 🙏
       </p>
