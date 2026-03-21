@@ -89,6 +89,10 @@ function xphysio_neve_critical_css() {
     echo '#header-grid.global-styled:not(.neve-transparent-header){background:var(--bgcolor);background-image:var(--bgimage,var(--bgcolor,none))}';
     echo '.hfg-ov{top:0;bottom:0;right:0;left:0;position:fixed;z-index:999899;visibility:hidden;opacity:0}';
     echo '.hfg-pe{pointer-events:none}';
+    // Logo – verhindert CLS: ohne diese Regeln rendert das Logo zuerst in voller Grösse
+    // (1024x282px) und schrumpft erst wenn neve-style async lädt.
+    echo '.site-logo{align-items:center;display:flex}';
+    echo '.site-logo img{max-width:var(--maxwidth);display:block;margin:0 auto}';
     echo '@media(min-width:960px){.builder-item{margin:8px 0}}';
     echo '</style>' . "\n";
 }
