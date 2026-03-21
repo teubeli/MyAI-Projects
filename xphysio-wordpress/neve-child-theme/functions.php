@@ -123,16 +123,13 @@ function xphysio_font_preconnect() {
     echo '<link rel="preconnect" href="https://fonts.googleapis.com">' . "\n";
     echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
 
-    // Kritische CSS-Dateien vorladen – Browser startet Download bevor er die
-    // <link rel="stylesheet"> Tags weiter unten im <head> verarbeitet.
-    // Spart ~1 RTT (~150ms bei Slow 4G) aus der kritischen Render-Chain.
-    // Kritische CSS-Dateien vorladen – Browser startet Download bevor er die
-    // <link rel="stylesheet"> Tags weiter unten im <head> verarbeitet.
-    // Spart ~1 RTT (~150ms bei Slow 4G) aus der kritischen Render-Chain.
+    // Neve Main CSS vorladen – Browser startet Download bevor er den <link>-Tag
+    // weiter unten im <head> verarbeitet. Spart ~1 RTT aus der Render-Chain.
+    // Child CSS wird NICHT mehr preloaded (wird via media="print" async geladen,
+    // da critical CSS inline ist – Preload würde nur Browser-Warnung erzeugen).
     $neve_uri  = get_template_directory_uri();
-    $child_uri = get_stylesheet_directory_uri();
-    echo '<link rel="preload" href="' . esc_url( $neve_uri  . '/style-main-new.min.css' ) . '" as="style">' . "\n";
-    echo '<link rel="preload" href="' . esc_url( $child_uri . '/style.css' )             . '" as="style">' . "\n";
+    $suffix    = ( defined('NEVE_DEBUG') && NEVE_DEBUG ) ? '' : '.min';
+    echo '<link rel="preload" href="' . esc_url( $neve_uri . '/style-main-new' . $suffix . '.css' ) . '" as="style">' . "\n";
 
     // LCP-Hero-Bild vorladen (Startseite: Michaela-Foto = grösstes Element above the fold)
     if ( is_front_page() ) {
