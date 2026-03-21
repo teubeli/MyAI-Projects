@@ -47,8 +47,8 @@ function xphysio_defer_noncritical_css( $tag, $handle ) {
     $defer_handles = [
         // neve-parent-style (style.css) = nur WP Theme-Header-Kommentar, kein CSS → sicher deferren
         'neve-parent-style',     // 1.2 KiB, kein CSS, spart 570ms render-blocking
-        // ⚠️ neve-style (39KB) NICHT deferren: verursacht CLS ≥1 (Logo, Header, Container)
-        // neve-style bleibt render-blocking, aber preloaded → startet früh
+        // neve-style: deferred + container/row/col/logo-Fixes in neve-critical-structure
+        'neve-style',            // 39KB Neve Main CSS – kritische Teile sind inline
         'neve-child-style',      // 34KB – critical part ist inline via xphysio_critical_css_inline
         'rank-math',             // RankMath Frontend CSS – nicht above-the-fold
         'cmplz-cookieblocker',   // Complianz cookieblocker.min.css
@@ -95,6 +95,13 @@ function xphysio_neve_critical_css() {
     // (1024x282px) und schrumpft erst wenn neve-style async lädt.
     echo '.site-logo{align-items:center;display:flex}';
     echo '.site-logo img{max-width:var(--maxwidth);display:block;margin:0 auto}';
+    // Container – verhindert CLS: ohne diese Regel rendert .container full-width,
+    // dann springt es auf max-width:var(--container)=748px wenn neve-style async lädt.
+    echo '.container{width:100%;padding-right:15px;padding-left:15px;margin:0 auto;max-width:var(--container)}';
+    echo '.container-fluid{width:100%;margin:0 auto}';
+    // Row/Col – Header-Grid-Layout (neve-style: display:grid für Header-Rows)
+    echo '.row{display:grid;align-items:var(--valign);grid-template-columns:1fr}';
+    echo '.col{padding:0 15px;margin:0 auto;flex-grow:1;max-width:100%}';
     echo '@media(min-width:960px){.builder-item{margin:8px 0}}';
     echo '</style>' . "\n";
 }
