@@ -171,6 +171,17 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 
 ---
 
+### Phase 13 – Hero Mobile Layout + PageSpeed 90
+> Commits: `38d9c26` – aktuell
+
+- **Hero Mobile**: 3-Grid-Struktur (`hero-text-top` / `hero-image` / `hero-actions`) → Bild erscheint auf Mobile zwischen Titel und Badges/CTA
+- **CSS**: `grid-template-areas` für Desktop (Bild rechts, 2 Zeilen) + Mobile-Reihenfolge via `grid-template-areas`
+- **Logo WebP**: WP hatte `-1-1` Thumbnails ohne WebP → WebP-Kopien manuell erstellt → `.htaccess` Auto-Serve greift jetzt
+- **PageSpeed Mobile: 86 → 90** (CLS=0, TBT 50ms)
+- **Bild-Checkliste** in CLAUDE.md dokumentiert (WebP-Pflicht, srcset, WP-Thumbnail-WebP-Problem)
+
+---
+
 ### Phase 12 – Cleanup, Logo-Fix, PageSpeed-Debugging
 > Commits: `fbe66a6` – `7961ccc`
 
@@ -190,7 +201,6 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 - [ ] Blog-Entwurf "Physiotherapie & chronische Krankheiten (BFH-Studie 2024)" noch nicht publiziert
 - [ ] GA4 Measurement ID noch einzutragen
 - [ ] Ärzte-Anschreiben (Michaela ready für neue Patienten, keine Warteliste) – noch nicht erstellt
-- [ ] PageSpeed Mobile: stabile Baseline ~84 (CLS=0). Ziel ≥90 erfordert neve-style Reduktion (PurgeCSS) oder Inline – noch offen
 
 ---
 
@@ -201,4 +211,5 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 | 2026-03-21 | Projekt-Einlesen | CHANGELOG erstellt aus Git-History |
 | 2026-03-21 | Email + PageSpeed | Patienten-Email erstellt, neve-style deferred, Logo-CLS-Fix |
 | 2026-03-21 | Cleanup & Logo | WP Super Cache-Bug gefunden, weisses Logo erstellt, neve-style revertiert, Sie→Du fix |
+| 2026-03-21 | Hero Mobile + Score 90 | Hero 3-spaltig restrukturiert (Bild zwischen Titel und Badges), Logo WebP-Thumbnails auf Prod ergänzt → Score 90, CLS=0 |
 

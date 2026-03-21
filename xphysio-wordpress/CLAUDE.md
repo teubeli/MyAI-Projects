@@ -30,7 +30,7 @@ Neue Dateien im Theme-Ordner werden automatisch auf Local sichtbar und per deplo
 - `width` + `height` Attribute immer setzen (CLS = 0 beibehalten)
 - `srcset` + `sizes` für Responsive Images
 
-## Performance-Architektur (Stand 2026-03-21, Score Mobile: ~84, CLS=0)
+## Performance-Architektur (Stand 2026-03-21, Score Mobile: 90, CLS=0)
 
 ### deploy.sh – Wichtig
 - Leert automatisch WP Super Cache nach jedem Deploy (Schritt 5)
@@ -60,12 +60,46 @@ Wenn neue **Above-fold Elemente** (sichtbar ohne Scrollen) hinzukommen:
 → Prüfen ob es CSS lädt: Network Tab → CSS Filter → render-blocking?
 → Handle via `style_loader_tag` zu `xphysio_defer_noncritical_css()` hinzufügen
 
-### Neue Bilder
-- Format: WebP mit `cwebp -q 85` + PNG Fallback via `<picture>`
-- `loading="lazy"` auf allen `<img>` ausser LCP-Hero
-- `width` + `height` Attribute immer setzen (CLS = 0)
-- `srcset` + `sizes` für Responsive Images
-- Neue WebP-Dateien lokal erstellen: `cwebp -q 85 input.png -o output.webp`
+### Neue Bilder – Pflicht-Checkliste
+Bei **jedem** neuen oder geänderten Bild diese Checkliste abarbeiten:
+
+#### 1. Format
+- WebP erstellen: `cwebp -q 85 input.png -o output.webp`
+- PNG als Fallback behalten
+- In HTML: `<picture><source srcset="...webp" type="image/webp"><img src="...png"></picture>`
+
+#### 2. Responsive Grössen (srcset)
+Für Content-Bilder (nicht Logo) folgende Grössen erstellen:
+```
+cwebp -q 85 original.png -o bild-800.webp   # Desktop
+cwebp -q 85 original.png -o bild-400.webp   # Mobile
+```
+Dann in HTML: `srcset="bild-400.webp 400w, bild-800.webp 800w" sizes="(max-width:768px) 100vw, 50vw"`
+
+#### 3. Dimensionen
+- `width` + `height` Attribute immer setzen → CLS = 0
+- `loading="lazy"` ausser LCP-Hero (erstes sichtbares Bild above-fold)
+- LCP-Hero: `loading="eager" fetchpriority="high"`
+
+#### 4. WP-Upload via WP-Admin oder WP-CLI
+Wenn Bild in WP-Mediathek hochgeladen wird (z.B. Logo, Hero):
+- WP generiert automatisch Thumbnail-Grössen (300x, 768x, 930x, etc.) als PNG
+- **WebP-Thumbnails fehlen nach WP-Upload!** → Manuell erstellen oder `.htaccess` reicht nur wenn WebP-Datei physisch vorhanden
+- Prüfbefehl: `ls wp-content/uploads/.../bild*.webp` → für jede PNG-Thumbnail-Grösse muss eine .webp existieren
+- Schnellfix: WebP-Thumbnails als Kopie erstellen:
+  ```bash
+  for f in pfad/bild-*.png; do cwebp -q 85 "$f" -o "${f%.png}.webp"; done
+  ```
+
+#### 5. WebP Auto-Serve via .htaccess
+- Regel ist aktiv in `.htaccess` (xphysio Cache & WebP Block)
+- Funktioniert nur wenn `.webp`-Datei **physisch neben der `.png`** existiert
+- Test: `curl -sI -H "Accept: image/webp" https://xphysio.ch/wp-content/uploads/.../bild.png | grep content-type`
+- Erwartet: `content-type: image/webp` → korrekt
+
+#### 6. Nach Bild-Änderung immer
+- WP Super Cache leeren (deploy.sh macht das automatisch)
+- PageSpeed Mobile testen: https://pagespeed.web.dev/ → Ziel ≥90, CLS=0
 
 ### LCP-Hero
 - `loading="eager"` + `fetchpriority="high"` + `<link rel="preload">` in `xphysio_font_preconnect()`
