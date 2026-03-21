@@ -47,8 +47,8 @@ function xphysio_defer_noncritical_css( $tag, $handle ) {
     $defer_handles = [
         // neve-parent-style (style.css) = nur WP Theme-Header-Kommentar, kein CSS → sicher deferren
         'neve-parent-style',     // 1.2 KiB, kein CSS, spart 570ms render-blocking
-        // neve-style: deferred + container/row/col/logo-Fixes in neve-critical-structure
-        'neve-style',            // 39KB Neve Main CSS – kritische Teile sind inline
+        // ⚠️ neve-style (39KB) NICHT deferren: verursacht CLS ≥1 (zu viele Above-fold Styles).
+        // neve-style bleibt render-blocking, aber preloaded → startet früh. Getestet 2026-03-21.
         'neve-child-style',      // 34KB – critical part ist inline via xphysio_critical_css_inline
         'rank-math',             // RankMath Frontend CSS – nicht above-the-fold
         'cmplz-cookieblocker',   // Complianz cookieblocker.min.css
@@ -91,19 +91,9 @@ function xphysio_neve_critical_css() {
     echo '#header-grid.global-styled:not(.neve-transparent-header){background:var(--bgcolor);background-image:var(--bgimage,var(--bgcolor,none))}';
     echo '.hfg-ov{top:0;bottom:0;right:0;left:0;position:fixed;z-index:999899;visibility:hidden;opacity:0}';
     echo '.hfg-pe{pointer-events:none}';
-    // Logo – verhindert CLS: ohne diese Regeln rendert das Logo zuerst in voller Grösse
-    // (1024x282px) und schrumpft erst wenn neve-style async lädt oder JS picture.style setzt.
-    // Wichtig: Fixer px-Wert (nicht CSS-Variable) verhindert CLS auch wenn Variable noch nicht aufgelöst.
+    // Logo – Basis-Layout damit das Logo-Bild korrekt im Flex-Container sitzt
     echo '.site-logo{align-items:center;display:flex}';
-    echo '.site-logo picture{display:block;width:120px;max-width:120px}';
-    echo '.site-logo img{width:120px;max-width:120px;height:auto;display:block}';
-    // Container – verhindert CLS: ohne diese Regel rendert .container full-width,
-    // dann springt es auf max-width:var(--container)=748px wenn neve-style async lädt.
-    echo '.container{width:100%;padding-right:15px;padding-left:15px;margin:0 auto;max-width:var(--container)}';
-    echo '.container-fluid{width:100%;margin:0 auto}';
-    // Row/Col – Header-Grid-Layout (neve-style: display:grid für Header-Rows)
-    echo '.row{display:grid;align-items:var(--valign);grid-template-columns:1fr}';
-    echo '.col{padding:0 15px;margin:0 auto;flex-grow:1;max-width:100%}';
+    echo '.site-logo img{max-width:var(--maxwidth);height:auto;display:block}';
     echo '@media(min-width:960px){.builder-item{margin:8px 0}}';
     echo '</style>' . "\n";
 }
@@ -198,7 +188,7 @@ function xphysio_font_preconnect() {
     echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
 
     // Neve Main CSS preloaden – render-blocking, aber Browser startet Download früh.
-    // neve-style kann NICHT deferred werden (CLS ≥1, zu viele Above-fold Styles).
+    // ⚠️ neve-style NICHT deferren: verursacht CLS ≥1 (Logo, Header, Container). Getestet 2026-03-21.
     $neve_uri = get_template_directory_uri();
     $suffix   = ( defined('NEVE_DEBUG') && NEVE_DEBUG ) ? '' : '.min';
     echo '<link rel="preload" href="' . esc_url( $neve_uri . '/style-main-new' . $suffix . '.css' ) . '" as="style">' . "\n";
@@ -910,10 +900,9 @@ function xphysio_logo_webp_attrs( $attr, $attachment ) {
             $attr['srcset']
         );
     }
-    // sizes: Logo wird immer ~300px breit angezeigt (Neve max-width: 300px).
-    // Frühere Werte (150px mobile) waren falsch → Browser lud 300x83 statt 768x212.
-    // Mit 300px wählt Browser bei 1.5x DPR → 768w, bei 2x DPR → 768w, bei 3x → 1024w.
-    $attr['sizes'] = '300px';
+    // sizes: Logo wird via CSS auf 120px (--maxwidth) beschränkt.
+    // Mit 120px wählt Browser bei 2x DPR → 300w (genug Schärfe), spart Bandbreite.
+    $attr['sizes'] = '120px';
     return $attr;
 }
 
