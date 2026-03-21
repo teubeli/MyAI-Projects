@@ -18,24 +18,53 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 1. PARENT THEME STYLES
+// 1. PARENT THEME STYLES + CRITICAL CSS INLINE
 // ─────────────────────────────────────────────────────────────────────────────
 add_action( 'wp_enqueue_scripts', 'xphysio_enqueue_styles' );
 function xphysio_enqueue_styles() {
-    // Neve Parent CSS
+    // Neve Parent CSS (render-blocking, nötig für Layout-Basis)
     wp_enqueue_style(
         'neve-parent-style',
         get_template_directory_uri() . '/style.css',
         [],
         wp_get_theme( get_template() )->get( 'Version' )
     );
-    // Child Theme CSS (überschreibt Neve)
+    // Child Theme CSS: via media="print" async laden (nicht render-blocking)
+    // Critical CSS (Above-the-fold) wird separat inline gerendert (siehe unten).
     wp_enqueue_style(
         'neve-child-style',
         get_stylesheet_uri(),
         [ 'neve-parent-style' ],
         wp_get_theme()->get( 'Version' )
     );
+}
+
+// Child Theme CSS via media="print" async laden → kein Render-Blocking
+add_filter( 'style_loader_tag', 'xphysio_child_css_async', 10, 2 );
+function xphysio_child_css_async( $tag, $handle ) {
+    if ( 'neve-child-style' !== $handle ) return $tag;
+    // media="print" → Browser lädt CSS ohne Render zu blockieren
+    // onload wechselt auf media="all" → CSS wird angewendet
+    $tag = str_replace( "media='all'", "media='print' onload=\"this.media='all'\"", $tag );
+    return $tag;
+}
+
+// Critical CSS (Above-the-fold, ~6.8KB) inline in <head>
+// Enthält: CSS-Variablen, Body, Hero-Sektion, Trust-Bar, Buttons
+// → LCP-Regression-Schutz: Hero-Grid-Layout ist sofort verfügbar
+add_action( 'wp_head', 'xphysio_critical_css_inline', 2 );
+function xphysio_critical_css_inline() {
+    $css_file = get_stylesheet_directory() . '/style.css';
+    if ( ! file_exists( $css_file ) ) return;
+    $css = file_get_contents( $css_file );
+    // CSS-Header-Kommentar entfernen
+    $css = preg_replace( '/^\/\*.*?\*\//s', '', $css );
+    $css = trim( $css );
+    // Nur den Above-the-fold Teil (bis .xp-services{) inline ausgeben
+    $cutoff = strpos( $css, '.xp-services{' );
+    if ( $cutoff === false ) return;
+    $critical = substr( $css, 0, $cutoff );
+    echo '<style id="xphysio-critical-css">' . $critical . '</style>' . "\n";
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
