@@ -92,9 +92,11 @@ function xphysio_neve_critical_css() {
     echo '.hfg-ov{top:0;bottom:0;right:0;left:0;position:fixed;z-index:999899;visibility:hidden;opacity:0}';
     echo '.hfg-pe{pointer-events:none}';
     // Logo – verhindert CLS: ohne diese Regeln rendert das Logo zuerst in voller Grösse
-    // (1024x282px) und schrumpft erst wenn neve-style async lädt.
+    // (1024x282px) und schrumpft erst wenn neve-style async lädt oder JS picture.style setzt.
+    // Wichtig: Fixer px-Wert (nicht CSS-Variable) verhindert CLS auch wenn Variable noch nicht aufgelöst.
     echo '.site-logo{align-items:center;display:flex}';
-    echo '.site-logo img{max-width:var(--maxwidth);display:block;margin:0 auto}';
+    echo '.site-logo picture{display:block;width:120px;max-width:120px}';
+    echo '.site-logo img{width:120px;max-width:120px;height:auto;display:block}';
     // Container – verhindert CLS: ohne diese Regel rendert .container full-width,
     // dann springt es auf max-width:var(--container)=748px wenn neve-style async lädt.
     echo '.container{width:100%;padding-right:15px;padding-left:15px;margin:0 auto;max-width:var(--container)}';
