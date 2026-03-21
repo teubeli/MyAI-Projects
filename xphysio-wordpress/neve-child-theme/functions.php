@@ -954,7 +954,43 @@ add_filter( 'feed_links_show_comments_feed', '__return_false' );
 add_filter( 'neve_sticky_header_on_scroll', '__return_true' );
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 8. BLOG – ZURÜCK-LINK & META-INFO (oberhalb + unterhalb des Artikels)
+// 8. BLOG – INTRO-SECTION (oberhalb des Post-Grids auf der Archiv-Seite)
+// ─────────────────────────────────────────────────────────────────────────────
+add_action( 'loop_start', function ( $wp_query ) {
+    if ( ! $wp_query->is_main_query() || ! is_home() ) return;
+    $cats = [
+        [ 'slug' => 'ruecken',       'label' => 'Rücken & Wirbelsäule' ],
+        [ 'slug' => 'gelenke',       'label' => 'Gelenke & Schulter'   ],
+        [ 'slug' => 'training',      'label' => 'Training & Bewegung'  ],
+        [ 'slug' => 'neuroathletik', 'label' => 'Neuroathletik'        ],
+        [ 'slug' => 'ernaehrung',    'label' => 'Ernährung'            ],
+        [ 'slug' => 'praxis',        'label' => 'Praxis & Wissen'      ],
+    ];
+    $chips = '';
+    foreach ( $cats as $c ) {
+        $url    = esc_url( get_category_link( get_category_by_slug( $c['slug'] ) ) );
+        $chips .= '<a href="' . $url . '" class="xp-topic-chip">' . esc_html( $c['label'] ) . '</a>';
+    }
+    echo '<section class="xp-blog-intro">
+  <div class="xp-container">
+    <div class="xp-blog-intro-inner">
+      <div class="xp-blog-intro-text">
+        <span class="subtitle">Wissen &amp; Tipps</span>
+        <h1>Blog – Physiotherapie, Bewegung &amp; Gesundheit</h1>
+        <p class="lead">Ich teile hier Wissen aus über 20 Jahren Physiotherapie – praxisnah, evidenzbasiert und immer mit dem Ziel, dass du deinen Körper besser verstehst. Von Rückenschmerzen über Neuroathletik bis hin zu Ernährung: Themen, die meine Patientinnen und Patienten wirklich beschäftigen.</p>
+        <p class="xp-blog-author-sig">— Michaela Tobler, Physiotherapeutin</p>
+      </div>
+      <div class="xp-blog-intro-topics">
+        <span class="subtitle" style="display:block;margin-bottom:14px;">Alle Themen</span>
+        <div class="xp-topic-chips">' . $chips . '</div>
+      </div>
+    </div>
+  </div>
+</section>';
+} );
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 8b. BLOG – ZURÜCK-LINK & META-INFO (oberhalb + unterhalb des Artikels)
 // ─────────────────────────────────────────────────────────────────────────────
 add_filter( 'the_content', 'xphysio_blog_post_wrap' );
 function xphysio_blog_post_wrap( $content ) {
