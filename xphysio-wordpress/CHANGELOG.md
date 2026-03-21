@@ -166,16 +166,22 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 > Commits: `4ed84fe` – `0709438`
 
 - **Patienten-Email** erstellt: HTML Newsletter-Template (`marketing/email-patienten-v1.html`) + `.eml` Vorlage für Mac Mail
-  - Themen: Neue Website, neue Email-Adresse (xphysio@hin.physio), Google Review Bitte
-  - Branding: Navy/Bordeaux/Hellblau, Lora/Source Sans 3, Logo + QR-Code eingebettet
-  - Google Review Link: https://g.page/r/CfRIK3077g84EAE/review
-- **PageSpeed-Architektur final gelöst** (nachhaltig in CLAUDE.md dokumentiert):
-  - `neve-style` (39KB) + `neve-parent-style` via `media="print"` deferred → kein render-blocking mehr
-  - Neve Header-Struktur-CSS (~1KB) inline: `.wrapper`, `.neve-main`, `.hfg-*`, `.nav-ul`, `.site-logo` → CLS=0
-  - PHP opcache auf Prod war Blocker (touch-workaround verwendet)
-  - Finale Metriken nach Fix: CLS=0, kein render-blocking, LCP erwartet ~2.9s stabil
-- **Claude Code Settings**: `bypassPermissions` für dieses Projekt (ausser `bash deploy.sh`)
-- **CLAUDE.md** aktualisiert mit vollständiger CSS-Strategie-Dokumentation
+- **PageSpeed-Architektur** dokumentiert in CLAUDE.md (neve-style blocking, neve-parent-style deferred)
+- **Claude Code Settings**: `bypassPermissions` + `ask` für `bash deploy.sh`
+
+---
+
+### Phase 12 – Cleanup, Logo-Fix, PageSpeed-Debugging
+> Commits: `fbe66a6` – `7961ccc`
+
+- **Root-Cause PageSpeed**: WP Super Cache cachte alte HTML-Seiten → deploy.sh leert jetzt automatisch Cache nach jedem Deploy
+- **neve-style deferral endgültig verworfen**: CLS ≥0.6 unvermeidbar (39KB, zu viele Above-fold Styles). Stabile Baseline: neve-style render-blocking + preloaded, Score ~84, CLS=0
+- **neve-parent-style deferred**: style.css (1.2 KiB, kein CSS-Inhalt) → 570ms render-blocking gespart, Score 77→84
+- **Logo weiss auf transparent** erstellt (`assets/logos/Logo-und-Schrift-weiss-auf-transparent-1024x282.png/.webp`)
+  - Header + Footer nutzen jetzt weisses Logo auf Navy-Hintergrund (sauber, kein CSS-Trick mehr)
+  - WP: custom_logo + neve_logo_footer auf ID 157 (lokal + Prod)
+- **Logo sizes-Attribut**: 300px → 120px (entspricht tatsächlicher Display-Grösse)
+- **Sie→Du**: Behandlungsmethoden-Seite ("Ihren Therapieerfolg" → "deinen", "Ihrer Physiotherapie" → "deiner")
 
 ---
 
@@ -184,7 +190,7 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 - [ ] Blog-Entwurf "Physiotherapie & chronische Krankheiten (BFH-Studie 2024)" noch nicht publiziert
 - [ ] GA4 Measurement ID noch einzutragen
 - [ ] Ärzte-Anschreiben (Michaela ready für neue Patienten, keine Warteliste) – noch nicht erstellt
-- [ ] PageSpeed ≥90 bestätigen nach Logo-CLS-Fix (letzter Deploy: 2026-03-21)
+- [ ] PageSpeed Mobile: stabile Baseline ~84 (CLS=0). Ziel ≥90 erfordert neve-style Reduktion (PurgeCSS) oder Inline – noch offen
 
 ---
 
@@ -194,4 +200,5 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 |-------|-------|---------|
 | 2026-03-21 | Projekt-Einlesen | CHANGELOG erstellt aus Git-History |
 | 2026-03-21 | Email + PageSpeed | Patienten-Email erstellt, neve-style deferred, Logo-CLS-Fix |
+| 2026-03-21 | Cleanup & Logo | WP Super Cache-Bug gefunden, weisses Logo erstellt, neve-style revertiert, Sie→Du fix |
 

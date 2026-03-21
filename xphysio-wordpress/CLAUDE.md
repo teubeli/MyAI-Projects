@@ -30,15 +30,26 @@ Neue Dateien im Theme-Ordner werden automatisch auf Local sichtbar und per deplo
 - `width` + `height` Attribute immer setzen (CLS = 0 beibehalten)
 - `srcset` + `sizes` für Responsive Images
 
-## Performance-Architektur (Stand 2026-03-21, Score Mobile: 88→ Ziel ≥90)
+## Performance-Architektur (Stand 2026-03-21, Score Mobile: ~84, CLS=0)
+
+### deploy.sh – Wichtig
+- Leert automatisch WP Super Cache nach jedem Deploy (Schritt 5)
+- ⚠️ WP Super Cache war Ursache für viele scheinbare "opcache"-Probleme: altes HTML wurde gecacht
+
+### Logo
+- **Header + Footer**: weisses Logo (`Logo-und-Schrift-weiss-auf-transparent-1024x282.png/.webp`)
+- Beide Hintergründe sind Navy (#1e2761) → weisses Logo überall korrekt
+- WP-Attachment ID 157 (lokal + Prod): `custom_logo` + `neve_logo_footer`
+- Logo-sizes: 120px (= tatsächliche Display-Grösse via --maxwidth)
 
 ### CSS-Strategie (functions.php)
 - **Critical CSS inline** (`xphysio_critical_css_inline`, priority 2): Alles bis `.xp-services{` + Mobile-@media-Blöcke die Hero/Trust betreffen → kein render-blocking, kein CLS
+- **neve-parent-style** (style.css, 1.2 KiB, kein CSS-Inhalt): async → spart 570ms render-blocking
 - **Child CSS async** (`xphysio_defer_noncritical_css`): `neve-child-style`, `rank-math`, `cmplz-general` via `media="print" onload="this.media='all'"`
-- **Neve Main CSS**: render-blocking (nötig!), aber preloaded → `<link rel="preload" as="style">`
+- **Neve Main CSS (neve-style)**: render-blocking (nötig!), aber preloaded → `<link rel="preload" as="style">`
 - **Complianz banner-1-optin.css**: via JS geladen, kein WP-Handle → nicht kontrollierbar
 - ⚠️ Complianz CSS NICHT auf andere Weise async laden (verursacht LCP-Regression)
-- ⚠️ neve-style NICHT deferren: verursacht CLS ≥1 (Logo, Header, Container – zu viele Above-fold Abhängigkeiten). Getestet 2026-03-21, revertiert.
+- ⚠️ neve-style NICHT deferren: verursacht CLS ≥0.6 (zu viele Above-fold Abhängigkeiten: Container, Row, Logo, Header). Mehrfach getestet 2026-03-21, jedes Mal CLS. Endgültig verworfen.
 
 ### Neue CSS-Klassen hinzufügen?
 Wenn neue **Above-fold Elemente** (sichtbar ohne Scrollen) hinzukommen:
