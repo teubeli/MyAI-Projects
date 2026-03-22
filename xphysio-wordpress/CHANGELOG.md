@@ -200,7 +200,10 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 
 - [ ] Blog-Entwurf "Physiotherapie & chronische Krankheiten (BFH-Studie 2024)" noch nicht publiziert
 - [x] GA4 Measurement ID – aktiv via GTM (G-HLWWRL2T94), Tracking bestätigt 2026-03-22
-- [ ] Ärzte-Anschreiben (Michaela ready für neue Patienten, keine Warteliste) – noch nicht erstellt
+- [x] Ärzte-Anschreiben erstellt (`marketing/aerzte-anschreiben-v2.txt`)
+- [ ] **⏰ Patienten-Mail senden** – `marketing/email-patienten-v1.html` – **vor Ferienbeginn ~01.04.2026** versenden (Ferienhinweis + Praxisinfo für bestehende Patienten)
+- [ ] **⏰ Ärzte-Anschreiben senden** – `marketing/aerzte-anschreiben-v2.txt` – **nach Ferienrückkehr ~16.04.2026** versenden (Praxis offen, freie Kapazitäten)
+- [ ] Blog-Drafts zeitgesteuert publizieren (Autorin bereits korrekt: Michaela Tobler)
 
 ---
 
@@ -212,4 +215,5 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 | 2026-03-21 | Email + PageSpeed | Patienten-Email erstellt, neve-style deferred, Logo-CLS-Fix |
 | 2026-03-21 | Cleanup & Logo | WP Super Cache-Bug gefunden, weisses Logo erstellt, neve-style revertiert, Sie→Du fix |
 | 2026-03-21 | Hero Mobile + Score 90 | Hero 3-spaltig restrukturiert (Bild zwischen Titel und Badges), Logo WebP-Thumbnails auf Prod ergänzt → Score 90, CLS=0 |
+| 2026-03-22 | BSc entfernt, Ärzte-Anschreiben | BSc-Kürzel aus allen Dateien entfernt, Ärzte-Anschreiben v1+v2 erstellt, Versandplan festgelegt |
 
