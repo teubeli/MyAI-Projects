@@ -205,6 +205,8 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 - [ ] **⏰ Ärzte-Anschreiben senden** – `marketing/aerzte-anschreiben-v2.txt` – **nach Ferienrückkehr ~16.04.2026** versenden (Praxis offen, freie Kapazitäten)
 - [ ] Blog-Drafts zeitgesteuert publizieren (Autorin bereits korrekt: Michaela Tobler)
 - [ ] **Backlog: Blog-Artikel für Google Rich Results aufbereiten** – Artikel-Schema (Article JSON-LD) prüfen/ergänzen, Formatierung optimieren (H2/H3-Struktur, Featured Image, Meta-Description je Artikel) damit Beiträge in Google als Rich Result / mit Vorschaubild erscheinen
+- [ ] **Backlog: Google Business Profile (GBP) Beiträge** – Nach Ferienrückkehr: neue Blog-Artikel manuell als GBP-Post publizieren (Teaser + Link). Beobachten ob Klicks zunehmen, dann entscheiden ob Plugin-Automatisierung (RankMath Pro) sinnvoll ist
+- [ ] **⏰ GBP Sonderöffnungszeiten** – Vor Abreise in GBP eintragen: 02.04.–20.04.2026 als "Geschlossen" markieren
 
 ---
 
