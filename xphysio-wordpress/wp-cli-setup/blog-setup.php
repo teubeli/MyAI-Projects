@@ -494,7 +494,7 @@ $posts[] = [
 <span class="faq-icon" aria-hidden="true">+</span>
 </button>
 <div class="faq-answer">
-<p>Alle Schweizer Grundversicherungen (KVG) sind bei anerkannten Physiotherapeut:innen gleichwertig. Michaela Tobler ist als Physiotherapeutin BSc beim Kanton Zürich anerkannt und bei allen Grundversicherungen zugelassen.</p>
+<p>Alle Schweizer Grundversicherungen (KVG) sind bei anerkannten Physiotherapeut:innen gleichwertig. Michaela Tobler ist als diplomierte Physiotherapeutin beim Kanton Zürich anerkannt und bei allen Grundversicherungen zugelassen.</p>
 </div>
 </div>
 

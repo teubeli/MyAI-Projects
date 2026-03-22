@@ -10,7 +10,7 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 | | |
 |---|---|
 | **Website** | https://xphysio.ch |
-| **Betreiberin** | Michaela Tobler, Physiotherapeutin BSc, Wetzikon ZH |
+| **Betreiberin** | Michaela Tobler, Physiotherapeutin, Wetzikon ZH |
 | **Technologie** | WordPress, Neve Child Theme, WP-CLI, deploy.sh |
 | **Repo** | teubeli/MyAI-Projects → `xphysio-wordpress/` |
 | **Entwicklungsumgebung** | Local WP (Symlink zu neve-child-theme/) |

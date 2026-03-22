@@ -1,12 +1,12 @@
 # xphysio – Physiotherapie Wetzikon
-# Michaela Tobler, Physiotherapeutin BSc
+# Michaela Tobler, Physiotherapeutin
 
 > Physiotherapie-Praxis in Wetzikon ZH, Zürcher Oberland, Schweiz.
 > Spezialisiert auf Maitland-Konzept, Mulligan MWM, Neuroathletik, kPNI und Medizinische Trainingstherapie.
 
 ## Über die Praxis
 
-xphysio ist eine Physiotherapie-Praxis in Wetzikon ZH, geleitet von Michaela Tobler (BSc Physiotherapie, 20+ Jahre Erfahrung). Die Praxis bietet kassenpflichtige und private Behandlungen an, mit und ohne ärztliche Verordnung.
+xphysio ist eine Physiotherapie-Praxis in Wetzikon ZH, geleitet von Michaela Tobler (diplomierte Physiotherapeutin, 20+ Jahre Erfahrung). Die Praxis bietet kassenpflichtige und private Behandlungen an, mit und ohne ärztliche Verordnung.
 
 **Adresse:** Breitistrasse 25, 8623 Wetzikon ZH, Schweiz
 **Kontakt:** xphysio@hin.physio | +41 77 533 08 44
@@ -35,7 +35,7 @@ xphysio ist eine Physiotherapie-Praxis in Wetzikon ZH, geleitet von Michaela Tob
 
 ## Qualifikationen Michaela Tobler
 
-- BSc Physiotherapie
+- Dipl. Physiotherapeutin
 - Maitland-Konzept IMTA Level 1+2
 - Mulligan-Konzept (MWM)
 - Neuroathletik-Trainerin (Z-Health)
