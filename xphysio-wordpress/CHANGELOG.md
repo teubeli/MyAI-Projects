@@ -199,7 +199,7 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 ## Offene Punkte / Bekannte Issues
 
 - [ ] Blog-Entwurf "Physiotherapie & chronische Krankheiten (BFH-Studie 2024)" noch nicht publiziert
-- [ ] GA4 Measurement ID noch einzutragen
+- [x] GA4 Measurement ID – aktiv via GTM (G-HLWWRL2T94), Tracking bestätigt 2026-03-22
 - [ ] Ärzte-Anschreiben (Michaela ready für neue Patienten, keine Warteliste) – noch nicht erstellt
 
 ---
