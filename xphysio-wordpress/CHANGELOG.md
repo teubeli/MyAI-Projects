@@ -204,6 +204,7 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 - [ ] **⏰ Patienten-Mail senden** – `marketing/email-patienten-v1.html` – **vor Ferienbeginn ~01.04.2026** versenden (Ferienhinweis + Praxisinfo für bestehende Patienten)
 - [ ] **⏰ Ärzte-Anschreiben senden** – `marketing/aerzte-anschreiben-v2.txt` – **nach Ferienrückkehr ~16.04.2026** versenden (Praxis offen, freie Kapazitäten)
 - [ ] Blog-Drafts zeitgesteuert publizieren (Autorin bereits korrekt: Michaela Tobler)
+- [ ] **Backlog: Blog-Artikel für Google Rich Results aufbereiten** – Artikel-Schema (Article JSON-LD) prüfen/ergänzen, Formatierung optimieren (H2/H3-Struktur, Featured Image, Meta-Description je Artikel) damit Beiträge in Google als Rich Result / mit Vorschaubild erscheinen
 
 ---
 
