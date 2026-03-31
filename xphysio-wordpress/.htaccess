@@ -31,6 +31,17 @@ AddOutputFilterByType DEFLATE "application/atom+xml" "application/javascript" "a
 RedirectMatch 404 /\.git
 # SECTION END GIT PROTECTION
 
+# BEGIN xphysio SEO Redirects
+# 301: Alte URL → neue URL
+Redirect 301 /online-terminkalender/ /online-buchen/
+Redirect 301 /online-terminkalender /online-buchen/
+# 301: Trailing-Slash erzwingen (verhindert Redirect-Chain über WordPress)
+Redirect 301 /angebot /angebot/
+Redirect 301 /behandlungsmethoden /behandlungsmethoden/
+Redirect 301 /ueber-mich /ueber-mich/
+Redirect 301 /blog /blog/
+# END xphysio SEO Redirects
+
 
 # BEGIN WPSuperCache
 # Die Anweisungen (Zeilen) zwischen „BEGIN WPSuperCache“ und „END WPSuperCache“ sind
