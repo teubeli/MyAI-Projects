@@ -203,7 +203,9 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 - [x] Ärzte-Anschreiben erstellt (`marketing/aerzte-anschreiben-v2.txt`)
 - [x] **Patienten-Mail gesendet** – 2026-03-30, inkl. Newsletter + Bitte um Google-Rezension
 - [ ] **⏰ Ärzte-Anschreiben senden** – `marketing/aerzte-anschreiben-v2.txt` – **nach Ferienrückkehr ~16.04.2026** versenden (Praxis offen, freie Kapazitäten)
-- [ ] **⚠️ Featured Images setzen** – In WP-Admin für alle Blog-Artikel Beitragsbild setzen (≥1200px, 16:9) – Pflicht für Google Rich Results. Betrifft: BFH-Studie + Neuroathletik-Artikel
+- [x] Featured Images gesetzt – alle 5 Artikel ✅
+- [x] RankMath Meta-Descriptions + Focus-Keywords gesetzt – alle 5 Artikel ✅
+- [x] Google Rich Results Test: grün ✅
 - [ ] **Backlog: Google Business Profile (GBP) Beiträge** – Nach Ferienrückkehr: neue Blog-Artikel manuell als GBP-Post publizieren (Teaser + Link)
 - [ ] **⏰ GBP Sonderöffnungszeiten** – Vor Abreise in GBP eintragen: 02.04.–20.04.2026 als "Geschlossen" markieren
 - [ ] Search Console: noindex-Tag auf 1 unbekannte Seite prüfen (in WP-Admin/RankMath identifizieren)
@@ -221,5 +223,6 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 | 2026-03-21 | Hero Mobile + Score 90 | Hero 3-spaltig restrukturiert (Bild zwischen Titel und Badges), Logo WebP-Thumbnails auf Prod ergänzt → Score 90, CLS=0 |
 | 2026-03-22 | BSc entfernt, Ärzte-Anschreiben | BSc-Kürzel aus allen Dateien entfernt, Ärzte-Anschreiben v1+v2 erstellt, Versandplan festgelegt |
 | 2026-03-31 | Search Console + Rich Results | SEO-Redirects (.htaccess), Article-Schema erweitert, BFH-Studie publiziert |
-| 2026-03-31 | Alt-Texte + Blog-Header | Alt-Texte für alle Medien via WP-CLI gesetzt (inkl. BSc entfernt), Blog-Header SVGs für beide Artikel |
+| 2026-03-31 | Alt-Texte + Blog-Header | Alt-Texte für alle Medien via WP-CLI gesetzt (inkl. BSc entfernt), Blog-Header SVGs für alle 5 Artikel |
+| 2026-03-31 | RankMath + Rich Results | Meta-Descriptions + Focus-Keywords für alle 5 Artikel gesetzt, Rich Results grün ✅ |
 
