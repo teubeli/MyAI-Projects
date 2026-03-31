@@ -539,12 +539,14 @@ function xphysio_page_schema() {
             '@id'              => get_permalink() . '#article',
             'headline'         => get_the_title(),
             'url'              => get_permalink(),
+            'inLanguage'       => 'de-CH',
             'datePublished'    => get_the_date( 'c' ),
             'dateModified'     => get_the_modified_date( 'c' ),
             'author'           => [
                 '@type' => 'Person',
                 '@id'   => 'https://xphysio.ch/ueber-mich/#person',
                 'name'  => 'Michaela Tobler',
+                'url'   => 'https://xphysio.ch/ueber-mich/',
             ],
             'publisher'        => [
                 '@id' => 'https://xphysio.ch/#business',
@@ -553,8 +555,29 @@ function xphysio_page_schema() {
                 '@type' => 'WebPage',
                 '@id'   => get_permalink(),
             ],
+            'wordCount'        => str_word_count( wp_strip_all_tags( get_the_content() ) ),
         ];
 
+        // articleSection aus erster Kategorie
+        $cats = get_the_category();
+        if ( ! empty( $cats ) ) {
+            $article['articleSection'] = $cats[0]->name;
+        }
+
+        // keywords aus Kategorien + Tags
+        $kw = [];
+        if ( ! empty( $cats ) ) {
+            foreach ( $cats as $cat ) $kw[] = $cat->name;
+        }
+        $tags = get_the_tags();
+        if ( $tags ) {
+            foreach ( $tags as $tag ) $kw[] = $tag->name;
+        }
+        if ( ! empty( $kw ) ) {
+            $article['keywords'] = $kw;
+        }
+
+        // Featured Image (mind. 1200px – Pflicht für Google Rich Results)
         if ( has_post_thumbnail() ) {
             $img = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' );
             if ( $img ) {
