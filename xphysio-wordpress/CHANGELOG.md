@@ -198,15 +198,16 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 
 ## Offene Punkte / Bekannte Issues
 
-- [ ] Blog-Entwurf "Physiotherapie & chronische Krankheiten (BFH-Studie 2024)" noch nicht publiziert
+- [x] Blog-Entwurf "Physiotherapie & chronische Krankheiten (BFH-Studie 2024)" publiziert (2026-03-31)
 - [x] GA4 Measurement ID – aktiv via GTM (G-HLWWRL2T94), Tracking bestätigt 2026-03-22
 - [x] Ärzte-Anschreiben erstellt (`marketing/aerzte-anschreiben-v2.txt`)
 - [ ] **⏰ Patienten-Mail senden** – `marketing/email-patienten-v1.html` – **vor Ferienbeginn ~01.04.2026** versenden (Ferienhinweis + Praxisinfo für bestehende Patienten)
 - [ ] **⏰ Ärzte-Anschreiben senden** – `marketing/aerzte-anschreiben-v2.txt` – **nach Ferienrückkehr ~16.04.2026** versenden (Praxis offen, freie Kapazitäten)
-- [ ] Blog-Drafts zeitgesteuert publizieren (Autorin bereits korrekt: Michaela Tobler)
-- [ ] **Backlog: Blog-Artikel für Google Rich Results aufbereiten** – Artikel-Schema (Article JSON-LD) prüfen/ergänzen, Formatierung optimieren (H2/H3-Struktur, Featured Image, Meta-Description je Artikel) damit Beiträge in Google als Rich Result / mit Vorschaubild erscheinen
-- [ ] **Backlog: Google Business Profile (GBP) Beiträge** – Nach Ferienrückkehr: neue Blog-Artikel manuell als GBP-Post publizieren (Teaser + Link). Beobachten ob Klicks zunehmen, dann entscheiden ob Plugin-Automatisierung (RankMath Pro) sinnvoll ist
+- [ ] **⚠️ Featured Images setzen** – In WP-Admin für alle Blog-Artikel Beitragsbild setzen (≥1200px, 16:9) – Pflicht für Google Rich Results. Betrifft: BFH-Studie + Neuroathletik-Artikel
+- [ ] **Backlog: Google Business Profile (GBP) Beiträge** – Nach Ferienrückkehr: neue Blog-Artikel manuell als GBP-Post publizieren (Teaser + Link)
 - [ ] **⏰ GBP Sonderöffnungszeiten** – Vor Abreise in GBP eintragen: 02.04.–20.04.2026 als "Geschlossen" markieren
+- [ ] Search Console: noindex-Tag auf 1 unbekannte Seite prüfen (in WP-Admin/RankMath identifizieren)
+- [ ] Search Console: `/author/mitoloki/` + `/category/neuroathletik/` auf noindex setzen (via RankMath)
 
 ---
 
@@ -219,4 +220,5 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 | 2026-03-21 | Cleanup & Logo | WP Super Cache-Bug gefunden, weisses Logo erstellt, neve-style revertiert, Sie→Du fix |
 | 2026-03-21 | Hero Mobile + Score 90 | Hero 3-spaltig restrukturiert (Bild zwischen Titel und Badges), Logo WebP-Thumbnails auf Prod ergänzt → Score 90, CLS=0 |
 | 2026-03-22 | BSc entfernt, Ärzte-Anschreiben | BSc-Kürzel aus allen Dateien entfernt, Ärzte-Anschreiben v1+v2 erstellt, Versandplan festgelegt |
+| 2026-03-31 | Search Console + Rich Results | SEO-Redirects (.htaccess), Article-Schema erweitert, BFH-Studie publiziert |
 
