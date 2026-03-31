@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <defs>
+    <radialGradient id="bgr" cx="32%" cy="44%" r="65%" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#1f2d7a"/>
+      <stop offset="100%" stop-color="#101540"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#bgr)"/>
+
+  <!-- Head silhouette -->
+  <ellipse cx="370" cy="282" rx="132" ry="160" fill="#1c2860" opacity="0.88"/>
+  <!-- Brain inner area -->
+  <ellipse cx="368" cy="264" rx="97" ry="114" fill="#1e2d70" opacity="0.95"/>
+  <!-- Neck -->
+  <rect x="338" y="440" width="64" height="70" rx="13" fill="#1c2860" opacity="0.72"/>
+  <!-- Collar suggestion -->
+  <path d="M292,525 C318,490 348,474 368,470 C388,474 418,490 444,525"
+        fill="none" stroke="#dff2ff" stroke-width="0.4" stroke-opacity="0.12"/>
+
+  <!-- ===== NEURAL LINES ===== -->
+  <g stroke="#dff2ff" fill="none" stroke-linecap="round">
+
+    <!-- Brain internal -->
+    <line x1="368" y1="168" x2="330" y2="206" stroke-width="0.8" opacity="0.72"/>
+    <line x1="368" y1="168" x2="408" y2="204" stroke-width="0.8" opacity="0.72"/>
+    <line x1="368" y1="168" x2="368" y2="216" stroke-width="0.7" opacity="0.62"/>
+    <line x1="330" y1="206" x2="350" y2="244" stroke-width="0.7" opacity="0.65"/>
+    <line x1="408" y1="204" x2="413" y2="244" stroke-width="0.7" opacity="0.65"/>
+    <line x1="368" y1="216" x2="340" y2="246" stroke-width="0.6" opacity="0.55"/>
+    <line x1="368" y1="216" x2="397" y2="244" stroke-width="0.6" opacity="0.55"/>
+    <line x1="330" y1="206" x2="318" y2="260" stroke-width="0.65" opacity="0.60"/>
+    <line x1="408" y1="204" x2="448" y2="256" stroke-width="0.65" opacity="0.60"/>
+    <line x1="350" y1="244" x2="360" y2="274" stroke-width="0.65" opacity="0.62"/>
+    <line x1="413" y1="244" x2="407" y2="274" stroke-width="0.65" opacity="0.62"/>
+    <line x1="340" y1="246" x2="360" y2="274" stroke-width="0.55" opacity="0.50"/>
+    <line x1="397" y1="244" x2="407" y2="274" stroke-width="0.55" opacity="0.50"/>
+    <line x1="318" y1="260" x2="334" y2="300" stroke-width="0.65" opacity="0.60"/>
+    <line x1="448" y1="256" x2="437" y2="300" stroke-width="0.65" opacity="0.60"/>
+    <line x1="360" y1="274" x2="367" y2="310" stroke-width="0.70" opacity="0.65"/>
+    <line x1="407" y1="274" x2="367" y2="310" stroke-width="0.70" opacity="0.65"/>
+    <line x1="334" y1="300" x2="367" y2="310" stroke-width="0.60" opacity="0.60"/>
+    <line x1="437" y1="300" x2="367" y2="310" stroke-width="0.60" opacity="0.60"/>
+    <line x1="367" y1="310" x2="365" y2="344" stroke-width="0.65" opacity="0.58"/>
+    <line x1="350" y1="244" x2="413" y2="244" stroke-width="0.40" opacity="0.32"/>
+    <line x1="360" y1="274" x2="407" y2="274" stroke-width="0.45" opacity="0.38"/>
+    <line x1="318" y1="260" x2="448" y2="256" stroke-width="0.35" opacity="0.27"/>
+
+    <!-- Brain to network -->
+    <line x1="408" y1="204" x2="542" y2="168" stroke-width="0.82" opacity="0.56"/>
+    <line x1="448" y1="256" x2="578" y2="250" stroke-width="0.88" opacity="0.62"/>
+    <line x1="437" y1="300" x2="566" y2="350" stroke-width="0.75" opacity="0.55"/>
+    <line x1="365" y1="344" x2="368" y2="440" stroke-width="1.00" opacity="0.72"/>
+
+    <!-- UPPER BAND (y≈165) -->
+    <line x1="542" y1="168" x2="648" y2="143" stroke-width="0.65" opacity="0.50"/>
+    <line x1="648" y1="143" x2="762" y2="163" stroke-width="0.62" opacity="0.47"/>
+    <line x1="762" y1="163" x2="878" y2="148" stroke-width="0.58" opacity="0.43"/>
+    <line x1="878" y1="148" x2="988" y2="172" stroke-width="0.54" opacity="0.38"/>
+    <line x1="988" y1="172" x2="1098" y2="156" stroke-width="0.48" opacity="0.33"/>
+    <line x1="1098" y1="156" x2="1188" y2="200" stroke-width="0.42" opacity="0.27"/>
+
+    <!-- MIDDLE BAND (y≈256) -->
+    <line x1="578" y1="250" x2="688" y2="276" stroke-width="0.72" opacity="0.53"/>
+    <line x1="688" y1="276" x2="808" y2="258" stroke-width="0.68" opacity="0.50"/>
+    <line x1="808" y1="258" x2="928" y2="278" stroke-width="0.64" opacity="0.47"/>
+    <line x1="928" y1="278" x2="1055" y2="263" stroke-width="0.58" opacity="0.43"/>
+    <line x1="1055" y1="263" x2="1158" y2="303" stroke-width="0.52" opacity="0.37"/>
+
+    <!-- LOWER BAND (y≈362) -->
+    <line x1="566" y1="350" x2="674" y2="383" stroke-width="0.66" opacity="0.50"/>
+    <line x1="674" y1="383" x2="795" y2="366" stroke-width="0.62" opacity="0.47"/>
+    <line x1="795" y1="366" x2="908" y2="383" stroke-width="0.58" opacity="0.43"/>
+    <line x1="908" y1="383" x2="1025" y2="353" stroke-width="0.52" opacity="0.38"/>
+    <line x1="1025" y1="353" x2="1125" y2="373" stroke-width="0.46" opacity="0.32"/>
+
+    <!-- Verticals upper→middle -->
+    <line x1="542" y1="168" x2="578" y2="250" stroke-width="0.55" opacity="0.43"/>
+    <line x1="648" y1="143" x2="688" y2="276" stroke-width="0.55" opacity="0.43"/>
+    <line x1="762" y1="163" x2="808" y2="258" stroke-width="0.55" opacity="0.40"/>
+    <line x1="878" y1="148" x2="928" y2="278" stroke-width="0.50" opacity="0.37"/>
+    <line x1="988" y1="172" x2="1055" y2="263" stroke-width="0.46" opacity="0.34"/>
+    <line x1="1098" y1="156" x2="1158" y2="303" stroke-width="0.42" opacity="0.30"/>
+
+    <!-- Verticals middle→lower -->
+    <line x1="578" y1="250" x2="566" y2="350" stroke-width="0.55" opacity="0.43"/>
+    <line x1="688" y1="276" x2="674" y2="383" stroke-width="0.55" opacity="0.43"/>
+    <line x1="808" y1="258" x2="795" y2="366" stroke-width="0.55" opacity="0.40"/>
+    <line x1="928" y1="278" x2="908" y2="383" stroke-width="0.50" opacity="0.37"/>
+    <line x1="1055" y1="263" x2="1025" y2="353" stroke-width="0.46" opacity="0.34"/>
+    <line x1="1158" y1="303" x2="1125" y2="373" stroke-width="0.42" opacity="0.30"/>
+
+    <!-- Organic diagonals -->
+    <line x1="542" y1="168" x2="688" y2="276" stroke-width="0.35" opacity="0.25"/>
+    <line x1="648" y1="143" x2="578" y2="250" stroke-width="0.35" opacity="0.25"/>
+    <line x1="762" y1="163" x2="688" y2="276" stroke-width="0.32" opacity="0.22"/>
+    <line x1="808" y1="258" x2="674" y2="383" stroke-width="0.32" opacity="0.22"/>
+    <line x1="928" y1="278" x2="795" y2="366" stroke-width="0.30" opacity="0.20"/>
+    <line x1="688" y1="276" x2="566" y2="350" stroke-width="0.35" opacity="0.25"/>
+    <line x1="1055" y1="263" x2="928" y2="278" stroke-width="0.30" opacity="0.20"/>
+
+    <!-- Bottom edge -->
+    <line x1="566" y1="350" x2="542" y2="455" stroke-width="0.50" opacity="0.38"/>
+    <line x1="674" y1="383" x2="650" y2="470" stroke-width="0.48" opacity="0.36"/>
+    <line x1="795" y1="366" x2="770" y2="455" stroke-width="0.46" opacity="0.34"/>
+    <line x1="908" y1="383" x2="880" y2="466" stroke-width="0.43" opacity="0.31"/>
+    <line x1="1025" y1="353" x2="998" y2="450" stroke-width="0.40" opacity="0.28"/>
+    <line x1="1125" y1="373" x2="1100" y2="473" stroke-width="0.36" opacity="0.25"/>
+    <line x1="542" y1="455" x2="650" y2="470" stroke-width="0.42" opacity="0.32"/>
+    <line x1="650" y1="470" x2="770" y2="455" stroke-width="0.40" opacity="0.30"/>
+    <line x1="770" y1="455" x2="880" y2="466" stroke-width="0.38" opacity="0.28"/>
+    <line x1="880" y1="466" x2="998" y2="450" stroke-width="0.35" opacity="0.25"/>
+    <line x1="998" y1="450" x2="1100" y2="473" stroke-width="0.32" opacity="0.22"/>
+
+    <!-- Left network -->
+    <line x1="330" y1="206" x2="220" y2="160" stroke-width="0.60" opacity="0.45"/>
+    <line x1="220" y1="160" x2="172" y2="214" stroke-width="0.55" opacity="0.42"/>
+    <line x1="318" y1="260" x2="172" y2="214" stroke-width="0.50" opacity="0.38"/>
+    <line x1="172" y1="214" x2="124" y2="273" stroke-width="0.50" opacity="0.38"/>
+    <line x1="318" y1="260" x2="124" y2="273" stroke-width="0.40" opacity="0.30"/>
+    <line x1="124" y1="273" x2="132" y2="353" stroke-width="0.46" opacity="0.35"/>
+    <line x1="334" y1="300" x2="132" y2="353" stroke-width="0.40" opacity="0.30"/>
+    <line x1="132" y1="353" x2="206" y2="438" stroke-width="0.40" opacity="0.30"/>
+    <line x1="368" y1="440" x2="206" y2="438" stroke-width="0.38" opacity="0.28"/>
+    <line x1="206" y1="438" x2="132" y2="498" stroke-width="0.35" opacity="0.25"/>
+    <line x1="132" y1="498" x2="215" y2="555" stroke-width="0.30" opacity="0.20"/>
+
+    <!-- Spine -->
+    <line x1="368" y1="440" x2="368" y2="492" stroke-width="0.90" opacity="0.62"/>
+    <line x1="368" y1="492" x2="366" y2="548" stroke-width="0.75" opacity="0.52"/>
+    <line x1="366" y1="548" x2="365" y2="605" stroke-width="0.60" opacity="0.40"/>
+    <line x1="365" y1="605" x2="364" y2="660" stroke-width="0.50" opacity="0.30"/>
+    <line x1="368" y1="492" x2="344" y2="520" stroke-width="0.38" opacity="0.30"/>
+    <line x1="368" y1="492" x2="392" y2="520" stroke-width="0.38" opacity="0.30"/>
+    <line x1="366" y1="548" x2="342" y2="574" stroke-width="0.32" opacity="0.26"/>
+    <line x1="366" y1="548" x2="390" y2="574" stroke-width="0.32" opacity="0.26"/>
+
+  </g>
+
+  <!-- ===== BORDEAUX ACCENT ===== -->
+  <g stroke="#8a2450" fill="none" stroke-linecap="round">
+    <line x1="407" y1="274" x2="448" y2="256" stroke-width="1.60" opacity="0.82"/>
+    <line x1="448" y1="256" x2="578" y2="250" stroke-width="1.50" opacity="0.78"/>
+    <line x1="578" y1="250" x2="688" y2="276" stroke-width="1.40" opacity="0.74"/>
+    <line x1="688" y1="276" x2="808" y2="258" stroke-width="1.30" opacity="0.70"/>
+    <line x1="808" y1="258" x2="928" y2="278" stroke-width="1.20" opacity="0.65"/>
+    <line x1="928" y1="278" x2="1055" y2="263" stroke-width="1.10" opacity="0.58"/>
+    <line x1="1055" y1="263" x2="1158" y2="303" stroke-width="1.00" opacity="0.50"/>
+  </g>
+
+  <!-- ===== SOFT GLOW HALOS ===== -->
+  <circle cx="367" cy="310" r="17" fill="#dff2ff" opacity="0.055"/>
+  <circle cx="367" cy="310" r="28" fill="#dff2ff" opacity="0.025"/>
+  <circle cx="368" cy="168" r="13" fill="#dff2ff" opacity="0.048"/>
+  <circle cx="578" cy="250" r="13" fill="#8a2450" opacity="0.10"/>
+  <circle cx="808" cy="258" r="13" fill="#8a2450" opacity="0.08"/>
+  <circle cx="1055" cy="263" r="11" fill="#8a2450" opacity="0.07"/>
+
+  <!-- ===== NEURAL NODES ===== -->
+
+  <!-- Brain interior -->
+  <g fill="#dff2ff">
+    <circle cx="368" cy="168" r="3.8" opacity="0.95"/>
+    <circle cx="330" cy="206" r="3.0" opacity="0.85"/>
+    <circle cx="408" cy="204" r="3.0" opacity="0.85"/>
+    <circle cx="368" cy="216" r="2.5" opacity="0.78"/>
+    <circle cx="350" cy="244" r="2.5" opacity="0.76"/>
+    <circle cx="413" cy="244" r="2.5" opacity="0.76"/>
+    <circle cx="340" cy="246" r="2.0" opacity="0.70"/>
+    <circle cx="397" cy="244" r="2.0" opacity="0.70"/>
+    <circle cx="318" cy="260" r="2.5" opacity="0.75"/>
+    <circle cx="448" cy="256" r="3.0" opacity="0.82"/>
+    <circle cx="360" cy="274" r="3.0" opacity="0.85"/>
+    <circle cx="407" cy="274" r="3.0" opacity="0.85"/>
+    <circle cx="334" cy="300" r="2.5" opacity="0.75"/>
+    <circle cx="437" cy="300" r="2.5" opacity="0.75"/>
+    <circle cx="367" cy="310" r="4.2" opacity="0.95"/>
+    <circle cx="365" cy="344" r="2.5" opacity="0.70"/>
+  </g>
+
+  <!-- Spine nodes -->
+  <g fill="#dff2ff">
+    <circle cx="368" cy="440" r="3.0" opacity="0.72"/>
+    <circle cx="368" cy="492" r="2.5" opacity="0.62"/>
+    <circle cx="366" cy="548" r="2.0" opacity="0.52"/>
+    <circle cx="365" cy="605" r="1.8" opacity="0.42"/>
+    <circle cx="364" cy="660" r="1.5" opacity="0.32"/>
+    <circle cx="344" cy="520" r="1.5" opacity="0.35"/>
+    <circle cx="392" cy="520" r="1.5" opacity="0.35"/>
+    <circle cx="342" cy="574" r="1.2" opacity="0.28"/>
+    <circle cx="390" cy="574" r="1.2" opacity="0.28"/>
+  </g>
+
+  <!-- Extended network -->
+  <g fill="#dff2ff">
+    <circle cx="542" cy="168" r="2.6" opacity="0.68"/>
+    <circle cx="648" cy="143" r="2.2" opacity="0.62"/>
+    <circle cx="762" cy="163" r="2.6" opacity="0.62"/>
+    <circle cx="878" cy="148" r="2.2" opacity="0.56"/>
+    <circle cx="988" cy="172" r="2.2" opacity="0.50"/>
+    <circle cx="1098" cy="156" r="1.8" opacity="0.43"/>
+    <circle cx="1188" cy="200" r="1.5" opacity="0.36"/>
+    <circle cx="578" cy="250" r="3.2" opacity="0.74"/>
+    <circle cx="688" cy="276" r="3.0" opacity="0.70"/>
+    <circle cx="808" cy="258" r="3.2" opacity="0.70"/>
+    <circle cx="928" cy="278" r="3.0" opacity="0.65"/>
+    <circle cx="1055" cy="263" r="2.8" opacity="0.60"/>
+    <circle cx="1158" cy="303" r="2.5" opacity="0.52"/>
+    <circle cx="566" cy="350" r="2.8" opacity="0.65"/>
+    <circle cx="674" cy="383" r="2.5" opacity="0.60"/>
+    <circle cx="795" cy="366" r="2.8" opacity="0.60"/>
+    <circle cx="908" cy="383" r="2.5" opacity="0.55"/>
+    <circle cx="1025" cy="353" r="2.3" opacity="0.50"/>
+    <circle cx="1125" cy="373" r="2.0" opacity="0.43"/>
+    <circle cx="542" cy="455" r="2.3" opacity="0.55"/>
+    <circle cx="650" cy="470" r="2.2" opacity="0.52"/>
+    <circle cx="770" cy="455" r="2.2" opacity="0.50"/>
+    <circle cx="880" cy="466" r="2.0" opacity="0.45"/>
+    <circle cx="998" cy="450" r="1.8" opacity="0.40"/>
+    <circle cx="1100" cy="473" r="1.5" opacity="0.35"/>
+  </g>
+
+  <!-- Left network nodes -->
+  <g fill="#dff2ff">
+    <circle cx="220" cy="160" r="2.0" opacity="0.56"/>
+    <circle cx="172" cy="214" r="2.0" opacity="0.52"/>
+    <circle cx="124" cy="273" r="1.8" opacity="0.48"/>
+    <circle cx="132" cy="353" r="1.5" opacity="0.42"/>
+    <circle cx="206" cy="438" r="1.5" opacity="0.38"/>
+    <circle cx="132" cy="498" r="1.3" opacity="0.32"/>
+    <circle cx="215" cy="555" r="1.2" opacity="0.25"/>
+  </g>
+
+  <!-- Bordeaux accent nodes -->
+  <g fill="#b83060">
+    <circle cx="448" cy="256" r="4.5" opacity="0.88"/>
+    <circle cx="578" cy="250" r="4.2" opacity="0.84"/>
+    <circle cx="688" cy="276" r="4.0" opacity="0.80"/>
+    <circle cx="808" cy="258" r="4.0" opacity="0.76"/>
+    <circle cx="928" cy="278" r="3.8" opacity="0.71"/>
+    <circle cx="1055" cy="263" r="3.5" opacity="0.65"/>
+    <circle cx="1158" cy="303" r="3.0" opacity="0.58"/>
+  </g>
+
+  <!-- Brightest white key nodes -->
+  <circle cx="367" cy="310" r="5.2" fill="white" opacity="0.97"/>
+  <circle cx="368" cy="168" r="4.4" fill="white" opacity="0.93"/>
+
+</svg>

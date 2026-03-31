@@ -707,7 +707,32 @@ function xphysio_nav_colors() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 5. CONTACT FORM 7 – nur auf Kontaktseite laden
+// 5. SVG-UPLOADS – für Blog-Header-Bilder erlauben
+// ─────────────────────────────────────────────────────────────────────────────
+// SVG ist für Vektor-Illustrationen das schlanksте Format (~9KB vs. ~80KB WebP).
+// Sicherheit: Nur eingeloggte Admins können Dateien hochladen.
+add_filter( 'upload_mimes', 'xphysio_allow_svg' );
+function xphysio_allow_svg( $mimes ) {
+    $mimes['svg']  = 'image/svg+xml';
+    $mimes['svgz'] = 'image/svg+xml';
+    return $mimes;
+}
+
+// SVG-Vorschau im Medien-Browser anzeigen
+add_filter( 'wp_check_filetype_and_ext', 'xphysio_svg_filetype', 10, 4 );
+function xphysio_svg_filetype( $data, $file, $filename, $mimes ) {
+    if ( ! $data['type'] ) {
+        $ext = strtolower( pathinfo( $filename, PATHINFO_EXTENSION ) );
+        if ( $ext === 'svg' || $ext === 'svgz' ) {
+            $data['type'] = 'image/svg+xml';
+            $data['ext']  = $ext;
+        }
+    }
+    return $data;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 5b. CONTACT FORM 7 – nur auf Kontaktseite laden
 // ─────────────────────────────────────────────────────────────────────────────
 // CF7 lädt sonst auf allen Seiten: wp-hooks + wp-i18n + swv + cf7 = render-blocking Chain
 add_action( 'wp_enqueue_scripts', 'xphysio_dequeue_cf7_selectively', 99 );
