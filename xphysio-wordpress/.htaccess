@@ -36,10 +36,11 @@ RedirectMatch 404 /\.git
 Redirect 301 /online-terminkalender/ /online-buchen/
 Redirect 301 /online-terminkalender /online-buchen/
 # 301: Trailing-Slash erzwingen (verhindert Redirect-Chain über WordPress)
-Redirect 301 /angebot /angebot/
-Redirect 301 /behandlungsmethoden /behandlungsmethoden/
-Redirect 301 /ueber-mich /ueber-mich/
-Redirect 301 /blog /blog/
+# RedirectMatch mit $ = exakter Match, kein Prefix-Matching wie bei Redirect
+RedirectMatch 301 ^/angebot$ /angebot/
+RedirectMatch 301 ^/behandlungsmethoden$ /behandlungsmethoden/
+RedirectMatch 301 ^/ueber-mich$ /ueber-mich/
+RedirectMatch 301 ^/blog$ /blog/
 # END xphysio SEO Redirects
 
 
