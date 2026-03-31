@@ -201,7 +201,7 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 - [x] Blog-Entwurf "Physiotherapie & chronische Krankheiten (BFH-Studie 2024)" publiziert (2026-03-31)
 - [x] GA4 Measurement ID – aktiv via GTM (G-HLWWRL2T94), Tracking bestätigt 2026-03-22
 - [x] Ärzte-Anschreiben erstellt (`marketing/aerzte-anschreiben-v2.txt`)
-- [ ] **⏰ Patienten-Mail senden** – `marketing/email-patienten-v1.html` – **vor Ferienbeginn ~01.04.2026** versenden (Ferienhinweis + Praxisinfo für bestehende Patienten)
+- [x] **Patienten-Mail gesendet** – 2026-03-30, inkl. Newsletter + Bitte um Google-Rezension
 - [ ] **⏰ Ärzte-Anschreiben senden** – `marketing/aerzte-anschreiben-v2.txt` – **nach Ferienrückkehr ~16.04.2026** versenden (Praxis offen, freie Kapazitäten)
 - [ ] **⚠️ Featured Images setzen** – In WP-Admin für alle Blog-Artikel Beitragsbild setzen (≥1200px, 16:9) – Pflicht für Google Rich Results. Betrifft: BFH-Studie + Neuroathletik-Artikel
 - [ ] **Backlog: Google Business Profile (GBP) Beiträge** – Nach Ferienrückkehr: neue Blog-Artikel manuell als GBP-Post publizieren (Teaser + Link)
