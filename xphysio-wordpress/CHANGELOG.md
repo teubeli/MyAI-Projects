@@ -221,4 +221,5 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 | 2026-03-21 | Hero Mobile + Score 90 | Hero 3-spaltig restrukturiert (Bild zwischen Titel und Badges), Logo WebP-Thumbnails auf Prod ergänzt → Score 90, CLS=0 |
 | 2026-03-22 | BSc entfernt, Ärzte-Anschreiben | BSc-Kürzel aus allen Dateien entfernt, Ärzte-Anschreiben v1+v2 erstellt, Versandplan festgelegt |
 | 2026-03-31 | Search Console + Rich Results | SEO-Redirects (.htaccess), Article-Schema erweitert, BFH-Studie publiziert |
+| 2026-03-31 | Alt-Texte + Blog-Header | Alt-Texte für alle Medien via WP-CLI gesetzt (inkl. BSc entfernt), Blog-Header SVGs für beide Artikel |
 
