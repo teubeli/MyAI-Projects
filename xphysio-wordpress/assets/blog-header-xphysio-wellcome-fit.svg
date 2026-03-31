@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+<rect width="1200" height="675" fill="#10163f"/>
+
+<ellipse cx="375" cy="352" rx="344" ry="326" fill="#1e2761" opacity="0.80"/>
+<ellipse cx="825" cy="352" rx="344" ry="326" fill="#5c1030" opacity="0.50"/>
+
+<!-- Left ring -->
+<circle cx="375" cy="352" r="275" fill="none" stroke="#2e3f8f" stroke-width="2.8"/>
+<circle cx="375" cy="352" r="251" fill="none" stroke="#1e2761" stroke-width="48" opacity="0.90"/>
+<circle cx="375" cy="352" r="251" fill="none" stroke="#dff2ff" stroke-width="1.2" opacity="0.18"/>
+
+<!-- Right ring -->
+<circle cx="825" cy="352" r="275" fill="none" stroke="#8a2858" stroke-width="2.8"/>
+<circle cx="825" cy="352" r="251" fill="none" stroke="#7a2048" stroke-width="48" opacity="0.90"/>
+<circle cx="825" cy="352" r="251" fill="none" stroke="#dff2ff" stroke-width="1.2" opacity="0.18"/>
+
+<!-- Intersection -->
+<path d="M 600,129 Q 655,155 679,203 Q 703,252 703,352 Q 703,452 679,500 Q 655,549 600,575 Q 545,549 521,500 Q 497,452 497,352 Q 497,252 521,203 Q 545,155 600,129 Z" fill="#3a1535" opacity="0.82"/>
+<path d="M 600,129 Q 655,155 679,203 Q 703,252 703,352 Q 703,452 679,500 Q 655,549 600,575 Q 545,549 521,500 Q 497,452 497,352 Q 497,252 521,203 Q 545,155 600,129 Z" fill="none" stroke="#dff2ff" stroke-width="1.4" opacity="0.22"/>
+
+<!-- Grid dots — left -->
+<g fill="#dff2ff" opacity="0.12">
+<circle cx="188" cy="229" r="3.9"/><circle cx="248" cy="229" r="3.9"/><circle cx="308" cy="229" r="3.9"/>
+<circle cx="188" cy="285" r="3.9"/><circle cx="248" cy="285" r="3.9"/><circle cx="308" cy="285" r="3.9"/>
+<circle cx="188" cy="341" r="3.9"/><circle cx="248" cy="341" r="3.9"/><circle cx="308" cy="341" r="3.9"/>
+<circle cx="188" cy="397" r="3.9"/><circle cx="248" cy="397" r="3.9"/><circle cx="308" cy="397" r="3.9"/>
+<circle cx="188" cy="453" r="3.9"/><circle cx="248" cy="453" r="3.9"/><circle cx="308" cy="453" r="3.9"/>
+</g>
+
+<!-- Grid lines — right -->
+<g stroke="#dff2ff" fill="none" stroke-linecap="round" opacity="0.09">
+<line x1="846" y1="198" x2="988" y2="198" stroke-width="2.1"/>
+<line x1="825" y1="240" x2="1010" y2="240" stroke-width="2.1"/>
+<line x1="819" y1="282" x2="1018" y2="282" stroke-width="2.1"/>
+<line x1="817" y1="324" x2="1020" y2="324" stroke-width="2.1"/>
+<line x1="817" y1="366" x2="1020" y2="366" stroke-width="2.1"/>
+<line x1="819" y1="408" x2="1018" y2="408" stroke-width="2.1"/>
+<line x1="825" y1="450" x2="1010" y2="450" stroke-width="2.1"/>
+<line x1="846" y1="492" x2="988" y2="492" stroke-width="2.1"/>
+</g>
+
+<!-- Inner arc highlights -->
+<path d="M 187,246 A 188,188 0 0 1 375,164" fill="none" stroke="#dff2ff" stroke-width="4.4" stroke-linecap="round" opacity="0.22"/>
+<path d="M 639,186 A 188,188 0 0 1 825,164" fill="none" stroke="#dff2ff" stroke-width="4.4" stroke-linecap="round" opacity="0.22"/>
+
+<!-- === FIGURE — deadlift stance === -->
+<g stroke="#dff2ff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <line x1="600" y1="320" x2="602" y2="472" stroke-width="30"/>
+  <line x1="580" y1="352" x2="524" y2="420" stroke-width="19.5"/>
+  <line x1="524" y1="420" x2="490" y2="444" stroke-width="17"/>
+  <line x1="620" y1="352" x2="676" y2="420" stroke-width="19.5"/>
+  <line x1="676" y1="420" x2="710" y2="444" stroke-width="17"/>
+  <line x1="584" y1="472" x2="536" y2="547" stroke-width="25"/>
+  <line x1="536" y1="547" x2="503" y2="601" stroke-width="21"/>
+  <line x1="616" y1="472" x2="665" y2="547" stroke-width="25"/>
+  <line x1="665" y1="547" x2="699" y2="601" stroke-width="21"/>
+</g>
+<circle cx="600" cy="291" r="28" fill="#dff2ff"/>
+
+<!-- Barbell bar -->
+<line x1="424" y1="444" x2="776" y2="444" stroke="#dff2ff" stroke-width="8.8" stroke-linecap="round"/>
+<!-- Plates left -->
+<rect x="424" y="420" width="25" height="52" rx="5" fill="#7a2048"/>
+<rect x="451" y="427" width="14" height="38" rx="3.5" fill="#2e3f8f"/>
+<!-- Plates right -->
+<rect x="751" y="420" width="25" height="52" rx="5" fill="#7a2048"/>
+<rect x="735" y="427" width="14" height="38" rx="3.5" fill="#2e3f8f"/>
+
+<!-- Foot pads -->
+<ellipse cx="503" cy="610" rx="28" ry="9.7" fill="#dff2ff" opacity="0.45"/>
+<ellipse cx="699" cy="610" rx="28" ry="9.7" fill="#dff2ff" opacity="0.45"/>
+
+<!-- Movement arcs left -->
+<g fill="none" stroke-linecap="round">
+<path d="M 170,520 Q 283,317 402,247" stroke="#dff2ff" stroke-width="2.1" opacity="0.18"/>
+<path d="M 142,548 Q 261,332 386,257" stroke="#dff2ff" stroke-width="1.2" opacity="0.11"/>
+<path d="M 198,492 Q 304,302 417,238" stroke="#dff2ff" stroke-width="1.2" opacity="0.11"/>
+<!-- Movement arcs right -->
+<path d="M 798,247 Q 917,317 1030,520" stroke="#dff2ff" stroke-width="2.1" opacity="0.18"/>
+<path d="M 814,257 Q 939,332 1058,548" stroke="#dff2ff" stroke-width="1.2" opacity="0.11"/>
+<path d="M 783,238 Q 896,302 1002,492" stroke="#dff2ff" stroke-width="1.2" opacity="0.11"/>
+</g>
+
+<!-- Vertical dashed connectors -->
+<g stroke="#dff2ff" stroke-linecap="round" fill="none" opacity="0.28">
+<line x1="600" y1="52" x2="600" y2="120" stroke-width="2.7" stroke-dasharray="7 9"/>
+<line x1="600" y1="614" x2="600" y2="654" stroke-width="2.7" stroke-dasharray="7 9"/>
+</g>
+<circle cx="600" cy="46" r="8" fill="#7a2048" opacity="0.75"/>
+<circle cx="600" cy="660" r="8" fill="#7a2048" opacity="0.75"/>
+
+<!-- Left icon — cross (physio) -->
+<rect x="353" y="343" width="42" height="9" rx="3.5" fill="#dff2ff" opacity="0.55"/>
+<rect x="370.5" y="326" width="9" height="42" rx="3.5" fill="#dff2ff" opacity="0.55"/>
+
+<!-- Right icon — dumbbell (fitness) -->
+<line x1="802" y1="352" x2="848" y2="352" stroke="#dff2ff" stroke-width="7" stroke-linecap="round" opacity="0.55"/>
+<circle cx="797" cy="352" r="11.5" fill="none" stroke="#dff2ff" stroke-width="6" opacity="0.55"/>
+<circle cx="853" cy="352" r="11.5" fill="none" stroke="#dff2ff" stroke-width="6" opacity="0.55"/>
+</svg>
