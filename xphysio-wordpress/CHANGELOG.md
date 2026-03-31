@@ -210,6 +210,9 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 - [ ] **⏰ GBP Sonderöffnungszeiten** – Vor Abreise in GBP eintragen: 02.04.–20.04.2026 als "Geschlossen" markieren
 - [ ] Search Console: noindex-Tag auf 1 unbekannte Seite prüfen (in WP-Admin/RankMath identifizieren)
 - [ ] Search Console: `/author/mitoloki/` + `/category/neuroathletik/` auf noindex setzen (via RankMath)
+- [ ] **⏰ 22.04.** Rückenschmerzen-Artikel publizieren
+- [ ] **⏰ 06.05.** Krankenkasse-Artikel publizieren
+- [ ] **⏰ 20.05.** Wellcome Fit-Artikel publizieren
 
 ---
 
