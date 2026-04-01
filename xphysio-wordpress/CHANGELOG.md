@@ -207,7 +207,7 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 - [x] RankMath Meta-Descriptions + Focus-Keywords gesetzt – alle 5 Artikel ✅
 - [x] Google Rich Results Test: grün ✅
 - [ ] **Backlog: Google Business Profile (GBP) Beiträge** – Nach Ferienrückkehr: neue Blog-Artikel manuell als GBP-Post publizieren (Teaser + Link)
-- [ ] **⏰ GBP Sonderöffnungszeiten** – Vor Abreise in GBP eintragen: 02.04.–20.04.2026 als "Geschlossen" markieren
+- [x] **GBP Sonderöffnungszeiten** – 02.04.–20.04.2026 als "Geschlossen" eingetragen ✅
 - [x] Search Console: noindex-Tag auf unbekannte Seite geprüft → AGB (ID 12) + Datenschutz (ID 11) = korrekt gewollt ✅
 - [x] Search Console: `/author/mitoloki/` + `/category/neuroathletik/` auf noindex gesetzt (via RankMath term/user meta) ✅
 - [ ] **⏰ 22.04.** Rückenschmerzen-Artikel publizieren
