@@ -208,8 +208,8 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 - [x] Google Rich Results Test: grün ✅
 - [ ] **Backlog: Google Business Profile (GBP) Beiträge** – Nach Ferienrückkehr: neue Blog-Artikel manuell als GBP-Post publizieren (Teaser + Link)
 - [ ] **⏰ GBP Sonderöffnungszeiten** – Vor Abreise in GBP eintragen: 02.04.–20.04.2026 als "Geschlossen" markieren
-- [ ] Search Console: noindex-Tag auf 1 unbekannte Seite prüfen (in WP-Admin/RankMath identifizieren)
-- [ ] Search Console: `/author/mitoloki/` + `/category/neuroathletik/` auf noindex setzen (via RankMath)
+- [x] Search Console: noindex-Tag auf unbekannte Seite geprüft → AGB (ID 12) + Datenschutz (ID 11) = korrekt gewollt ✅
+- [x] Search Console: `/author/mitoloki/` + `/category/neuroathletik/` auf noindex gesetzt (via RankMath term/user meta) ✅
 - [ ] **⏰ 22.04.** Rückenschmerzen-Artikel publizieren
 - [ ] **⏰ 06.05.** Krankenkasse-Artikel publizieren
 - [ ] **⏰ 20.05.** Wellcome Fit-Artikel publizieren
@@ -228,4 +228,5 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 | 2026-03-31 | Search Console + Rich Results | SEO-Redirects (.htaccess), Article-Schema erweitert, BFH-Studie publiziert |
 | 2026-03-31 | Alt-Texte + Blog-Header | Alt-Texte für alle Medien via WP-CLI gesetzt (inkl. BSc entfernt), Blog-Header SVGs für alle 5 Artikel |
 | 2026-03-31 | RankMath + Rich Results | Meta-Descriptions + Focus-Keywords für alle 5 Artikel gesetzt, Rich Results grün ✅ |
+| 2026-04-01 | Search Console noindex | /author/mitoloki/ + /category/neuroathletik/ auf noindex via RankMath; AGB+Datenschutz noindex bestätigt (korrekt) |
 
