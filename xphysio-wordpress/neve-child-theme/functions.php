@@ -598,6 +598,30 @@ function xphysio_page_schema() {
         echo "\n" . '<script type="application/ld+json">'
             . wp_json_encode( $article, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT )
             . '</script>' . "\n";
+
+        // FAQPage-Schema wenn FAQ-Items als Post-Meta gesetzt
+        $faq_json = get_post_meta( get_the_ID(), '_xphysio_faq_items', true );
+        if ( $faq_json ) {
+            $faq_items = json_decode( $faq_json, true );
+            if ( is_array( $faq_items ) && ! empty( $faq_items ) ) {
+                $entities = [];
+                foreach ( $faq_items as $item ) {
+                    $entities[] = [
+                        '@type'          => 'Question',
+                        'name'           => $item['q'],
+                        'acceptedAnswer' => [ '@type' => 'Answer', 'text' => $item['a'] ],
+                    ];
+                }
+                $faq_schema = [
+                    '@context'   => 'https://schema.org',
+                    '@type'      => 'FAQPage',
+                    'mainEntity' => $entities,
+                ];
+                echo "\n" . '<script type="application/ld+json">'
+                    . wp_json_encode( $faq_schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT )
+                    . '</script>' . "\n";
+            }
+        }
     }
 
     // ── KONTAKT: MedicalBusiness ──────────────────────────────────────────────
