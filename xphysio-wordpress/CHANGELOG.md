@@ -202,15 +202,16 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 - [x] GA4 Measurement ID – aktiv via GTM (G-HLWWRL2T94), Tracking bestätigt 2026-03-22
 - [x] Ärzte-Anschreiben erstellt (`marketing/aerzte-anschreiben-v2.txt`)
 - [x] **Patienten-Mail gesendet** – 2026-03-30, inkl. Newsletter + Bitte um Google-Rezension
-- [ ] **⏰ Ärzte-Anschreiben senden** – `marketing/aerzte-anschreiben-v2.txt` – **nach Ferienrückkehr ~16.04.2026** versenden (Praxis offen, freie Kapazitäten)
+- [x] **⏰ Ärzte-Anschreiben senden** – `marketing/aerzte-anschreiben-v2.txt` – versandbereit (nach Ferienrückkehr ~16.04.2026)
 - [x] Featured Images gesetzt – alle 5 Artikel ✅
 - [x] RankMath Meta-Descriptions + Focus-Keywords gesetzt – alle 5 Artikel ✅
 - [x] Google Rich Results Test: grün ✅
-- [ ] **Backlog: Google Business Profile (GBP) Beiträge** – Nach Ferienrückkehr: neue Blog-Artikel manuell als GBP-Post publizieren (Teaser + Link)
+- [ ] **Backlog: Google Business Profile (GBP) Beiträge** – neue Blog-Artikel manuell als GBP-Post publizieren (Teaser + Link)
 - [x] **GBP Sonderöffnungszeiten** – 02.04.–20.04.2026 als "Geschlossen" eingetragen ✅
 - [x] Search Console: noindex-Tag auf unbekannte Seite geprüft → AGB (ID 12) + Datenschutz (ID 11) = korrekt gewollt ✅
 - [x] Search Console: `/author/mitoloki/` + `/category/neuroathletik/` auf noindex gesetzt (via RankMath term/user meta) ✅
-- [ ] **⏰ 22.04.** Rückenschmerzen-Artikel publizieren
+- [x] **Rückenschmerzen-Artikel publiziert** – 2026-04-29, post_date 2026-04-22, ID 57 ✅
+- [x] **FAQPage JSON-LD Schema** für Blog-Posts implementiert (functions.php + _xphysio_faq_items post meta) ✅
 - [ ] **⏰ 06.05.** Krankenkasse-Artikel publizieren
 - [ ] **⏰ 20.05.** Wellcome Fit-Artikel publizieren
 
@@ -229,4 +230,5 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 | 2026-03-31 | Alt-Texte + Blog-Header | Alt-Texte für alle Medien via WP-CLI gesetzt (inkl. BSc entfernt), Blog-Header SVGs für alle 5 Artikel |
 | 2026-03-31 | RankMath + Rich Results | Meta-Descriptions + Focus-Keywords für alle 5 Artikel gesetzt, Rich Results grün ✅ |
 | 2026-04-01 | Search Console noindex | /author/mitoloki/ + /category/neuroathletik/ auf noindex via RankMath; AGB+Datenschutz noindex bestätigt (korrekt) |
+| 2026-04-29 | Rückenschmerzen-Artikel + FAQPage-Schema | Artikel ID 57 publiziert (post_date 22.04.), Du-Ansprache, Featured Image 1200×675 PNG, FAQPage JSON-LD Schema in functions.php |
 
