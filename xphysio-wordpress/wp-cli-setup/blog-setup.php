@@ -323,7 +323,7 @@ $posts[] = [
 <span class="faq-icon" aria-hidden="true">+</span>
 </button>
 <div class="faq-answer">
-<p>Ja – ein grosser Vorteil ist, dass viele Übungen überall und ohne Geräte durchgeführt werden können. Nach einer Einschätzung durch Michaela Tobler erhalten Sie ein individuelles Heimprogramm mit Videoanleitungen.</p>
+<p>Ja – ein grosser Vorteil ist, dass viele Übungen überall und ohne Geräte durchgeführt werden können. Michaela Tobler erklärt dir in der Therapie, welche Übungen du zu Hause machen kannst und wie sie richtig ausgeführt werden.</p>
 </div>
 </div>
 
