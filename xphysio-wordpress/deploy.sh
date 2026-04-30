@@ -26,6 +26,8 @@ LOCAL_THEME="$(dirname "$0")/neve-child-theme"
 LOCAL_UPLOADS="/Users/swentobler/Local Sites/xphysio/app/public/wp-content/uploads"
 LOCAL_PAGES="$(dirname "$0")/pages"
 LOCAL_WP_CLI="$(dirname "$0")/wp-cli-setup"
+LOCAL_HTACCESS="$(dirname "$0")/htaccess.txt"
+LOCAL_ROBOTS="$(dirname "$0")/robots.txt"
 
 DRY_RUN=false
 THEME_ONLY=false
@@ -50,6 +52,15 @@ echo "╔═══════════════════════�
 echo "║   xphysio.ch Deployment → Production     ║"
 echo "╚══════════════════════════════════════════╝"
 echo ""
+
+# ── 0. .htaccess + robots.txt ─────────────────────────────────
+if ! $DB_ONLY; then
+  echo "▶ [0/4] .htaccess + robots.txt deployen..."
+  scp -q "$LOCAL_HTACCESS" "${SSH_HOST}:${REMOTE_WP}/.htaccess"
+  echo "  ✓ .htaccess"
+  scp -q "$LOCAL_ROBOTS" "${SSH_HOST}:${REMOTE_WP}/robots.txt"
+  echo "  ✓ robots.txt"
+fi
 
 # ── 1. Theme-Dateien (komplettes Verzeichnis) ─────────────────
 # --delete: Dateien die lokal gelöscht wurden, auch auf Prod entfernen

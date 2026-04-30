@@ -2,7 +2,18 @@ User-agent: *
 Allow: /
 Disallow: /wp-admin/
 Disallow: /wp-login.php
+Disallow: /wp-content/plugins/
+Disallow: /wp-content/themes/
+Disallow: /author/
+Disallow: /feed/
+Disallow: /?s=
+Disallow: /search/
+Disallow: /datenschutzerklaerung/
+Disallow: /cookie-richtlinie-eu/
+Disallow: /agb/
+Disallow: /online-terminkalender/
 Allow: /wp-admin/admin-ajax.php
+Allow: /wp-content/uploads/
 
 # AI-Crawler – explizit erlaubt für bessere KI-Sichtbarkeit
 User-agent: GPTBot

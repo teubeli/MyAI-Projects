@@ -184,7 +184,13 @@ ServerSignature Off
 </IfModule>
 
 # ──────────────────────────────────────────────────────────────────────────────
-# 10. PHP-EINSTELLUNGEN (Infomaniak-spezifisch, falls erlaubt)
+# 10. 301-REDIRECTS (Bereinigung alter URLs)
+# ──────────────────────────────────────────────────────────────────────────────
+# Falsch verlinkte oder umbenannte URLs → Canonical-Ziel
+Redirect 301 /agbimpressum/ https://xphysio.ch/agb/
+
+# ──────────────────────────────────────────────────────────────────────────────
+# 11. PHP-EINSTELLUNGEN (Infomaniak-spezifisch, falls erlaubt)
 # ──────────────────────────────────────────────────────────────────────────────
 <IfModule mod_php.c>
     php_value upload_max_filesize  128M
