@@ -212,6 +212,8 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 - [x] Search Console: `/author/mitoloki/` + `/category/neuroathletik/` auf noindex gesetzt (via RankMath term/user meta) ✅
 - [x] **Rückenschmerzen-Artikel publiziert** – 2026-04-29, post_date 2026-04-22, ID 57 ✅
 - [x] **FAQPage JSON-LD Schema** für Blog-Posts implementiert (functions.php + _xphysio_faq_items post meta) ✅
+- [x] **Search Console Fixes deployed** – 2026-04-30 ✅
+- [ ] **⏰ GSC: 5 Seiten re-submit** – kontakt, ueber-mich, blog, angebot, behandlungsmethoden manuell in Search Console erneut zur Überprüfung einreichen (Seiten antworten 200 OK – nur GSC-Cache veraltet)
 - [ ] **⏰ 06.05.** Krankenkasse-Artikel publizieren
 - [ ] **⏰ 20.05.** Wellcome Fit-Artikel publizieren
 
@@ -231,4 +233,5 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 | 2026-03-31 | RankMath + Rich Results | Meta-Descriptions + Focus-Keywords für alle 5 Artikel gesetzt, Rich Results grün ✅ |
 | 2026-04-01 | Search Console noindex | /author/mitoloki/ + /category/neuroathletik/ auf noindex via RankMath; AGB+Datenschutz noindex bestätigt (korrekt) |
 | 2026-04-29 | Rückenschmerzen-Artikel + FAQPage-Schema | Artikel ID 57 publiziert (post_date 22.04.), Du-Ansprache, Featured Image 1200×675 PNG, FAQPage JSON-LD Schema in functions.php |
+| 2026-04-30 | Search Console Fixes | robots.txt (Disallow Regeln), .htaccess (301 /agbimpressum/→/agb/), deploy.sh (.htaccess+robots.txt Deploy-Schritt 0), RankMath Breadcrumbs aktiviert |
 
