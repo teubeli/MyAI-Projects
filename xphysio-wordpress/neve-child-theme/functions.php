@@ -1097,10 +1097,19 @@ function xphysio_ga4_conversions() {
 <script>
 (function(){
     window.dataLayer = window.dataLayer || [];
-    // CF7 Kontaktformular erfolgreich abgesendet
-    document.addEventListener('wpcf7mailsent', function() {
-        dataLayer.push({'event': 'kontakt_formular_gesendet'});
-    });
+    // CF7: MutationObserver auf .wpcf7-form class="sent" (zuverlässiger als wpcf7mailsent Event)
+    (function() {
+        var form = document.querySelector('.wpcf7-form');
+        if (!form) return;
+        var fired = false;
+        new MutationObserver(function(mutations, obs) {
+            if (!fired && form.classList.contains('sent')) {
+                fired = true;
+                obs.disconnect();
+                dataLayer.push({'event': 'kontakt_formular_gesendet'});
+            }
+        }).observe(form, {attributes: true, attributeFilter: ['class']});
+    })();
     // CTA "Termin buchen" – alle Links auf /online-buchen/ + Header-CTA
     document.querySelectorAll('a[href*="online-buchen"], .menu-cta a').forEach(function(el) {
         el.addEventListener('click', function() {
