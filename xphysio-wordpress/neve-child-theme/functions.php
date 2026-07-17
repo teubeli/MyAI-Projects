@@ -792,7 +792,7 @@ function xphysio_gtm_head() {
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-PTL8GNJS');
   }
-  if(window.location.pathname.indexOf('/kontakt')===0){
+  if(window.location.pathname.indexOf('/kontakt')===0||window.location.pathname.indexOf('/online-buchen')===0){
     loadGTM();
   } else {
     ['scroll','click','keydown','touchstart','mouseover'].forEach(function(e){
