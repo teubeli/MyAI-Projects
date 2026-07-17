@@ -1080,3 +1080,30 @@ add_action( 'phpmailer_init', function( $phpmailer ) {
     $phpmailer->FromName   = 'xphysio Wetzikon';
     $phpmailer->addReplyTo( 'xphysio@hin.physio', 'xphysio Wetzikon' );
 } );
+
+// ============================================================
+// 12. GA4 SCHLÜSSELEREIGNISSE – Conversion Tracking via dataLayer
+//     Ereignisse werden an GTM übergeben → GA4 verarbeitet sie.
+//     In GA4 Admin als Schlüsselereignis markieren:
+//     "kontakt_formular_gesendet" und "cta_termin_klick"
+// ============================================================
+add_action( 'wp_footer', 'xphysio_ga4_conversions', 20 );
+function xphysio_ga4_conversions() {
+    ?>
+<script>
+(function(){
+    window.dataLayer = window.dataLayer || [];
+    // CF7 Kontaktformular erfolgreich abgesendet
+    document.addEventListener('wpcf7mailsent', function() {
+        dataLayer.push({'event': 'kontakt_formular_gesendet'});
+    });
+    // CTA "Termin buchen" – alle Links auf /online-buchen/ + Header-CTA
+    document.querySelectorAll('a[href*="online-buchen"], .menu-cta a').forEach(function(el) {
+        el.addEventListener('click', function() {
+            dataLayer.push({'event': 'cta_termin_klick'});
+        });
+    });
+})();
+</script>
+    <?php
+}
