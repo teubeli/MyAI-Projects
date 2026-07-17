@@ -219,6 +219,7 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 - [x] **GSC Redirect-Fehler behoben** – .htaccess RedirectMatch + 3x 404-Redirects, "Fehlerbehebung überprüfen" geklickt ✅
 - [x] **GA4 Conversion Tracking** – cta_termin_klick + kontakt_formular_gesendet via GTM, in DebugView bestätigt ✅
 - [ ] **⏰ GA4 Schlüsselereignisse** – kontakt_formular_gesendet + cta_termin_klick in GA4 Admin als ⭐ markieren (erscheinen nach ~24h)
+- [ ] **⏰ Medidoc Buchungs-Tracking** – SoftPlus Support angefragt (2026-07-17): Gibt es Redirect-URL / Webhook nach Buchung für GA4? postMessage liefert nur `{"msg":"iframeDocumentReady"}` ohne Seitentyp → zuverlässiges `termin_gebucht`-Tracking nur mit SoftPlus-Unterstützung möglich
 
 ---
 
@@ -240,4 +241,5 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 | 2026-07-17 | Blog-Artikel Status | Krankenkasse-Artikel (ID 59) via WP-CLI auf publish gesetzt, Datum auf heute; Wellcome Fit (ID 70) bleibt draft |
 | 2026-07-17 | GSC Fixes | .htaccess: 301-Redirects für /anfahrt/, /online-terminkalender/, /begriffserlaerung/ + 2-Hop-Fix Hauptseiten (RedirectMatch); GSC "Fehlerbehebung überprüfen" geklickt |
 | 2026-07-17 | GA4 Conversion Tracking | GTM: cta_termin_klick + kontakt_formular_gesendet (MutationObserver); GTM sofort auf /kontakt/ laden; beide Events in DebugView bestätigt |
+| 2026-07-17 | Medidoc Funnel-Tracking | postMessage nur {"msg":"iframeDocumentReady"} – keine URL, kein Seitentyp → URL-basiertes + Step-Count-Tracking beide unmöglich; SoftPlus Support angefragt re Redirect-URL |
 
