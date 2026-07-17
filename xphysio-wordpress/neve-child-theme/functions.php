@@ -780,7 +780,7 @@ function xphysio_dequeue_cf7_selectively() {
 add_action( 'wp_head', 'xphysio_gtm_head', 1 );
 function xphysio_gtm_head() {
     ?>
-<!-- Google Tag Manager – lazy load -->
+<!-- Google Tag Manager – lazy load (sofort auf /kontakt/ wegen CF7-Conversion) -->
 <script>
 (function(){
   var gtmLoaded=false;
@@ -792,10 +792,14 @@ function xphysio_gtm_head() {
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-PTL8GNJS');
   }
-  ['scroll','click','keydown','touchstart','mouseover'].forEach(function(e){
-    window.addEventListener(e,loadGTM,{once:true,passive:true});
-  });
-  setTimeout(loadGTM,2000);
+  if(window.location.pathname.indexOf('/kontakt')===0){
+    loadGTM();
+  } else {
+    ['scroll','click','keydown','touchstart','mouseover'].forEach(function(e){
+      window.addEventListener(e,loadGTM,{once:true,passive:true});
+    });
+    setTimeout(loadGTM,2000);
+  }
 })();
 </script>
 <!-- End Google Tag Manager -->
