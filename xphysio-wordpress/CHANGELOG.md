@@ -214,8 +214,8 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 - [x] **FAQPage JSON-LD Schema** für Blog-Posts implementiert (functions.php + _xphysio_faq_items post meta) ✅
 - [x] **Search Console Fixes deployed** – 2026-04-30 ✅
 - [ ] **⏰ GSC: 5 Seiten re-submit** – kontakt, ueber-mich, blog, angebot, behandlungsmethoden manuell in Search Console erneut zur Überprüfung einreichen (Seiten antworten 200 OK – nur GSC-Cache veraltet)
-- [ ] **⏰ 06.05.** Krankenkasse-Artikel publizieren
-- [ ] **⏰ 20.05.** Wellcome Fit-Artikel publizieren
+- [x] **Krankenkasse-Artikel publiziert** – 2026-07-17, ID 59 ✅
+- [ ] **⏰ Wellcome Fit-Artikel publizieren** – ID 70, noch draft
 
 ---
 
@@ -234,4 +234,5 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 | 2026-04-01 | Search Console noindex | /author/mitoloki/ + /category/neuroathletik/ auf noindex via RankMath; AGB+Datenschutz noindex bestätigt (korrekt) |
 | 2026-04-29 | Rückenschmerzen-Artikel + FAQPage-Schema | Artikel ID 57 publiziert (post_date 22.04.), Du-Ansprache, Featured Image 1200×675 PNG, FAQPage JSON-LD Schema in functions.php |
 | 2026-04-30 | Search Console Fixes | robots.txt (Disallow Regeln), .htaccess (301 /agbimpressum/→/agb/), deploy.sh (.htaccess+robots.txt Deploy-Schritt 0), RankMath Breadcrumbs aktiviert |
+| 2026-07-17 | Blog-Artikel Status | Krankenkasse-Artikel (ID 59) via WP-CLI auf publish gesetzt; Wellcome Fit (ID 70) bleibt draft |
 
