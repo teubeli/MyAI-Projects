@@ -1116,6 +1116,22 @@ function xphysio_ga4_conversions() {
             dataLayer.push({'event': 'cta_termin_klick'});
         });
     });
+    // Medidoc Buchungs-Funnel via postMessage (iframeDocumentReady = je 1x pro Schritt)
+    // Schritt 1=Laden, 2=Termin gewählt, 3=Formular ausgefüllt, 4=Buchung bestätigt
+    (function() {
+        var steps = 0;
+        window.addEventListener('message', function(e) {
+            if (e.origin !== 'https://onlinecalendar.medidoc.ch') return;
+            try {
+                var d = typeof e.data === 'string' ? JSON.parse(e.data) : e.data;
+                if (d.msg !== 'iframeDocumentReady') return;
+                steps++;
+                if (steps === 2) dataLayer.push({'event': 'medidoc_termin_gewaehlt'});
+                if (steps === 3) dataLayer.push({'event': 'medidoc_formular_ausgefuellt'});
+                if (steps === 4) dataLayer.push({'event': 'termin_gebucht'});
+            } catch(err) {}
+        });
+    })();
 })();
 </script>
     <?php
