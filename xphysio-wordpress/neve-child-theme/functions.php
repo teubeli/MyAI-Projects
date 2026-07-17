@@ -1126,9 +1126,9 @@ function xphysio_ga4_conversions() {
                 var d = typeof e.data === 'string' ? JSON.parse(e.data) : e.data;
                 if (d.msg !== 'iframeDocumentReady') return;
                 steps++;
-                if (steps === 2) dataLayer.push({'event': 'medidoc_termin_gewaehlt'});
-                if (steps === 3) dataLayer.push({'event': 'medidoc_formular_ausgefuellt'});
-                if (steps === 4) dataLayer.push({'event': 'termin_gebucht'});
+                if (steps === 3) dataLayer.push({'event': 'medidoc_termin_gewaehlt'});
+                if (steps === 4) dataLayer.push({'event': 'medidoc_formular_geladen'});
+                if (steps === 5) dataLayer.push({'event': 'termin_gebucht'});
             } catch(err) {}
         });
     })();
