@@ -220,6 +220,7 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 - [x] **GA4 Conversion Tracking** – cta_termin_klick + kontakt_formular_gesendet via GTM, in DebugView bestätigt ✅
 - [ ] **⏰ GA4 Schlüsselereignisse** – kontakt_formular_gesendet + cta_termin_klick in GA4 Admin als ⭐ markieren (erscheinen nach ~24h)
 - [ ] **⏰ Medidoc Buchungs-Tracking** – SoftPlus Support angefragt (2026-07-17): Gibt es Redirect-URL / Webhook nach Buchung für GA4? postMessage liefert nur `{"msg":"iframeDocumentReady"}` ohne Seitentyp → zuverlässiges `termin_gebucht`-Tracking nur mit SoftPlus-Unterstützung möglich
+- [ ] **⏰ Öffnungszeiten / Kalender** – zusätzliche Öffnungszeiten definieren + auf Website publizieren; Medidoc-Kalender entsprechend freischalten
 
 ---
 
