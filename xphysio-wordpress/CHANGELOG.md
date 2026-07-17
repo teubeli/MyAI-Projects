@@ -214,8 +214,11 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 - [x] **FAQPage JSON-LD Schema** für Blog-Posts implementiert (functions.php + _xphysio_faq_items post meta) ✅
 - [x] **Search Console Fixes deployed** – 2026-04-30 ✅
 - [ ] **⏰ GSC: 5 Seiten re-submit** – kontakt, ueber-mich, blog, angebot, behandlungsmethoden manuell in Search Console erneut zur Überprüfung einreichen (Seiten antworten 200 OK – nur GSC-Cache veraltet)
-- [x] **Krankenkasse-Artikel publiziert** – 2026-07-17, ID 59 ✅
+- [x] **Krankenkasse-Artikel publiziert** – 2026-07-17, ID 59, Datum 17.07.2026 ✅
 - [ ] **⏰ Wellcome Fit-Artikel publizieren** – ID 70, noch draft
+- [x] **GSC Redirect-Fehler behoben** – .htaccess RedirectMatch + 3x 404-Redirects, "Fehlerbehebung überprüfen" geklickt ✅
+- [x] **GA4 Conversion Tracking** – cta_termin_klick + kontakt_formular_gesendet via GTM, in DebugView bestätigt ✅
+- [ ] **⏰ GA4 Schlüsselereignisse** – kontakt_formular_gesendet + cta_termin_klick in GA4 Admin als ⭐ markieren (erscheinen nach ~24h)
 
 ---
 
@@ -234,5 +237,7 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 | 2026-04-01 | Search Console noindex | /author/mitoloki/ + /category/neuroathletik/ auf noindex via RankMath; AGB+Datenschutz noindex bestätigt (korrekt) |
 | 2026-04-29 | Rückenschmerzen-Artikel + FAQPage-Schema | Artikel ID 57 publiziert (post_date 22.04.), Du-Ansprache, Featured Image 1200×675 PNG, FAQPage JSON-LD Schema in functions.php |
 | 2026-04-30 | Search Console Fixes | robots.txt (Disallow Regeln), .htaccess (301 /agbimpressum/→/agb/), deploy.sh (.htaccess+robots.txt Deploy-Schritt 0), RankMath Breadcrumbs aktiviert |
-| 2026-07-17 | Blog-Artikel Status | Krankenkasse-Artikel (ID 59) via WP-CLI auf publish gesetzt; Wellcome Fit (ID 70) bleibt draft |
+| 2026-07-17 | Blog-Artikel Status | Krankenkasse-Artikel (ID 59) via WP-CLI auf publish gesetzt, Datum auf heute; Wellcome Fit (ID 70) bleibt draft |
+| 2026-07-17 | GSC Fixes | .htaccess: 301-Redirects für /anfahrt/, /online-terminkalender/, /begriffserlaerung/ + 2-Hop-Fix Hauptseiten (RedirectMatch); GSC "Fehlerbehebung überprüfen" geklickt |
+| 2026-07-17 | GA4 Conversion Tracking | GTM: cta_termin_klick + kontakt_formular_gesendet (MutationObserver); GTM sofort auf /kontakt/ laden; beide Events in DebugView bestätigt |
 
