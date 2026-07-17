@@ -195,12 +195,12 @@ Redirect 301 /online-terminkalender/ https://xphysio.ch/online-buchen/
 Redirect 301 /begriffserlaerung/ https://xphysio.ch/behandlungsmethoden/
 
 # 2-Hop-Fix: Hauptseiten ohne Trailing-Slash direkt auf kanonische URL (HTTPS + /)
-# Verhindert HTTP→HTTPS + WP-Trailing-Slash = 2 Hops (GSC "Umleitungsfehler")
-Redirect 301 /behandlungsmethoden https://xphysio.ch/behandlungsmethoden/
-Redirect 301 /angebot https://xphysio.ch/angebot/
-Redirect 301 /blog https://xphysio.ch/blog/
-Redirect 301 /kontakt https://xphysio.ch/kontakt/
-Redirect 301 /ueber-mich https://xphysio.ch/ueber-mich/
+# RedirectMatch mit ^/slug$ = exakter Match, verhindert Prefix-Loop (/blog/ → /blog//)
+RedirectMatch 301 ^/behandlungsmethoden$ https://xphysio.ch/behandlungsmethoden/
+RedirectMatch 301 ^/angebot$ https://xphysio.ch/angebot/
+RedirectMatch 301 ^/blog$ https://xphysio.ch/blog/
+RedirectMatch 301 ^/kontakt$ https://xphysio.ch/kontakt/
+RedirectMatch 301 ^/ueber-mich$ https://xphysio.ch/ueber-mich/
 
 # ──────────────────────────────────────────────────────────────────────────────
 # 11. PHP-EINSTELLUNGEN (Infomaniak-spezifisch, falls erlaubt)
