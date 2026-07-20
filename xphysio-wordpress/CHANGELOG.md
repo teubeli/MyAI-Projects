@@ -221,6 +221,7 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 - [ ] **⏰ GA4 Schlüsselereignisse** – kontakt_formular_gesendet + cta_termin_klick in GA4 Admin als ⭐ markieren (erscheinen nach ~24h)
 - [ ] **⏰ Medidoc Buchungs-Tracking** – SoftPlus Support angefragt (2026-07-17): Gibt es Redirect-URL / Webhook nach Buchung für GA4? postMessage liefert nur `{"msg":"iframeDocumentReady"}` ohne Seitentyp → zuverlässiges `termin_gebucht`-Tracking nur mit SoftPlus-Unterstützung möglich
 - [ ] **⏰ Öffnungszeiten / Kalender** – zusätzliche Öffnungszeiten definieren + auf Website publizieren; Medidoc-Kalender entsprechend freischalten
+- [x] **GSC "Nicht gefunden (404)"-Bericht analysiert** – 2026-07-20: `/anfahrt/` (Redirect ok, Indexierung beantragt), `/agbimpressum/` (Redirect → `/agb/`, dort korrekt robots.txt-blockiert, kein Fix nötig), `/wp-content/*` (False-Positive aus WP Speculative-Loading-JSON, dauerhaft ignorieren) ✅
 
 ---
 
@@ -243,4 +244,5 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 | 2026-07-17 | GSC Fixes | .htaccess: 301-Redirects für /anfahrt/, /online-terminkalender/, /begriffserlaerung/ + 2-Hop-Fix Hauptseiten (RedirectMatch); GSC "Fehlerbehebung überprüfen" geklickt |
 | 2026-07-17 | GA4 Conversion Tracking | GTM: cta_termin_klick + kontakt_formular_gesendet (MutationObserver); GTM sofort auf /kontakt/ laden; beide Events in DebugView bestätigt |
 | 2026-07-17 | Medidoc Funnel-Tracking | postMessage nur {"msg":"iframeDocumentReady"} – keine URL, kein Seitentyp → URL-basiertes + Step-Count-Tracking beide unmöglich; SoftPlus Support angefragt re Redirect-URL |
+| 2026-07-20 | GSC 404-Bericht Deep-Dive | Live in Search Console (Konto mitoloki@gmail.com) geprüft: `/anfahrt/` Redirect funktioniert, Live-Test grün, Indexierung beantragt; `/agbimpressum/` redirectet auf robots.txt-blockierte `/agb/` (gewollt, kein Fix); `/wp-content/*` als False-Positive aus WordPress Speculative-Loading-JSON identifiziert (Prefetch-Ausschlussmuster, kein echter Link) – wird ignoriert |
 
