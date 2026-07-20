@@ -223,7 +223,7 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 - [ ] **⏰ Öffnungszeiten / Kalender** – zusätzliche Öffnungszeiten definieren + auf Website publizieren; Medidoc-Kalender entsprechend freischalten
 - [x] **GSC "Nicht gefunden (404)"-Bericht analysiert** – 2026-07-20: `/anfahrt/` (Redirect ok, Indexierung beantragt), `/agbimpressum/` (Redirect → `/agb/`, dort korrekt robots.txt-blockiert, kein Fix nötig), `/wp-content/*` (False-Positive aus WP Speculative-Loading-JSON, dauerhaft ignorieren) ✅
 - [x] **GA4 Auswertung geprüft** – 2026-07-20: Bot-Traffic aus USA (Flint Hill/Phoenix/San Jose, ~68% der "Nutzer") identifiziert; einzige Conversion-Events stammen vom Team-Test vom 17.07. – echte Nutzerdaten liegen noch nicht vor ✅
-- [ ] **⏰ Bot-Traffic-Filter in GA4** – US-Städte (Flint Hill, Phoenix, San Jose) verzerren Nutzerstatistiken massiv; Geo-Filter/Vergleich auf Schweiz einrichten
+- [x] **GA4 Vergleich "Schweiz" eingerichtet** – gespeicherter Vergleich (Land = Switzerland) in GA4 erstellt, blendet US-Bot-Traffic (Flint Hill, Phoenix, San Jose) in Berichten aus; über "Vergleich hinzufügen" in jedem Bericht verfügbar ✅
 - [ ] **⏰ Interner Traffic-Filter GA4** – eigene IP als "Internal Traffic" definieren, damit künftiges Team-Testing nicht mehr in den echten Nutzerzahlen landet
 - [ ] **⏰ GA4 Real-Daten abwarten** – ab 17.07. korrekt getrackt; erste aussagekräftige Auswertung der Patienten-Conversions frühestens nach 2-3 Wochen echtem Traffic sinnvoll
 
