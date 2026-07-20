@@ -224,7 +224,9 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 - [x] **GSC "Nicht gefunden (404)"-Bericht analysiert** – 2026-07-20: `/anfahrt/` (Redirect ok, Indexierung beantragt), `/agbimpressum/` (Redirect → `/agb/`, dort korrekt robots.txt-blockiert, kein Fix nötig), `/wp-content/*` (False-Positive aus WP Speculative-Loading-JSON, dauerhaft ignorieren) ✅
 - [x] **GA4 Auswertung geprüft** – 2026-07-20: Bot-Traffic aus USA (Flint Hill/Phoenix/San Jose, ~68% der "Nutzer") identifiziert; einzige Conversion-Events stammen vom Team-Test vom 17.07. – echte Nutzerdaten liegen noch nicht vor ✅
 - [x] **GA4 Vergleich "Schweiz" eingerichtet** – gespeicherter Vergleich (Land = Switzerland) in GA4 erstellt, blendet US-Bot-Traffic (Flint Hill, Phoenix, San Jose) in Berichten aus; über "Vergleich hinzufügen" in jedem Bericht verfügbar ✅
-- [ ] **⏰ Interner Traffic-Filter GA4** – eigene IP als "Internal Traffic" definieren, damit künftiges Team-Testing nicht mehr in den echten Nutzerzahlen landet
+- [x] **GA4 Interner Traffic-Regel erstellt** – IP 178.197.210.50/32 (aktuelle Swisscom-IP, vermutlich dynamisch) als "Team-Testing (Swen/Michaela)" hinterlegt in Internen-Traffic-Regeln; zugehöriger Datenfilter "Internal Traffic" bewusst im Status "Test" belassen (Google-Empfehlung: erst einige Tage beobachten, dann aktivieren – bei dynamischer IP sonst Risiko, später echte Patienten fälschlich auszuschliessen) ✅
+- [ ] **⏰ GA4 Internal-Traffic-Filter aktivieren** – nach ein paar Tagen prüfen (Dimension "Name des Testdatenfilters" in Berichten), ob nur eigener Traffic erfasst wird, dann Filter in Verwaltung → Datenfilter von "Test" auf "Aktiv" setzen. Bei IP-Wechsel Regel unter Datenstream → Google-Tag → Internen Traffic definieren aktualisieren
+- [ ] **⏰ GA-Opt-out-Erweiterung installieren** – https://tools.google.com/dlpage/gaoptout im Test-Browser installieren als IP-unabhängige Ergänzung/Alternative zum internen Traffic-Filter
 - [ ] **⏰ GA4 Real-Daten abwarten** – ab 17.07. korrekt getrackt; erste aussagekräftige Auswertung der Patienten-Conversions frühestens nach 2-3 Wochen echtem Traffic sinnvoll
 
 ---
