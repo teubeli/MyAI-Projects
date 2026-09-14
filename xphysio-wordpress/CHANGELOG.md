@@ -218,6 +218,7 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 - [x] **robots.txt Fix: `/online-terminkalender/`** – 2026-09-14: `Disallow: /online-terminkalender/` blockierte Googlebot am Crawlen des eigenen 301-Redirects zu `/online-buchen/` → GSC-Warnung "Indexiert, obwohl durch robots.txt blockiert". Zeile entfernt, committed (`b715f44`), deployed, live verifiziert ✅
 - [x] **Krankenkasse-Artikel publiziert** – 2026-07-17, ID 59, Datum 17.07.2026 ✅
 - [ ] **⏰ Wellcome Fit-Artikel publizieren** – ID 70, noch draft
+- [ ] **⏰ Blog-Artikel "Vollzeit ab Dezember"** – 2026-09-14 als Draft angelegt (ID 162, Kategorie Praxis & Wissen): Vorankündigung, dass Michaela ab 1.12.2026 zu 100% in der Praxis arbeitet, Kalender/Verfügbarkeit dadurch ausgebaut wird. Bewusst ohne Begründung für den Wechsel und ohne Vormerk-Hinweis. Publizieren erst NACH konkreter Öffnungszeiten-Planung. Folgeartikel mit exakten neuen Zeiten geplant für Mitte November 2026
 - [x] **GSC Redirect-Fehler behoben** – .htaccess RedirectMatch + 3x 404-Redirects, "Fehlerbehebung überprüfen" geklickt ✅
 - [x] **GA4 Conversion Tracking** – cta_termin_klick + kontakt_formular_gesendet via GTM, in DebugView bestätigt ✅
 - [x] **GA4 Schlüsselereignisse** – korrekt via GTM definiert, am 17.07.2026 extensiv getestet ✅
