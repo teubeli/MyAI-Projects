@@ -9,8 +9,9 @@
 1. Dateien im Repo editieren (`neve-child-theme/`, `pages/`, etc.)
 2. Local WP reflektiert Änderungen sofort (Symlink: `neve-child → neve-child-theme/`)
 3. Im Browser auf Local WP testen
-4. `git add` + `git commit` + `git push`
-5. `bash deploy.sh` → Prod
+4. `CHANGELOG.md` aktualisieren (neuer Punkt unter "Offene Punkte" + Zeile in "Session-Notizen") – Pflicht bei **jeder** bedeutsamen Session, nicht nur bei Code-Änderungen (z.B. auch reine Analysen/Checks wie GSC- oder GA4-Prüfungen)
+5. `git add` + `git commit` + `git push`
+6. `bash deploy.sh` → Prod
 
 ## neve-child-theme/ – Symlink
 `/Local Sites/xphysio/.../themes/neve-child` → `/MyAI-Projects/xphysio-wordpress/neve-child-theme`
