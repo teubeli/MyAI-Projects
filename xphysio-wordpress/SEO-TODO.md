@@ -66,7 +66,7 @@ Geprüft am 2026-09-29 (eingeloggt als Profil-Admin). Eintrag ist verifiziert un
 - [x] 🔧🙋 **Kein Logo hinterlegt** – am 2026-10-02 geprüft: Pfeil-Logo ist bereits im Profil hinterlegt ✅
 - [x] 🔧🙋 **Nur 4 Fotos insgesamt** – 2026-10-02: 4 neue Fotos hochgeladen (Empfang mit Michaela, 3× Behandlungsraum), jetzt 8 Fotos + Titelbild (Prüfung durch Google ausstehend). Upload-Dateien liegen unter `marketing/gbp-fotos/` ✅
 - [ ] 🙋 **Nur 4 Google-Rezensionen** (4,3 ★) – siehe Priorität 1, reine Patientenansprache
-- [ ] 🔧🙋 **GBP-Beiträge** – erster Beitrag (Krankenkasse-Artikel) am 2026-10-02 veröffentlicht. Rhythmus: alle 1–2 Wochen ein bestehender Artikel (nächste: Rückenschmerzen, Neuroathletik, chronische Krankheiten) + bei jedem neuen Artikel. Vorlagen/Bilder unter `marketing/gbp-beitraege/`, Links mit UTM (`utm_source=google&utm_medium=gbp_post&utm_campaign=<thema>`)
+- [ ] 🔧🙋 **GBP-Beiträge** – Wochenrhythmus (freitags 08:00). Veröffentlicht: 02.10. Krankenkasse. Geplant in GBP: 09.10. Rückenschmerzen, 16.10. Neuroathletik, 23.10. Chronische Krankheiten. Danach: Sturzprävention, Wellcome Fit, Vollzeit-Ankündigung (sobald publiziert) – ab 30.10. neue Beiträge nötig. Vorlagen/Bilder unter `marketing/gbp-beitraege/`, Links mit UTM (`utm_medium=gbp_post`)
 - [ ] 🔧 Zweitkategorie prüfen (z. B. "Sportphysiotherapeut" falls von Google angeboten) – kann ich direkt im Profil setzen
 - [ ] 🔧 Dienstleistungen/Leistungen-Liste im Profil vervollständigen (Abgleich mit `/angebot/`) – kann ich direkt eintragen
 - [ ] 🙋 **local.ch-Eintrag ohne Öffnungszeiten** – kein Zugriff meinerseits, **braucht dich** (oder Zugangsdaten für mich)
