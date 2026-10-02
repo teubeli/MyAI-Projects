@@ -1,7 +1,7 @@
 /*
 Theme Name:  Neve Child
 Template:    neve
-Version:     1.0.1
+Version:     1.0.2
 Description: xphysio.ch – Physiotherapie Wetzikon | Child-Theme für Neve
 Author:      xphysio – Michaela Tobler
 Text Domain: neve-child
@@ -11,3 +11,6 @@ Text Domain: neve-child
 
 /* Blog: CTA-Box am Artikelende */
 .xp-post-cta{background:var(--color-hellblau);border-left:4px solid var(--color-navy);border-radius:var(--radius);padding:28px 32px;margin:48px 0 0}.xp-post-cta__title{font-size:clamp(1.25rem,2.2vw,1.5rem);margin-bottom:8px}.xp-post-cta__text{color:var(--color-text);margin-bottom:20px}.xp-post-cta__actions{display:flex;flex-wrap:wrap;gap:12px}.xp-post-cta .btn-primary,.xp-post-cta .btn-outline{text-decoration:none}.xp-post-cta .btn-outline{background:var(--color-white)}.xp-post-cta .btn-outline:hover{background:var(--color-navy);color:var(--color-white)}@media(max-width:600px){.xp-post-cta{padding:22px 20px}.xp-post-cta__actions a{width:100%;justify-content:center}}
+
+/* Behandlungsmethoden: dezenter Buchungs-Button pro Methode */
+.xp-method-cta{padding:9px 20px;font-size:.9rem;margin-top:4px}.xp-method-cta:hover{transform:translateY(-1px);box-shadow:0 3px 10px rgba(122,32,72,.25)}@media(max-width:600px){.xp-method-cta{white-space:normal;text-align:center}}

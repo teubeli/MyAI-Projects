@@ -42,12 +42,13 @@ Sortiert nach geschätztem Ranking-Impact ÷ Aufwand. Wir arbeiten das Stück f�
 ## B. Behandlungsmethoden (`/behandlungsmethoden/`)
 
 - [ ] 🔧 Interne Verlinkung von der Startseite verstärken: prominenter Link mit Keyword-Ankertext (z. B. "Physiotherapie-Behandlungsmethoden in Wetzikon" statt nur "Behandlungsmethoden")
+- [x] 🔧 Pro Methode dezenter Buchungs-Button "Termin für <Methode> buchen" (2026-10-02) ✅
 - [ ] 🔧 Inhalt vertiefen: je Methode (Maitland, Neuroathletik, kPNI) einen eigenen, längeren Abschnitt mit konkretem Nutzen für Patient:innen statt Kurzbeschreibung
 - [ ] 🔧 Zwischenüberschriften (H2/H3) mit den Suchbegriffen abgleichen, für die die Seite ranken soll ("Neuroathletik Wetzikon", "Maitland Physiotherapie" etc.)
 
 ## C. Internes Verlinken (generell)
 
-- [ ] 🔧 Blog-Artikel "Was ist Neuroathletik" (Pos. 11, 59 Impr.) stärker mit `/behandlungsmethoden/` und `/angebot/` verlinken (Linkkraft weiterreichen)
+- [x] 🔧 Blog → Behandlungsmethoden verlinkt (2026-10-02): 9 kontextuelle Links mit Methoden-Ankertext in 4 Artikeln (Rücken 3, Neuroathletik 2, Krankenkasse 2 + Satz zu /angebot/, Chronische Krankheiten 2), Sprungziele #manuelle-therapie/#mtt/#neuroathletik/#schwindeltherapie ✅
 - [ ] 🔧 Blog-Artikel "Physiotherapie & Krankenkasse" (Pos. 11,7, 235 Impr. – zweithöchstes Volumen nach der Startseite!) prominenter von Startseite/Angebot aus verlinken
 - [ ] 🔧 Footer-Navigation prüfen: verlinkt sie alle Hauptseiten mit sprechenden Ankertexten (kein reines "mehr")?
 
