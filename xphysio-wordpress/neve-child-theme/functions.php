@@ -1079,6 +1079,14 @@ function xphysio_blog_post_wrap( $content ) {
     return $before . $content . $after;
 }
 
+// Kommentarformular: WP-Standardtexte (Sie-Form) auf Du-Ansprache umstellen
+add_filter( 'comment_form_defaults', 'xphysio_comment_form_du' );
+function xphysio_comment_form_du( $defaults ) {
+    $defaults['title_reply']          = 'Schreib einen Kommentar';
+    $defaults['comment_notes_before'] = '<p class="comment-notes"><span id="email-notes">Deine E-Mail-Adresse wird nicht veröffentlicht.</span> <span class="required-field-message">Pflichtfelder sind mit <span class="required">*</span> markiert</span></p>';
+    return $defaults;
+}
+
 // ============================================================
 // 11. SMTP – Ausgehende Mails via hallo@xphysio.ch (Infomaniak)
 //     Passwort als Konstante in wp-config.php: SMTP_PASSWORD
