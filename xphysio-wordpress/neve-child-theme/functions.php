@@ -1058,7 +1058,18 @@ function xphysio_blog_post_wrap( $content ) {
   </div>
 </div>';
 
-    $after = '<div class="xp-blog-back xp-blog-back--bottom">
+    // CTA-Box am Artikelende: Buchung + Kontakt (senkt Absprungrate, Klick auf
+    // /online-buchen/ wird automatisch als cta_termin_klick getrackt)
+    $cta = '<aside class="xp-post-cta" aria-label="Termin oder Kontakt">
+  <h2 class="xp-post-cta__title">Bereit für den nächsten Schritt?</h2>
+  <p class="xp-post-cta__text">Buch deinen Termin direkt online oder schreib mir – ich melde mich so schnell wie möglich bei dir.</p>
+  <div class="xp-post-cta__actions">
+    <a href="' . esc_url( home_url( '/online-buchen/' ) ) . '" class="btn-primary">Termin online buchen</a>
+    <a href="' . esc_url( home_url( '/kontakt/' ) ) . '" class="btn-outline">Kontakt aufnehmen</a>
+  </div>
+</aside>';
+
+    $after = $cta . '<div class="xp-blog-back xp-blog-back--bottom">
   <a href="' . $blog_url . '" class="xp-back-link">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
     Zurück zur Blog-Übersicht
