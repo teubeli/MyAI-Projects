@@ -206,6 +206,7 @@ Einträge basieren auf Git-History und manuellen Session-Notizen.
 - [x] Featured Images gesetzt – alle 5 Artikel ✅
 - [x] RankMath Meta-Descriptions + Focus-Keywords gesetzt – alle 5 Artikel ✅
 - [x] Google Rich Results Test: grün ✅
+- [ ] **🙋 Blog-Entwürfe von Michi beurteilen lassen** – Sturzprävention (164), Wellcome Fit (70, inkl. "buchen Sie"-Fix), Vollzeit (162): erst nach Michis Freigabe publizieren + GBP-Beitrag dazu (Entscheid 2026-10-02)
 - [ ] **⏰ GBP-Beiträge Wochenrhythmus** – geplant bis 23.10. (Rückenschmerzen 09.10., Neuroathletik 16.10., Chronische Krankheiten 23.10., je Fr 08:00). **Bis ca. 28.10. nächste Beiträge vorbereiten** (Sturzprävention/Wellcome Fit/Vollzeit – setzt Publikation der Artikel voraus, sonst z. B. Praxis-News/Leistungen)
 - [x] **GBP Sonderöffnungszeiten** – 02.04.–20.04.2026 als "Geschlossen" eingetragen ✅
 - [x] Search Console: noindex-Tag auf unbekannte Seite geprüft → AGB (ID 12) + Datenschutz (ID 11) = korrekt gewollt ✅
