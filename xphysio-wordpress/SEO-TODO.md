@@ -61,9 +61,9 @@ Sortiert nach geschätztem Ranking-Impact ÷ Aufwand. Wir arbeiten das Stück f�
 
 Geprüft am 2026-09-29 (eingeloggt als Profil-Admin). Eintrag ist verifiziert und grundsätzlich korrekt (Name, Adresse Breitistrasse 25, 8623 Wetzikon, Telefon, Kategorie "Physiotherapeut", Öffnungszeiten, Beschreibungstext vorhanden), aber deutlich ausbaufähig:
 
-- [ ] 🔧🙋 **Titelbild fehlt komplett** – ich kann hochladen, **brauche aber ein Bild von dir** (z. B. Aussenfoto der Praxis)
-- [ ] 🔧🙋 **Kein Logo hinterlegt** – ich kann hochladen, **brauche die Logo-Datei** (liegt schon im Repo unter `assets/logos/`, ggf. passende Version wählen) + deine Freigabe
-- [ ] 🔧🙋 **Nur 4 Fotos insgesamt** (109–206 Aufrufe je Bild → lohnt sich!). Empfehlung: Porträtfoto von Michaela, weitere Praxis-/Teambilder. **Brauche die Bilder von dir**, Upload mache ich
+- [x] 🔧🙋 **Titelbild fehlt komplett** – erledigt 2026-10-02: Porträt Michaela als Titelbild hochgeladen (Prüfung durch Google ausstehend) ✅
+- [x] 🔧🙋 **Kein Logo hinterlegt** – am 2026-10-02 geprüft: Pfeil-Logo ist bereits im Profil hinterlegt ✅
+- [x] 🔧🙋 **Nur 4 Fotos insgesamt** – 2026-10-02: 4 neue Fotos hochgeladen (Empfang mit Michaela, 3× Behandlungsraum), jetzt 8 Fotos + Titelbild (Prüfung durch Google ausstehend). Upload-Dateien liegen unter `marketing/gbp-fotos/` ✅
 - [ ] 🙋 **Nur 4 Google-Rezensionen** (4,3 ★) – siehe Priorität 1, reine Patientenansprache
 - [ ] 🔧🙋 **Keine GBP-Beiträge vorhanden** – ich kann posten, sobald du kurz Content/Freigabe gibst (z. B. bei jedem neuen Blogartikel)
 - [ ] 🔧 Zweitkategorie prüfen (z. B. "Sportphysiotherapeut" falls von Google angeboten) – kann ich direkt im Profil setzen
