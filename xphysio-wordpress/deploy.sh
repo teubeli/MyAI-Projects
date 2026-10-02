@@ -56,10 +56,14 @@ echo ""
 # ── 0. .htaccess + robots.txt ─────────────────────────────────
 if ! $DB_ONLY; then
   echo "▶ [0/4] .htaccess + robots.txt deployen..."
-  scp -q "$LOCAL_HTACCESS" "${SSH_HOST}:${REMOTE_WP}/.htaccess"
-  echo "  ✓ .htaccess"
-  scp -q "$LOCAL_ROBOTS" "${SSH_HOST}:${REMOTE_WP}/robots.txt"
-  echo "  ✓ robots.txt"
+  if $DRY_RUN; then
+    echo "  ~ (dry-run) Würde .htaccess + robots.txt hochladen"
+  else
+    scp -q "$LOCAL_HTACCESS" "${SSH_HOST}:${REMOTE_WP}/.htaccess"
+    echo "  ✓ .htaccess"
+    scp -q "$LOCAL_ROBOTS" "${SSH_HOST}:${REMOTE_WP}/robots.txt"
+    echo "  ✓ robots.txt"
+  fi
 fi
 
 # ── 1. Theme-Dateien (komplettes Verzeichnis) ─────────────────

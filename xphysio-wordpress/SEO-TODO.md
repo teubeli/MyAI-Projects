@@ -53,7 +53,7 @@ Sortiert nach geschätztem Ranking-Impact ÷ Aufwand. Wir arbeiten das Stück f�
 
 ## D. Blog / Content
 
-- [ ] 🔧 Absprungrate im Blog (47,4 %) senken: am Ende jedes Artikels klare CTA einbauen ("Jetzt Termin buchen" / Link zu passender Behandlungsmethode)
+- [x] 🔧 Absprungrate im Blog (47,4 %) senken: CTA-Box ("Termin online buchen" + "Kontakt aufnehmen") am Ende jedes Artikels – live seit 2026-10-02 (via `xphysio_blog_post_wrap()` in functions.php, gilt automatisch für alle künftigen Artikel). Wirkung in GA4 nach 4–6 Wochen prüfen ✅
 - [ ] 🔧🙋 Bestehende Blog-Drafts fertig auf Prod deployen (Wellcome Fit ID 70, Sturzprävention ID 164, Vollzeit-Ankündigung ID 162) – technisch bereit, **Publikationsentscheid/-datum liegt bei dir**
 - [ ] 🔧 Neue Artikel konsequent auf Long-Tail-Varianten der Money-Keywords ausrichten (z. B. "Sportphysiotherapie Wetzikon", "Lymphdrainage Wetzikon" – aktuell Pos. 22 bzw. 15,5)
 
